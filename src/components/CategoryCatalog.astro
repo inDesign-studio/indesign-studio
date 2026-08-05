@@ -15,6 +15,7 @@ interface Props {
 	visualTop: string;
 	visualAccent: string;
 	projectTwoTitle?: string;
+	projectTwoDescription?: string;
 	projectTwoHref?: string;
 	projectTwoImages?: string[];
 	projectThreeTitle?: string;
@@ -36,6 +37,7 @@ const {
 	visualTop,
 	visualAccent,
 	projectTwoTitle = 'Название проекта',
+	projectTwoDescription,
 	projectTwoHref,
 	projectTwoImages,
 	projectThreeTitle = 'Название проекта',
@@ -44,6 +46,8 @@ const {
 	placeholderDescription = 'Короткое описание проекта',
 	projectImages,
 } = Astro.props;
+
+const resolvedProjectTwoDescription = projectTwoDescription ?? placeholderDescription;
 ---
 
 <!doctype html>
@@ -101,13 +105,13 @@ const {
 						<div class="cover-preview" aria-hidden="true">
 							{projectTwoImages?.map((src) => <img src={src} alt="" loading="lazy" />)}
 						</div>
-						<div class="project-bottom"><div><h2>{projectTwoTitle}</h2><p>{placeholderDescription}</p></div><span>Открыть</span></div>
+						<div class="project-bottom"><div><h2>{projectTwoTitle}</h2><p>{resolvedProjectTwoDescription}</p></div><span>Открыть</span></div>
 					</a>
 				) : (
 					<article class="project project-empty">
 						<div class="project-top"><span>02 / {projectTwoTitle}</span></div>
 						<div class="empty-visual" aria-hidden="true"><div><span>+</span><small>Место для обложки</small></div></div>
-						<div class="project-bottom"><div><h2>{projectTwoTitle}</h2><p>{placeholderDescription}</p></div><span>Скоро</span></div>
+						<div class="project-bottom"><div><h2>{projectTwoTitle}</h2><p>{resolvedProjectTwoDescription}</p></div><span>Скоро</span></div>
 					</article>
 				)}
 
