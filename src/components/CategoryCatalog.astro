@@ -153,7 +153,7 @@ const {
 	.title-row > *,.project-bottom > div { min-width: 0; }
 	h1 { margin: 0; font-size: var(--text-display-md); line-height: .79; letter-spacing: -.08em; }
 	h1 .title-top { display:block; }
-	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:.82em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:-.055em; }
+	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:1em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:inherit; overflow-wrap:anywhere; }
 	.intro p { margin: 0; color: #666; font-size: clamp(1rem,1.2vw,1.14rem); line-height: 1.7; }
 	.projects { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(1rem,2vw,2rem); }
 	.project { min-height: clamp(34rem,38vw,44rem); padding: clamp(1.3rem,2vw,2rem); display: grid; grid-template-rows: auto 1fr auto; border-radius: var(--radius-card); overflow: hidden; position: relative; }
@@ -222,7 +222,8 @@ const {
 		.eyebrow { margin-bottom: 1.5rem; font-size: .7rem; line-height: 1.5; letter-spacing: .1em; }
 		.title-row,.projects { grid-template-columns: 1fr; gap: 2rem; }
 		h1 { max-width: 100%; line-height: .84; letter-spacing: -.065em; hyphens: none; overflow-wrap: normal; word-break: normal; }
-		h1.title-long .title-top { white-space: normal; hyphens: auto; overflow-wrap: anywhere; }
+		h1.title-long { font-size: clamp(1.9rem, 10vw, 2.4rem); letter-spacing: -.075em; }
+		h1.title-long .title-top { white-space: nowrap; }
 		.intro p { font-size: 1rem; overflow-wrap: anywhere; }
 		.intro span { font-size: .68rem; line-height: 1.45; }
 		.project { min-height: 27rem; padding: 1.25rem; }

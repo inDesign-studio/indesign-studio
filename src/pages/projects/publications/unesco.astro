@@ -102,7 +102,7 @@ const gallery = [
 			</div>
 
 			<section class="covers-section" id="case-applications" data-case-section>
-				<div class="showcase-head"><span>04 / Серия приложений</span><h2>Пять изданий.<br />Общие правила.</h2><p>Каждое приложение раскрывает отдельный аспект состояния криосферы. Обложки собраны по одной схеме и различаются композицией и акцентным цветом.</p></div>
+				<div class="showcase-head"><span>04 / Серия приложений</span><h2>Четыре приложения.<br />Общие правила.</h2><p>Каждое приложение раскрывает отдельный аспект состояния криосферы. Обложки собраны по одной схеме и различаются композицией и акцентным цветом.</p></div>
 				<div class="covers-grid">
 					{covers.map(([src, alt]) => <img src={src} alt={alt} loading="lazy" {...imageSize} />)}
 				</div>
@@ -189,7 +189,7 @@ const gallery = [
 	.showcase-head h2 { grid-column:1; min-width:0; }
 	.showcase-head p { grid-column:2; min-width:0; margin:0; }
 	h1 { margin:2rem 0 0; font-size:var(--text-display-lg); line-height:.76; letter-spacing:-.075em; }
-	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:.52em; font-style:normal; font-weight:inherit; line-height:.92; letter-spacing:-.04em; }
+	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:1em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:inherit; overflow-wrap:anywhere; }
 	.summary { margin:0; color:#5d5d5d; font-size:clamp(1rem,1.3vw,1.2rem); line-height:1.65; }
 	.cover-stage { width:min(100%,88rem); height:clamp(34rem,64vw,63rem); margin:0 auto; padding:clamp(1.5rem,5vw,5rem); display:flex; align-items:center; justify-content:center; gap:clamp(.75rem,2.4vw,2.5rem); position:relative; overflow:hidden; background:#0b0b0b; border-radius:var(--radius-shell); }
 	.cover-stage::before { content:""; position:absolute; width:min(65vw,58rem); aspect-ratio:1; border:1px solid #fff2; border-radius:50%; box-shadow:0 0 0 8rem #0000,0 0 0 calc(8rem + 1px) #fff1; }
@@ -199,7 +199,7 @@ const gallery = [
 	.cover-small:last-of-type { transform:rotate(7deg) translateY(5%); }
 	.cover img { width:100%; height:auto; display:block; border-radius:var(--radius-thumb); }
 	.section-grid { padding:clamp(6rem,11vw,11rem) 0; display:grid; grid-template-columns:minmax(8rem,.28fr) minmax(0,1fr); gap:clamp(2rem,7vw,9rem); }
-	.rich-text h2,.showcase-head h2 { margin:0; font-size:clamp(3rem,5.2vw,5.8rem); line-height:.88; letter-spacing:-.065em; }
+	.rich-text h2,.showcase-head h2 { margin:0; font-size:var(--text-display-section); line-height:.88; letter-spacing:-.065em; }
 	.rich-text p,.showcase-head p { max-width:48rem; margin:2rem 0 0; color:#666; font-size:clamp(1rem,1.3vw,1.15rem); line-height:1.7; }
 	.showcase,.covers-section,.analytics-section { width:min(100%,88rem); margin:clamp(6rem,10vw,10rem) auto 0; padding:clamp(2rem,5vw,5rem); border-radius:var(--radius-shell); overflow:hidden; }
 	.showcase-black,.analytics-section { color:#fff; background:#0b0b0b; }

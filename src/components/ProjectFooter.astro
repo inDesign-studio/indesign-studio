@@ -90,7 +90,7 @@ import CaseLightbox from './CaseLightbox.astro';
 		display: flex;
 		align-items: center;
 		gap: .18em;
-		font-size: clamp(2rem, 4vw, 4rem);
+		font-size: var(--text-display-subsection);
 		line-height: .95;
 		letter-spacing: -.055em;
 		text-align: right;
@@ -143,6 +143,15 @@ import CaseLightbox from './CaseLightbox.astro';
 			max-width: 18rem;
 			font-size: clamp(2rem, 10vw, 3rem);
 			text-align: left;
+		}
+
+		.footer-home i {
+			flex-basis: 2.25rem;
+			width: 2.25rem;
+			height: 2.25rem;
+			font-size: .82rem;
+			line-height: 1;
+			overflow: hidden;
 		}
 	}
 

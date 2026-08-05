@@ -291,11 +291,11 @@ const initialGalleryCount = 24;
 	.hero-row { display: grid; grid-template-columns: minmax(0,1fr) minmax(20rem,.42fr); gap: 4rem; align-items: end; }
 	.hero-row > *,.section-grid > *,.showcase-head > * { min-width: 0; }
 	h1 { margin: 0; max-width: 60rem; font-size: var(--text-display-lg); line-height: .79; letter-spacing: -.075em; }
-	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:.82em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:-.055em; }
+	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:1em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:inherit; overflow-wrap:anywhere; }
 	.summary { margin: 0; color: #565656; font-size: clamp(1rem,1.25vw,1.22rem); line-height: 1.65; }
 	.section-grid { width: 100%; max-width: 82rem; margin: 0 auto; display: grid; grid-template-columns: minmax(10rem,.28fr) 1fr; gap: clamp(2rem,7vw,8rem); }
 	.approach { padding: 0 0 clamp(4rem,7vw,7rem); }
-	.rich-text h2,.statement h2,.showcase-head h2 { margin: 0; font-size: clamp(2.7rem,5vw,5.3rem); line-height: .9; letter-spacing: -.06em; }
+	.rich-text h2,.statement h2,.showcase-head h2 { margin: 0; font-size: var(--text-display-section); line-height: .9; letter-spacing: -.06em; }
 	.rich-text p,.statement p { max-width: 52rem; margin: 1.7rem 0 0; color: #5a5a5a; font-size: clamp(1rem,1.15vw,1.16rem); line-height: 1.72; }
 	.process { width: 100%; max-width: 82rem; margin: 0 auto clamp(7rem,12vw,12rem); display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid #1112; border-bottom: 1px solid #1112; }
 	.process div { padding: 1.7rem 1.2rem; border-right: 1px solid #1112; }

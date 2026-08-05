@@ -182,7 +182,7 @@ const gallery = [
 	.hero-row { display: grid; grid-template-columns: 1fr minmax(20rem,.42fr); gap: 4rem; align-items: end; }
 	.hero-row > *,.section-grid > *,.showcase-head > * { min-width: 0; }
 	h1 { margin: 0; font-size: var(--text-display-xl); line-height: .72; letter-spacing: -.08em; }
-	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:.82em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:-.055em; }
+	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:1em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:inherit; overflow-wrap:anywhere; }
 	.summary { margin: 0; color: #555; font-size: clamp(1rem,1.35vw,1.3rem); line-height: 1.65; }
 	.cover-stage { width: 100%; max-width: 88rem; height: clamp(34rem,60vw,61rem); margin: 0 auto; padding: clamp(2rem,5vw,5rem); display: flex; justify-content: center; align-items: center; gap: clamp(1rem,3vw,3rem); background: #0b0b0b; border-radius: var(--radius-shell); overflow: hidden; }
 	.cover { flex: 0 1 26%; filter: drop-shadow(0 2rem 2rem #001a); }
@@ -192,7 +192,7 @@ const gallery = [
 	.cover img { display: block; width: 100%; height: auto; border-radius: var(--radius-thumb); }
 	.section-grid { width: 100%; max-width: 82rem; margin: 0 auto; display: grid; grid-template-columns: minmax(10rem,.28fr) 1fr; gap: clamp(2rem,7vw,8rem); }
 	.overview { padding: clamp(6rem,12vw,12rem) 0 clamp(4rem,8vw,8rem); }
-	.rich-text h2,.showcase-head h2 { margin: 0; font-size: clamp(2.6rem,6vw,6.5rem); line-height: .88; letter-spacing: -.065em; }
+	.rich-text h2,.showcase-head h2 { margin: 0; font-size: var(--text-display-section); line-height: .88; letter-spacing: -.065em; }
 	.rich-text p { max-width: 51rem; margin: 1.7rem 0 0; color: #5b5e65; font-size: clamp(1rem,1.2vw,1.18rem); line-height: 1.75; }
 	.showcase,.covers-section,.news-section { width: 100%; max-width: 88rem; margin: 0 auto; padding: clamp(2rem,4vw,4rem); border-radius: var(--radius-shell); }
 	.showcase-sky { background: #f5f5f3; }

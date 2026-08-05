@@ -192,7 +192,7 @@ const gallery = [
 	.hero-row { display:grid; grid-template-columns:minmax(0,1fr) minmax(20rem,.42fr); gap:4rem; align-items:end; }
 	.hero-row>*,.section-grid>*,.showcase-head>* { min-width:0; }
 	h1 { margin:0; font-size:var(--text-display-lg); line-height:.73; letter-spacing:-.08em; }
-	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:.82em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:-.055em; }
+	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:1em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:inherit; overflow-wrap:anywhere; }
 	.summary { margin:0; color:#565656; font-size:clamp(1rem,1.25vw,1.22rem); line-height:1.65; }
 	.cover-stage { width:100%; max-width:88rem; min-height:clamp(36rem,62vw,62rem); margin:0 auto; padding:clamp(2rem,5vw,5rem); display:flex; justify-content:center; align-items:center; gap:clamp(.7rem,2.2vw,2.2rem); position:relative; overflow:hidden; background:#0b0b0b; border-radius:var(--radius-shell); }
 	.cover-stage::before,.cover-stage::after { content:""; position:absolute; width:72%; aspect-ratio:1; border:1px solid #fff2; border-radius:50%; }
@@ -204,7 +204,7 @@ const gallery = [
 	.cover img { display:block; width:100%; height:auto; border-radius:var(--radius-thumb); }
 	.section-grid { width:100%; max-width:82rem; margin:0 auto; display:grid; grid-template-columns:minmax(10rem,.28fr) 1fr; gap:clamp(2rem,7vw,8rem); }
 	.overview { padding:clamp(7rem,12vw,12rem) 0 clamp(4rem,7vw,7rem); }
-	.rich-text h2,.showcase-head h2 { margin:0; font-size:clamp(2.7rem,5vw,5.3rem); line-height:.9; letter-spacing:-.06em; }
+	.rich-text h2,.showcase-head h2 { margin:0; font-size:var(--text-display-section); line-height:.9; letter-spacing:-.06em; }
 	.rich-text p { max-width:52rem; margin:1.7rem 0 0; color:#5a5a5a; font-size:clamp(1rem,1.15vw,1.16rem); line-height:1.72; }
 	.showcase-dark { width:100%; max-width:88rem; margin:0 auto; padding:clamp(2rem,4vw,4.5rem); color:#fff; background:#0b0b0b; border-radius:var(--radius-shell); }
 	.showcase-head { display:grid; grid-template-columns:.23fr 1fr .54fr; gap:clamp(1.5rem,4vw,4.5rem); align-items:end; margin-bottom:clamp(3rem,6vw,6rem); }

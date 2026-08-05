@@ -10,9 +10,11 @@
 	--cta-hover-lift: -3px;
 	--cta-active-lift: -1px;
 	--cta-hover-shadow: 0 1rem 2.25rem rgba(0,0,0,.18);
-	--text-display-xl: clamp(4.25rem, 8vw, 8rem);
-	--text-display-lg: clamp(3.7rem, 6vw, 6.7rem);
-	--text-display-md: clamp(3rem, 4.6vw, 6rem);
+	--text-display-xl: clamp(3rem, 4vw, 4rem);
+	--text-display-lg: clamp(2.75rem, 3vw, 3.35rem);
+	--text-display-md: clamp(2.5rem, 2.3vw, 3rem);
+	--text-display-section: clamp(2.4rem, 2.6vw, 3.25rem);
+	--text-display-subsection: clamp(2rem, 1.8vw, 2.4rem);
 }
 
 @media (max-width: 700px) {
@@ -20,5 +22,7 @@
 		--text-display-xl: clamp(3.75rem, 17vw, 4.25rem);
 		--text-display-lg: clamp(3.1rem, 14vw, 3.7rem);
 		--text-display-md: clamp(2.65rem, 11.5vw, 3rem);
+		--text-display-section: clamp(2.35rem, 12vw, 3.8rem);
+		--text-display-subsection: clamp(2.35rem, 12vw, 3.8rem);
 	}
 }
