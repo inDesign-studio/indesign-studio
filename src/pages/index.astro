@@ -231,6 +231,10 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 
 	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:1em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:inherit; overflow-wrap:anywhere; }
 
+	@media (min-width: 1001px) {
+		h1 { font-size: clamp(3rem, 4.6vw, 6rem); }
+	}
+
 	.lead {
 		max-width: 35rem;
 		margin: clamp(1.8rem, 4vh, 3.5rem) 0 0;
