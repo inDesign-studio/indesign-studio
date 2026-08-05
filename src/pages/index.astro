@@ -469,6 +469,9 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 		.proof > p { font-size: .72rem; line-height: 1.55; }
 		.footnote span:first-child { max-width: 15rem; line-height: 1.5; }
 		.projects-grid { min-height: 0; grid-template-columns: 1fr; grid-template-rows: none; }
+		.projects-grid .publications, .portfolio-mini-grid .mini-publications { order: 1; }
+		.projects-grid .infographics, .portfolio-mini-grid .mini-infographics { order: 2; }
+		.projects-grid .presentations, .portfolio-mini-grid .mini-presentations { order: 3; }
 		.publications { grid-column: auto; min-height: 27rem; }
 		.presentations, .infographics { min-height: 22rem; }
 		.publication-preview { min-height: 16rem; }
