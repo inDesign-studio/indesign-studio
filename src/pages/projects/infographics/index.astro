@@ -1,0 +1,396 @@
+---
+import BackToTop from '../../../components/BackToTop.astro';
+import CaseGallery from '../../../components/CaseGallery.astro';
+import CaseIndex from '../../../components/CaseIndex.astro';
+import CaseLightbox from '../../../components/CaseLightbox.astro';
+import ProjectCta from '../../../components/ProjectCta.astro';
+import ProjectFooter from '../../../components/ProjectFooter.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+
+const filters = [
+	{ id: 'all', label: 'Все работы' },
+	{ id: 'research', label: 'Исследования' },
+	{ id: 'reports', label: 'Отчёты' },
+	{ id: 'social', label: 'Социальные данные' },
+	{ id: 'science', label: 'Научные данные' },
+	{ id: 'illustrative', label: 'Иллюстративная инфографика' },
+];
+
+const featuredNumbers = new Set([17, 32, 40, 41, 47, 59, 76, 83, 89]);
+const illustrativeNumbers = new Set([6, 8, 9, 14, 15, 17, 19, 20, 21, 32, 40, 41, 42, 43, 44, 45, 46, 47, 59, 62, 63, 64]);
+const curatedNumbers = [1, 2, 3, 4, 6, 8, 14, 20, 21, 22, 42, 43, 44, 45, 46, 62, 63, 64, 70, 72, 73, 82, 91, 95];
+const curatedRank = new Map(curatedNumbers.map((number, index) => [number, index]));
+
+const getGroup = (number: number) => {
+	if (number <= 11) return 'Годовые отчёты и международная статистика';
+	if (number <= 21) return 'Социальные исследования и правовые реформы';
+	if (number <= 39) return 'Гражданские исследования';
+	if (number <= 69) return 'Социально-демографические исследования';
+	if (number <= 90) return 'Научные и климатические данные';
+	return 'Оценка образовательных программ';
+};
+
+const getCategories = (number: number) => {
+	const categories = [];
+	if (number <= 11 || number === 22) categories.push('reports');
+	if ((number >= 12 && number <= 39) || number >= 91) categories.push('research');
+	if (number >= 12 && number <= 69) categories.push('social');
+	if (number >= 70 && number <= 90) categories.push('science');
+	if (number === 91) categories.push('processes');
+	if (number === 4) categories.push('maps');
+	if (illustrativeNumbers.has(number)) categories.push('illustrative');
+	return categories;
+};
+
+const infographicSizes = '1258x1789,1258x1789,1258x1789,1258x1789,1258x1789,544x581,1063x937,1063x1033,1027x430,963x1229,959x1469,1060x506,1064x590,1064x1234,1060x566,1048x490,1064x1258,1068x474,1068x578,1052x1090,1060x794,1258x1789,1800x865,1800x1317,1800x994,1800x1249,1800x1148,1619x1800,1800x1443,1800x702,1800x1049,1800x1019,1800x889,1800x1300,1800x1016,1800x1268,1800x1189,1800x1404,1800x708,1050x977,1054x546,1042x474,1062x446,1058x437,1034x490,1050x526,1046x694,1070x422,1066x669,1058x414,1062x562,1062x658,1066x494,1054x622,1066x565,1050x482,1042x553,1062x813,1078x758,1261x1800,1062x498,1062x714,1046x977,1062x1273,1062x666,1054x582,1058x510,1058x634,1086x753,1062x438,1050x489,1046x629,1054x578,1062x510,1066x598,519x723,1054x457,1070x490,1058x486,1078x593,1054x574,1038x506,1082x597,990x398,1054x689,1070x430,1078x605,1062x757,1066x645,527x853,1261x1800,1062x426,1058x366,1078x394,1062x558,1058x429,1082x433,1058x370,1058x362,1086x426,1090x394'
+	.split(',')
+	.map((size) => size.split('x').map(Number) as [number, number]);
+
+const allImages = Array.from({ length: 101 }, (_, index) => {
+	const number = index + 1;
+	const [width, height] = infographicSizes[index];
+	return {
+		number,
+		src: `/portfolio/infographics/graphic-${String(number).padStart(3, '0')}.webp`,
+		group: getGroup(number),
+		categories: getCategories(number),
+		width,
+		height,
+	};
+});
+
+const galleryImages = allImages
+	.filter(({ number }) => !featuredNumbers.has(number))
+	.sort((a, b) => {
+		const aRank = curatedRank.get(a.number);
+		const bRank = curatedRank.get(b.number);
+		if (aRank !== undefined && bRank !== undefined) return aRank - bRank;
+		if (aRank !== undefined) return -1;
+		if (bRank !== undefined) return 1;
+		return a.number - b.number;
+	});
+
+const initialGalleryCount = 24;
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content="Инфографика InDesign Studio: анализируем данные, формулируем вывод и показываем цифры в диаграммах, картах и схемах." />
+		<meta name="theme-color" content="#ffffff" />
+		<title>Инфографика — InDesign Studio</title>
+	</head>
+	<body id="top">
+		<SiteHeader />
+
+		<main>
+			<CaseIndex
+				items={[
+					{ id: 'case-approach', label: 'Подход' },
+					{ id: 'case-examples', label: 'Примеры' },
+					{ id: 'case-result', label: 'Результат' },
+					{ id: 'case-gallery', label: 'Галерея' },
+				]}
+			/>
+
+			<section class="project-hero">
+				<p class="eyebrow">Аналитика · Дизайн данных · Инфографика</p>
+				<div class="hero-row">
+					<h1>Данные<br /><span class="title-accent">становятся историей.</span></h1>
+					<p class="summary">Получаем таблицы, массивы цифр, результаты исследований и черновые схемы. Разбираемся в содержании, формулируем ключевой вывод и выбираем форму, которая сохраняет точность и контекст данных.</p>
+				</div>
+			</section>
+
+			<section class="approach section-grid" id="case-approach" data-case-section>
+				<p class="section-label">01 / Подход</p>
+				<div class="rich-text">
+					<h2>Сначала понимаем данные. Потом рисуем.</h2>
+					<p>Мы не начинаем с выбора красивой диаграммы. Сначала проверяем структуру исходных данных, единицы измерения, связи, сравнимость показателей и контекст. Отделяем важное от второстепенного и формулируем вывод, который должен увидеть читатель.</p>
+					<p>Чтобы сравнить значения, показать динамику, объяснить состав, географию или последовательность действий, нужны разные графические приёмы. Если исходный материал не складывается в историю, мы задаём вопросы, группируем данные, убираем повторы и задаём порядок чтения.</p>
+			</div>
+			</section>
+
+			<dl class="process">
+				<div><dt>01 / Анализ</dt><dd>Проверяем исходные данные и формулируем вывод</dd></div>
+				<div><dt>02 / Сценарий</dt><dd>Выстраиваем последовательность чтения</dd></div>
+				<div><dt>03 / Форма</dt><dd>Выбираем точный способ визуализации</dd></div>
+				<div><dt>04 / Адаптация</dt><dd>Готовим для печати и цифровых носителей</dd></div>
+			</dl>
+
+			<section class="showcase showcase-dark">
+				<div class="showcase-head">
+					<p>02 / Смысл</p>
+					<h2>Из массива цифр —<br />в точный вывод.</h2>
+					<div>
+						<p>Сравнение, порядок, масштаб и акцент работают вместе. Ключевой вывод виден сразу, а детали и исходные значения остаются доступными для проверки.</p>
+						<p>Иллюстрации сохраняем рядом с данными, когда они помогают раскрыть тему и создают нужный эмоциональный контекст.</p>
+					</div>
+				</div>
+				<div class="meaning-grid">
+					<figure class="meaning-main"><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-017.webp" data-caption="Социальные исследования и правовые реформы"><img src="/portfolio/infographics/graphic-017.webp" alt="Инфографика исследования с диаграммой и тематической иллюстрацией" loading="eager" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-032.webp" data-caption="Гражданские исследования"><img src="/portfolio/infographics/graphic-032.webp" alt="Инфографика гражданского исследования с иллюстрацией" loading="lazy" /></button></figure>
+				</div>
+			</section>
+
+			<section class="story-section" id="case-examples" data-case-section>
+				<div class="section-grid compact-grid">
+					<p class="section-label">03 / История</p>
+					<div class="rich-text">
+						<h2>Не украшаем данные. Объясняем их.</h2>
+						<p>Хорошая инфографика не упрощает смысл — она упрощает путь к нему. Мы объединяем цифры, подписи, иллюстрации и графические метафоры в сценарий чтения, где каждый элемент отвечает на конкретный вопрос.</p>
+					</div>
+				</div>
+				<div class="story-grid">
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-040.webp" data-caption="Социально-демографические исследования"><img src="/portfolio/infographics/graphic-040.webp" alt="Инфографика социально-демографического исследования" loading="lazy" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-041.webp" data-caption="Социально-демографические исследования"><img src="/portfolio/infographics/graphic-041.webp" alt="Инфографика об образовании" loading="lazy" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-047.webp" data-caption="Социально-демографические исследования"><img src="/portfolio/infographics/graphic-047.webp" alt="Инфографика уровня доходов" loading="lazy" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-059.webp" data-caption="Социально-демографические исследования"><img src="/portfolio/infographics/graphic-059.webp" alt="Иллюстративная инфографика исследования" loading="lazy" /></button></figure>
+				</div>
+			</section>
+
+			<section class="science showcase-dark">
+				<div class="showcase-head">
+					<p>04 / Масштаб</p>
+					<h2>От социологии<br />до климатических моделей.</h2>
+					<div>
+						<p>Работаем с исследованиями, годовыми отчётами, мониторингом, опросами и научными данными. Сохраняем точность показателей и подбираем формат для страницы издания, экрана или презентационного слайда.</p>
+					</div>
+				</div>
+				<div class="science-grid">
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-076.webp" data-caption="Научные и климатические данные"><img src="/portfolio/infographics/graphic-076.webp" alt="Научная инфографика с объёмной диаграммой" loading="lazy" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-083.webp" data-caption="Научные и климатические данные"><img src="/portfolio/infographics/graphic-083.webp" alt="Тепловая карта научного исследования" loading="lazy" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-089.webp" data-caption="Научные и климатические данные"><img src="/portfolio/infographics/graphic-089.webp" alt="Схема процесса в научном исследовании" loading="lazy" /></button></figure>
+			</div>
+			</section>
+
+			<section class="statement section-grid" id="case-result" data-case-section>
+				<p class="section-label">05 / Результат</p>
+				<div>
+					<h2>Данные, которые можно понять, сравнить и запомнить.</h2>
+					<p>Берём на себя весь путь: от разбора исходных таблиц и выбора способа подачи до дизайна, вёрстки и подготовки файлов к публикации. В результате получается согласованный комплект диаграмм, карт и схем.</p>
+				</div>
+			</section>
+
+			<ProjectCta subject="инфографику и визуализацию данных" />
+
+			<CaseGallery
+				label="06 / Галерея"
+				title="92 работы о данных."
+				description="Сначала показаны 24 сильных и разнообразных примера. Темы доступны в фильтрах, а остальные работы загружаются порциями по кнопке «Показать ещё»."
+				items={galleryImages.map(({ number, src, group, categories, width, height }, index) => ({
+					caption: group,
+					number: String(number).padStart(3, '0'),
+					categories,
+					hidden: index >= initialGalleryCount,
+					images: [{ src, alt: `${group}: пример инфографики ${number}`, width, height }],
+				}))}
+				variant="numbered"
+				lightboxId="case-gallery-lightbox"
+			>
+				<div slot="controls" class="tags" aria-label="Фильтры галереи">
+					{filters.map(({ id, label }) => (
+						<button
+							class:list={['format-filter', { active: id === 'all' }]}
+							type="button"
+							data-filter={id}
+							aria-pressed={id === 'all' ? 'true' : 'false'}
+						>
+							{label}
+						</button>
+					))}
+				</div>
+				<div slot="toolbar" class="gallery-toolbar">
+					<p class="gallery-status" aria-live="polite">Показано 24 из 92</p>
+					<button class="gallery-reset" type="button" hidden>Сбросить фильтр</button>
+				</div>
+				<div slot="actions" class="gallery-actions">
+					<button class="gallery-more" type="button">Показать ещё</button>
+				</div>
+			</CaseGallery>
+
+			<CaseLightbox id="case-gallery-lightbox" variant="single" label="Увеличенное изображение инфографики" />
+
+			<ProjectFooter />
+		</main>
+
+		<BackToTop />
+
+		<script>
+			const filterButtons = [...document.querySelectorAll<HTMLButtonElement>('.format-filter')];
+			const galleryItems = [...document.querySelectorAll<HTMLElement>('[data-gallery-item]')];
+			const galleryStatus = document.querySelector<HTMLElement>('.gallery-status');
+			const galleryMore = document.querySelector<HTMLButtonElement>('.gallery-more');
+			const galleryReset = document.querySelector<HTMLButtonElement>('.gallery-reset');
+			const gallery = document.querySelector<HTMLElement>('#case-gallery');
+			const pageSize = 24;
+			let activeFilter = 'all';
+			let visibleCount = pageSize;
+
+			const updateGallery = () => {
+				const matchingItems = galleryItems.filter((item) =>
+					activeFilter === 'all' || item.dataset.categories?.split(' ').includes(activeFilter)
+				);
+
+				galleryItems.forEach((item) => {
+					const matchingIndex = matchingItems.indexOf(item);
+					item.hidden = matchingIndex === -1 || matchingIndex >= visibleCount;
+				});
+
+				const shownCount = Math.min(visibleCount, matchingItems.length);
+				if (galleryStatus) galleryStatus.textContent = `Показано ${shownCount} из ${matchingItems.length}`;
+				if (galleryMore) galleryMore.hidden = shownCount >= matchingItems.length;
+				if (galleryReset) galleryReset.hidden = activeFilter === 'all';
+			};
+
+			const setFilter = (filter: string, scrollToGallery = false) => {
+				activeFilter = filter;
+				visibleCount = pageSize;
+				filterButtons.forEach((button) => {
+					const isActive = button.dataset.filter === activeFilter;
+					button.classList.toggle('active', isActive);
+					button.setAttribute('aria-pressed', String(isActive));
+				});
+				updateGallery();
+				if (scrollToGallery) gallery?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			};
+
+			filterButtons.forEach((button) => {
+				button.addEventListener('click', () => setFilter(button.dataset.filter ?? 'all'));
+			});
+			galleryMore?.addEventListener('click', () => {
+				visibleCount += pageSize;
+				updateGallery();
+			});
+			galleryReset?.addEventListener('click', () => setFilter('all'));
+			updateGallery();
+
+		</script>
+	</body>
+</html>
+
+<style>
+	:root { font-family: Inter, "Segoe UI", Arial, sans-serif; color: #0b0b0b; background: #fff; font-synthesis: none; }
+	* { box-sizing: border-box; }
+	html { scroll-behavior: smooth; }
+	body { margin: 0; min-width: 0; overflow-x: clip; background: #fff; }
+	a { color: inherit; }
+	button { font: inherit; }
+	header { height: 6rem; padding: 0 clamp(1.25rem,4vw,4.5rem); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+	.back { display: flex; align-items: center; gap: .7rem; width: max-content; font-size: .72rem; font-weight: 750; text-decoration: none; }
+	.back span { width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border: 1px solid #1113; border-radius: 50%; transition: transform .2s ease; }
+	.back:hover span { transform: translateX(-.25rem); }
+	.brand { width: clamp(7.8rem,10vw,10rem); line-height: 0; }
+	.brand img { display: block; width: 100%; }
+	.page-count { justify-self: end; color: #777; font-size: .62rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+	main { padding: 0 clamp(1.25rem,4vw,4.5rem) clamp(2rem,5vw,5rem); }
+	.project-hero { width: 100%; max-width: 88rem; margin: 0 auto; padding: clamp(4rem,8vw,7rem) 0 clamp(4rem,7vw,7rem); }
+	.eyebrow,.section-label,.showcase-head > p { margin: 0; color: var(--color-accent); font-size: .64rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+	.hero-row { display: grid; grid-template-columns: minmax(0,1fr) minmax(20rem,.42fr); gap: 4rem; align-items: end; }
+	.hero-row > *,.section-grid > *,.showcase-head > * { min-width: 0; }
+	h1 { margin: 0; max-width: 60rem; font-size: var(--text-display-lg); line-height: .79; letter-spacing: -.075em; }
+	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:.82em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:-.055em; }
+	.summary { margin: 0; color: #565656; font-size: clamp(1rem,1.25vw,1.22rem); line-height: 1.65; }
+	.section-grid { width: 100%; max-width: 82rem; margin: 0 auto; display: grid; grid-template-columns: minmax(10rem,.28fr) 1fr; gap: clamp(2rem,7vw,8rem); }
+	.approach { padding: 0 0 clamp(4rem,7vw,7rem); }
+	.rich-text h2,.statement h2,.showcase-head h2 { margin: 0; font-size: clamp(2.7rem,5vw,5.3rem); line-height: .9; letter-spacing: -.06em; }
+	.rich-text p,.statement p { max-width: 52rem; margin: 1.7rem 0 0; color: #5a5a5a; font-size: clamp(1rem,1.15vw,1.16rem); line-height: 1.72; }
+	.process { width: 100%; max-width: 82rem; margin: 0 auto clamp(7rem,12vw,12rem); display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid #1112; border-bottom: 1px solid #1112; }
+	.process div { padding: 1.7rem 1.2rem; border-right: 1px solid #1112; }
+	.process div:last-child { border-right: 0; }
+	.process dt { color: var(--color-accent); font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+	.process dd { margin: .8rem 0 0; font-size: .92rem; font-weight: 700; line-height: 1.4; }
+	.showcase { width: 100%; max-width: 88rem; margin: 0 auto; padding: clamp(2rem,4vw,4.5rem); border-radius: var(--radius-shell); }
+	.showcase-dark { color: #fff; background: #0b0b0b; }
+	.showcase-head { display: grid; grid-template-columns: .23fr 1fr .54fr; gap: clamp(1.5rem,4vw,4.5rem); align-items: end; margin-bottom: clamp(3rem,6vw,6rem); }
+	.showcase-head > div p { margin: 0; color: #b5b5b5; font-size: 1rem; line-height: 1.65; }
+	.showcase-head > div p + p { margin-top: 1rem; }
+	.zoom-trigger { display: block; width: 100%; padding: 0; overflow: hidden; color: inherit; background: transparent; border: 0; cursor: zoom-in; }
+	.zoom-trigger img { display: block; width: 100%; height: auto; transition: transform .35s ease; }
+	.zoom-trigger:hover img { transform: scale(1.015); }
+	.zoom-trigger:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
+	.meaning-grid { width: min(86%,69rem); margin: 0 auto; display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(1rem,3vw,3rem); align-items: center; }
+	.meaning-grid figure,.story-grid figure,.science-grid figure { margin: 0; }
+	.meaning-grid figure { padding: clamp(.5rem,1.2vw,1rem); background: #fff; border-radius: var(--radius-thumb); box-shadow: 0 2rem 5rem #0008; }
+	.meaning-grid figure:last-child { transform: translateY(3rem) rotate(2deg); }
+	.story-section { width: 100%; max-width: 88rem; margin: 0 auto; padding: clamp(8rem,13vw,13rem) 0; }
+	.compact-grid { margin-bottom: clamp(3rem,6vw,6rem); }
+	.story-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: clamp(.7rem,1.5vw,1.5rem); align-items: start; }
+	.story-grid figure { padding: clamp(.45rem,1vw,.8rem); background: #fff; border: 1px solid #1112; border-radius: var(--radius-thumb); box-shadow: 0 1.5rem 3rem #00000010; }
+	.story-grid figure:nth-child(even) { margin-top: 4rem; }
+	.science { width: 100%; max-width: 88rem; margin: 0 auto; padding: clamp(2rem,4vw,4.5rem); border-radius: var(--radius-shell); }
+	.science-grid { display: grid; grid-template-columns: .9fr 1.15fr .95fr; gap: clamp(.8rem,2vw,2rem); align-items: center; }
+	.science-grid figure { padding: clamp(.45rem,1vw,.8rem); background: #fff; border-radius: var(--radius-thumb); }
+	.science-grid figure:nth-child(2) { transform: translateY(2rem); }
+	.statement { padding: clamp(8rem,14vw,14rem) 0 clamp(3rem,5vw,5rem); }
+	.statement h2 { max-width: 58rem; }
+	.tags { max-width: 52rem; margin-top: 1.5rem; display: flex; flex-wrap: nowrap; gap: .45rem; }
+	.format-filter { min-height: 2.75rem; padding: .55rem .75rem; color: #111; background: #fff; border: 1px solid #1113; border-radius: var(--radius-pill); font-size: .7rem; font-weight: 700; line-height: 1.2; white-space: nowrap; cursor: pointer; transition: color .2s ease, background .2s ease, border-color .2s ease; }
+	.format-filter:hover { border-color: #111; }
+	.format-filter.active { color: #fff; background: var(--color-accent); border-color: var(--color-accent); }
+	.format-filter:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
+	.gallery-toolbar { min-height: 2.5rem; margin-bottom: 1.2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid #1112; }
+	.gallery-status { margin: 0; color: #666; font-size: .65rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+	.gallery-reset { padding: .4rem 0; color: var(--color-accent); background: transparent; border: 0; font-size: .7rem; font-weight: 750; cursor: pointer; }
+	.gallery-actions { padding: clamp(2rem,4vw,4rem) 0 0; display: flex; justify-content: center; }
+	.gallery-more { min-width: 12rem; min-height: 3.25rem; padding: .8rem 1.4rem; color: #fff; background: #0b0b0b; border: 0; border-radius: var(--radius-pill); font-weight: 750; cursor: pointer; transition: background .2s ease, transform .2s ease, box-shadow .2s ease; }
+	.gallery-more:hover { background: var(--color-accent); transform: translateY(var(--cta-hover-lift)); box-shadow: var(--cta-hover-shadow); }
+	.gallery-more:active { transform: translateY(var(--cta-active-lift)); box-shadow: none; }
+	.gallery-more:focus-visible,.gallery-reset:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
+
+	@media (max-width: 980px) {
+		.hero-row { grid-template-columns: 1fr; gap: 2rem; }
+		.summary { max-width: 43rem; }
+		.showcase-head { grid-template-columns: 1fr 2fr; }
+		.showcase-head > div { grid-column: 2; }
+		.process { grid-template-columns: repeat(2,1fr); }
+		.process div:nth-child(2) { border-right: 0; }
+		.process div:nth-child(-n+2) { border-bottom: 1px solid #1112; }
+		.story-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+		.story-grid figure:nth-child(even) { margin-top: 2rem; }
+	}
+
+	@media (max-width: 700px) {
+		header { height: 5rem; grid-template-columns: 1fr auto; }
+		.brand { display: none; }
+		.page-count { max-width: 9rem; text-align: right; line-height: 1.35; }
+		main { padding-inline: 1rem; }
+		.project-hero { padding: 3.5rem 0 4rem; }
+		.eyebrow,.section-label,.showcase-head > p { font-size: .7rem; line-height: 1.5; letter-spacing: .1em; }
+		h1 { line-height: .82; }
+		.section-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+		.showcase,.science { padding: 1.35rem; }
+		.rich-text h2,.statement h2,.showcase-head h2 { font-size: clamp(2.35rem,12vw,3.8rem); overflow-wrap: anywhere; }
+		.tags { flex-wrap: wrap; gap: .45rem; }
+		.format-filter { min-height: 2.75rem; padding: .55rem .8rem; font-size: .74rem; line-height: 1.35; }
+		.approach { padding: 0 0 4rem; }
+		.process { margin-bottom: 6rem; grid-template-columns: 1fr; }
+		.process div { border-right: 0; border-bottom: 1px solid #1112; }
+		.process div:nth-child(2) { border-bottom: 1px solid #1112; }
+		.process div:last-child { border-bottom: 0; }
+		.showcase-head { grid-template-columns: 1fr; gap: 1.4rem; margin-bottom: 3rem; }
+		.showcase-head > div { grid-column: auto; }
+		.meaning-grid { width: 100%; grid-template-columns: 1fr; }
+		.meaning-grid figure:last-child { transform: none; }
+		.story-section { padding: 7rem 0; }
+		.story-grid { grid-template-columns: 1fr; }
+		.story-grid figure:nth-child(even) { margin-top: 0; }
+		.science-grid { grid-template-columns: 1fr; }
+		.science-grid figure:nth-child(2) { transform: none; }
+		.statement { padding: 7rem 0 3rem; }
+		.gallery-status,.gallery-reset { font-size: .72rem; line-height: 1.45; }
+	}
+
+	@media (max-width: 440px) {
+		.back { font-size: .65rem; }
+		.back span { width: 2rem; height: 2rem; }
+		.page-count { font-size: .52rem; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html { scroll-behavior: auto; }
+		* { transition-duration: .01ms !important; }
+	}
+</style>

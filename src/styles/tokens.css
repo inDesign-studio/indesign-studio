@@ -1,0 +1,24 @@
+:root {
+	--color-accent: #c92427;
+	--radius-shell: 1.5rem;
+	--radius-card: 1rem;
+	--radius-thumb: .5rem;
+	--radius-pill: 999px;
+	--focus-ring-width: 2px;
+	--focus-ring-color: var(--color-accent);
+	--focus-ring-offset: 4px;
+	--cta-hover-lift: -3px;
+	--cta-active-lift: -1px;
+	--cta-hover-shadow: 0 1rem 2.25rem rgba(0,0,0,.18);
+	--text-display-xl: clamp(4.25rem, 8vw, 8rem);
+	--text-display-lg: clamp(3.7rem, 6vw, 6.7rem);
+	--text-display-md: clamp(3rem, 4.6vw, 6rem);
+}
+
+@media (max-width: 700px) {
+	:root {
+		--text-display-xl: clamp(3.75rem, 17vw, 4.25rem);
+		--text-display-lg: clamp(3.1rem, 14vw, 3.7rem);
+		--text-display-md: clamp(2.65rem, 11.5vw, 3rem);
+	}
+}

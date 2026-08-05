@@ -1,0 +1,191 @@
+---
+interface Item {
+	id: string;
+	label: string;
+}
+
+interface Props {
+	items: Item[];
+	backHref?: string;
+	backLabel?: string;
+}
+
+const { items, backHref, backLabel = 'Все многостраничные издания' } = Astro.props;
+---
+
+<nav class="case-index" aria-label="Разделы кейса">
+	{
+		backHref ? (
+			<a class="case-index-back" href={backHref}>
+				<span aria-hidden="true">←</span>
+				<span class="case-index-back-label">{backLabel}</span>
+				<span class="case-index-back-label-mobile">Все проекты</span>
+			</a>
+		) : (
+			<span class="case-index-title">Разделы</span>
+		)
+	}
+	<ol>
+		{items.map(({ id, label }, index) => (
+			<li>
+				<a href={`#${id}`} data-case-index-link aria-current={index === 0 ? 'location' : undefined}>
+					<span>{String(index + 1).padStart(2, '0')}</span> {label}
+				</a>
+			</li>
+		))}
+	</ol>
+	<select class="case-index-select" data-case-index-select aria-label="Раздел кейса">
+		{items.map(({ id, label }, index) => (
+			<option value={`#${id}`}>{String(index + 1).padStart(2, '0')} · {label}</option>
+		))}
+	</select>
+</nav>
+
+<script>
+	const caseIndexLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-case-index-link]')];
+	const caseIndexSelect = document.querySelector<HTMLSelectElement>('[data-case-index-select]');
+	const caseIndexSections = caseIndexLinks
+		.map((link) => document.querySelector<HTMLElement>(link.hash))
+		.filter((section): section is HTMLElement => Boolean(section));
+
+	const setCurrentSection = (id: string) => {
+		let currentLink: HTMLAnchorElement | undefined;
+		caseIndexLinks.forEach((link) => {
+			if (link.hash === `#${id}`) {
+				link.setAttribute('aria-current', 'location');
+				currentLink = link;
+			} else link.removeAttribute('aria-current');
+		});
+		if (caseIndexSelect) caseIndexSelect.value = `#${id}`;
+		currentLink?.scrollIntoView({
+			behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+			block: 'nearest',
+			inline: 'center',
+		});
+	};
+
+	const caseIndexObserver = new IntersectionObserver(
+		(entries) => {
+			const current = entries
+				.filter((entry) => entry.isIntersecting)
+				.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+			if (current?.target.id) setCurrentSection(current.target.id);
+		},
+		{ rootMargin: '-22% 0px -68% 0px' },
+	);
+
+	caseIndexSections.forEach((section) => caseIndexObserver.observe(section));
+	caseIndexSelect?.addEventListener('change', () => {
+		const section = document.querySelector<HTMLElement>(caseIndexSelect.value);
+		if (!section) return;
+		history.pushState(null, '', caseIndexSelect.value);
+		section.scrollIntoView({
+			behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+			block: 'start',
+		});
+	});
+</script>
+
+<style>
+	.case-index {
+		position: sticky;
+		top: 6rem;
+		z-index: 90;
+		box-sizing: border-box;
+		width: min(100%,88rem);
+		min-height: 3.35rem;
+		margin: 0 auto;
+		padding: 0 clamp(.8rem,1.4vw,1.35rem);
+		display: flex;
+		align-items: center;
+		gap: clamp(1rem,2.5vw,2.5rem);
+		overflow: hidden;
+		color: #111;
+		background: rgba(255,255,255,.95);
+		border: 1px solid rgba(17,17,17,.1);
+		border-radius: 0 0 var(--radius-thumb) var(--radius-thumb);
+		backdrop-filter: blur(14px);
+	}
+	.case-index * { box-sizing: border-box; }
+
+	.case-index-back,.case-index-title {
+		flex: 0 0 auto;
+		color: #111;
+		font-size: .66rem;
+		font-weight: 800;
+		letter-spacing: .035em;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.case-index-back span { color: var(--color-accent); font-size: .85rem; }
+	.case-index-back-label-mobile,.case-index-select { display: none; }
+	.case-index-title { color: #777; text-transform: uppercase; }
+	.case-index ol {
+		min-width: 0;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		align-self: stretch;
+		flex: 1;
+		gap: clamp(.15rem,.7vw,.7rem);
+		overflow-x: auto;
+		list-style: none;
+		scrollbar-width: none;
+	}
+	.case-index ol::-webkit-scrollbar { display: none; }
+	.case-index li { flex: 0 0 auto; display: flex; }
+	.case-index li a {
+		min-height: 3.25rem;
+		padding: .8rem clamp(.55rem,1vw,1rem);
+		display: flex;
+		align-items: center;
+		gap: .35rem;
+		color: #777;
+		border-bottom: 2px solid transparent;
+		font-size: .64rem;
+		font-weight: 750;
+		text-decoration: none;
+		white-space: nowrap;
+		transition: color .2s ease,border-color .2s ease;
+	}
+	.case-index li a span { color: #aaa; font-size: .52rem; }
+	.case-index li a:hover,.case-index li a[aria-current="location"] { color: #111; border-bottom-color: var(--color-accent); }
+	.case-index a:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
+	:global([data-case-section]) { scroll-margin-top: 10.25rem; }
+
+	@media (max-width: 760px) {
+		.case-index {
+			top: 4.75rem;
+			width: 100%;
+			min-height: 3.5rem;
+			padding: .35rem .75rem;
+			gap: .65rem;
+			border-inline: 0;
+			border-radius: 0;
+		}
+		.case-index-back,.case-index-title { font-size: .68rem; }
+		.case-index-back { display: inline-flex; align-items: center; gap: .3rem; }
+		.case-index-back-label,.case-index-title,.case-index ol { display: none; }
+		.case-index-back-label-mobile { display: inline; color: #111; font-size: .68rem; }
+		.case-index-select {
+			min-width: 0;
+			min-height: 2.75rem;
+			padding: .55rem .65rem;
+			display: block;
+			flex: 1;
+			color: #111;
+			background: #fff;
+			border: 1px solid rgba(17,17,17,.18);
+			border-radius: var(--radius-pill);
+			font: inherit;
+			font-size: .72rem;
+			font-weight: 750;
+		}
+		.case-index-select:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
+		:global([data-case-section]) { scroll-margin-top: 8.75rem; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.case-index li a { transition-duration: .01ms; }
+	}
+</style>

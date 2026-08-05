@@ -1,0 +1,251 @@
+---
+import BackToTop from '../../../components/BackToTop.astro';
+import CaseFacts from '../../../components/CaseFacts.astro';
+import CaseGallery from '../../../components/CaseGallery.astro';
+import CaseIndex from '../../../components/CaseIndex.astro';
+import CaseLightbox from '../../../components/CaseLightbox.astro';
+import CasePagination from '../../../components/CasePagination.astro';
+import CaseResults from '../../../components/CaseResults.astro';
+import ProjectCta from '../../../components/ProjectCta.astro';
+import ProjectFooter from '../../../components/ProjectFooter.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+
+const imageSize = { width: 1258, height: 1789 };
+const gallery = [
+	['gallery-annual-a1.webp', 'gallery-annual-a2.webp', 'Годовой отчёт · Раздел 01', 'дополнительная полоса', 'продолжение раздела'],
+	['gallery-annual-b1.webp', 'gallery-annual-b2.webp', 'Годовой отчёт · Раздел 02', 'дополнительный разворот', 'продолжение дополнительного разворота'],
+	['gallery-fsh22-a1.webp', 'gallery-fsh22-a2.webp', 'Food Security Hub · Выпуск 22', 'дополнительная статья', 'продолжение статьи'],
+	['gallery-fsh22-b1.webp', 'gallery-fsh22-b2.webp', 'Food Security Hub · Выпуск 22', 'дополнительный материал', 'продолжение материала'],
+	['gallery-fsh23-a1.webp', 'gallery-fsh23-a2.webp', 'Food Security Hub · Выпуск 23', 'дополнительная полоса', 'продолжение полосы'],
+	['gallery-fsh23-b1.webp', 'gallery-fsh23-b2.webp', 'Food Security Hub · Выпуск 23', 'финальный дополнительный разворот', 'продолжение финального разворота'],
+].map(([left, right, caption, leftAlt, rightAlt]) => ({
+	caption,
+	images: [
+		{ src: `/portfolio/iofs/${left}`, alt: `${caption}: ${leftAlt}`, ...imageSize },
+		{ src: `/portfolio/iofs/${right}`, alt: `${caption}: ${rightAlt}`, ...imageSize },
+	],
+}));
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content="ИОПБ — дизайн и вёрстка годового отчёта и отраслевого журнала Food Security Hub." />
+		<meta name="theme-color" content="#ffffff" />
+		<title>ИОПБ / IOFS — InDesign Studio</title>
+	</head>
+	<body id="top">
+		<SiteHeader />
+
+		<main>
+			<CaseIndex
+				backHref="/projects/publications"
+				items={[
+					{ id: 'case-task', label: 'Задача' },
+					{ id: 'case-report', label: 'Отчёт' },
+					{ id: 'case-journal', label: 'Журнал' },
+					{ id: 'case-result', label: 'Результат' },
+					{ id: 'case-gallery', label: 'Галерея' },
+				]}
+			/>
+
+			<section class="project-hero">
+				<p class="eyebrow">Многостраничные издания · Редакционный дизайн</p>
+				<div class="hero-row">
+					<h1>ИОПБ<br /><span class="title-accent">IOFS</span></h1>
+					<p class="summary">Мы разработали дизайн годового отчёта и журнала Food Security Hub, выполнили вёрстку и инфографику, подготовили материалы и произвели печатный тираж.</p>
+				</div>
+			</section>
+
+			<figure class="cover-stage">
+				<div class="cover cover-small"><img src="/portfolio/iofs/fsh22-cover.webp" alt="Обложка журнала Food Security Hub, выпуск 22" loading="eager" {...imageSize} /></div>
+				<div class="cover cover-main"><img src="/portfolio/iofs/annual-cover.webp" alt="Обложка годового отчёта IOFS за 2025 год" loading="eager" {...imageSize} /></div>
+				<div class="cover cover-small"><img src="/portfolio/iofs/fsh23-cover.webp" alt="Обложка журнала Food Security Hub, выпуск 23" loading="eager" {...imageSize} /></div>
+			</figure>
+
+			<section class="overview section-grid" id="case-task" data-case-section>
+				<p class="section-label">01 / Задача</p>
+				<div class="rich-text">
+					<h2>Одна сетка для двух редакционных форматов.</h2>
+					<p>Проект объединяет два больших редакционных формата. Годовой отчёт показывает масштаб работы организации через показатели, программы и географию проектов. Журнал Food Security Hub рассказывает об исследованиях, международном сотрудничестве и событиях.</p>
+					<p>Мы выстроили иерархию, гибкую сетку и набор повторяемых модулей — от вводных полос до насыщенных данными страниц и фотоподборок.</p>
+				</div>
+			</section>
+
+			<CaseFacts items={[
+				['Клиент', 'IOFS / ИОПБ'],
+				['Форматы', 'Годовой отчёт · Журнал'],
+				['Работы', 'Дизайн · Вёрстка · Инфографика · Печать'],
+				['Выпуски', '2025–2026'],
+			]} />
+
+			<section class="showcase showcase-sky" id="case-report" data-case-section>
+				<div class="showcase-head"><span>02 / Годовой отчёт</span><h2>Ключевые показатели —<br />на первом плане.</h2><p>Крупные числа, короткие смысловые блоки и фотографии помогают читать отчёт по разделам и быстро сопоставлять результаты.</p></div>
+				<div class="spread-pair">
+					<img src="/portfolio/iofs/annual-glance-1.webp" alt="Разворот IOFS at a Glance: миссия и цели" loading="lazy" {...imageSize} />
+					<img src="/portfolio/iofs/annual-glance-2.webp" alt="Разворот IOFS at a Glance: ключевые показатели 2025 года" loading="lazy" {...imageSize} />
+				</div>
+			</section>
+
+			<section class="data-section section-grid">
+				<p class="section-label">03 / Инфографика</p>
+				<div class="rich-text"><h2>Данные становятся частью рассказа.</h2><p>Показатели, партнёрства и география участия показаны через крупные числа, пиктограммы, карты и компактные пояснения.</p></div>
+			</section>
+
+			<div class="spread-frame spread-frame-light">
+				<div class="spread-pair">
+					<img src="/portfolio/iofs/annual-system-1.webp" alt="Инфографика результатов официальных миссий IOFS" loading="lazy" {...imageSize} />
+					<img src="/portfolio/iofs/annual-system-2.webp" alt="Инфографика стран-участниц IOFS" loading="lazy" {...imageSize} />
+				</div>
+			</div>
+
+			<section class="covers-section">
+				<div class="showcase-head showcase-head-light"><span>04 / Серия</span><h2>Food Security<br />Hub</h2><p>Обложки сохраняют узнаваемую композицию, а аграрная фотография задаёт тему каждого выпуска.</p></div>
+				<div class="covers-grid">
+					<img src="/portfolio/iofs/fsh22-cover.webp" alt="Обложка Food Security Hub №22" loading="lazy" {...imageSize} />
+					<img src="/portfolio/iofs/fsh23-cover.webp" alt="Обложка Food Security Hub №23" loading="lazy" {...imageSize} />
+				</div>
+			</section>
+
+			<section class="journal-section" id="case-journal" data-case-section>
+				<div class="section-grid compact-grid"><p class="section-label">05 / Журнал</p><div class="rich-text"><h2>Текст, фотографии и короткие новости.</h2><p>Текстовые полосы чередуются с крупными фотографиями, таблицами и короткими новостными форматами. Так журнал остаётся плотным, но не монотонным.</p></div></div>
+				<div class="spread-frame spread-frame-white">
+					<div class="spread-pair">
+						<img src="/portfolio/iofs/fsh23-feature-1.webp" alt="Текстовая полоса Food Security Hub" loading="lazy" {...imageSize} />
+						<img src="/portfolio/iofs/fsh23-feature-2.webp" alt="Полоса Food Security Hub с крупной аграрной фотографией" loading="lazy" {...imageSize} />
+					</div>
+				</div>
+			</section>
+
+			<section class="news-section">
+				<div class="showcase-head showcase-head-light"><span>06 / Фотохроника</span><h2>События,<br />лица, партнёры.</h2><p>Модульная сетка собирает материалы разного объёма и фотографии разных пропорций в цельную новостную ленту.</p></div>
+				<div class="news-grid">
+					<img src="/portfolio/iofs/fsh23-news-1.webp" alt="Новостная полоса журнала IOFS" loading="lazy" {...imageSize} />
+					<img src="/portfolio/iofs/fsh23-news-2.webp" alt="Новостная полоса журнала IOFS" loading="lazy" {...imageSize} />
+					<img src="/portfolio/iofs/fsh23-chronicle-1.webp" alt="Фотохроника международных встреч IOFS" loading="lazy" {...imageSize} />
+					<img src="/portfolio/iofs/fsh23-chronicle-2.webp" alt="Фотохроника мероприятий IOFS" loading="lazy" {...imageSize} />
+				</div>
+			</section>
+
+			<section class="closing-section section-grid" id="case-result" data-case-section>
+				<p class="section-label">07 / Результат</p>
+				<div>
+					<div class="rich-text"><h2>Отчёт, журнал и печатный тираж.</h2><p>Мы разработали годовой отчёт и периодический журнал Food Security Hub, подготовили макеты к печати и произвели тираж. Журнал остаётся на регулярном сопровождении: для новых выпусков обновляются тексты, данные, фотографии и инфографика.</p></div>
+					<CaseResults items={[
+						['2 формата', 'годовой отчёт и журнал'],
+						['Печать', 'подготовка и производство тиража'],
+						['Журнал', 'регулярное сопровождение Food Security Hub'],
+					]} />
+				</div>
+			</section>
+
+			<ProjectCta subject="дизайн и вёрстку многостраничного издания" />
+
+			<CaseGallery
+				label="08 / Галерея"
+				title="Другие развороты."
+				items={gallery}
+				variant="spread"
+				lightboxId="case-gallery-lightbox"
+			/>
+			<CaseLightbox id="case-gallery-lightbox" variant="spread" label="Увеличенный разворот" />
+
+			<CasePagination
+				previous={{ href: '/projects/publications/unesco', label: 'ЮНЕСКО' }}
+				next={{ href: '/projects/publications/kipd', label: 'КИОР / KIPD' }}
+			/>
+			<ProjectFooter />
+		</main>
+		<BackToTop />
+	</body>
+</html>
+
+<style>
+	:root { font-family: Inter, "Segoe UI", Arial, sans-serif; color: #111; background: #fff; font-synthesis: none; }
+	* { box-sizing: border-box; }
+	html { scroll-behavior: smooth; }
+	body { margin: 0; min-width: 0; overflow-x: clip; background: #fff; }
+	a { color: inherit; }
+	header { height: 6rem; padding: 0 clamp(1.25rem,4vw,4.5rem); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+	.back { display: flex; align-items: center; gap: .7rem; width: max-content; font-size: .72rem; font-weight: 750; text-decoration: none; }
+	.back span { width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border: 1px solid #1113; border-radius: 50%; transition: transform .2s ease; }
+	.back:hover span { transform: translateX(-.25rem); }
+	.brand { width: clamp(7.8rem,10vw,10rem); line-height: 0; }
+	.brand img { display: block; width: 100%; }
+	.page-count { justify-self: end; color: #777; font-size: .62rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+	main { padding: 0 clamp(1.25rem,4vw,4.5rem) clamp(2rem,5vw,5rem); }
+	.project-hero { width: 100%; max-width: 88rem; margin: 0 auto; padding: clamp(4rem,8vw,8rem) 0 clamp(3rem,6vw,6rem); }
+	.eyebrow,.section-label,.showcase-head > span { margin: 0; color: var(--color-accent); font-size: .64rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+	.hero-row { display: grid; grid-template-columns: 1fr minmax(20rem,.42fr); gap: 4rem; align-items: end; }
+	.hero-row > *,.section-grid > *,.showcase-head > * { min-width: 0; }
+	h1 { margin: 0; font-size: var(--text-display-xl); line-height: .72; letter-spacing: -.08em; }
+	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:.82em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:-.055em; }
+	.summary { margin: 0; color: #555; font-size: clamp(1rem,1.35vw,1.3rem); line-height: 1.65; }
+	.cover-stage { width: 100%; max-width: 88rem; height: clamp(34rem,60vw,61rem); margin: 0 auto; padding: clamp(2rem,5vw,5rem); display: flex; justify-content: center; align-items: center; gap: clamp(1rem,3vw,3rem); background: #0b0b0b; border-radius: var(--radius-shell); overflow: hidden; }
+	.cover { flex: 0 1 26%; filter: drop-shadow(0 2rem 2rem #001a); }
+	.cover-main { flex-basis: 32%; transform: translateY(-1%); }
+	.cover-small:first-child { transform: rotate(-6deg) translateY(5%); }
+	.cover-small:last-child { transform: rotate(6deg) translateY(5%); }
+	.cover img { display: block; width: 100%; height: auto; border-radius: var(--radius-thumb); }
+	.section-grid { width: 100%; max-width: 82rem; margin: 0 auto; display: grid; grid-template-columns: minmax(10rem,.28fr) 1fr; gap: clamp(2rem,7vw,8rem); }
+	.overview { padding: clamp(6rem,12vw,12rem) 0 clamp(4rem,8vw,8rem); }
+	.rich-text h2,.showcase-head h2 { margin: 0; font-size: clamp(2.6rem,6vw,6.5rem); line-height: .88; letter-spacing: -.065em; }
+	.rich-text p { max-width: 51rem; margin: 1.7rem 0 0; color: #5b5e65; font-size: clamp(1rem,1.2vw,1.18rem); line-height: 1.75; }
+	.showcase,.covers-section,.news-section { width: 100%; max-width: 88rem; margin: 0 auto; padding: clamp(2rem,4vw,4rem); border-radius: var(--radius-shell); }
+	.showcase-sky { background: #f5f5f3; }
+	.showcase-head { display: grid; grid-template-columns: .25fr 1fr .55fr; gap: clamp(1.5rem,4vw,4rem); align-items: end; margin-bottom: clamp(2rem,5vw,5rem); }
+	.showcase-head p { margin: 0; color: #5f626a; line-height: 1.65; }
+	.spread-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .3rem; align-items: start; }
+	.spread-pair img,.covers-grid img,.news-grid img { display: block; width: 100%; height: auto; }
+	.showcase .spread-pair { width: min(88%,70rem); margin: 0 auto; box-shadow: 0 2rem 5rem #0002; }
+	.data-section { padding: clamp(7rem,12vw,12rem) 0 clamp(3rem,6vw,6rem); }
+	.spread-frame { width: 100%; max-width: 88rem; margin: 0 auto; padding: clamp(2rem,5vw,5rem); border-radius: var(--radius-shell); }
+	.spread-frame-light { background: #f5f5f3; }
+	.spread-frame-white { background: #f4f4f1; }
+	.spread-frame .spread-pair { width: min(82%,68rem); margin: 0 auto; box-shadow: 0 2rem 5rem #0002; }
+	.covers-section { margin-top: clamp(7rem,12vw,12rem); color: #fff; background: #0b0b0b; }
+	.showcase-head-light > span { color: var(--color-accent); }
+	.showcase-head-light p { color: #ffffffa8; }
+	.covers-grid { width: min(72%,57rem); margin: 0 auto; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(1rem,4vw,4rem); align-items: end; }
+	.covers-grid img { box-shadow: 0 2rem 4rem #0019; }
+	.covers-grid img:first-child { transform: rotate(-3deg); }
+	.covers-grid img:last-child { transform: rotate(3deg); }
+	.journal-section { width: 100%; max-width: 88rem; margin: 0 auto; padding-top: clamp(7rem,12vw,12rem); }
+	.compact-grid { margin-bottom: clamp(3rem,6vw,6rem); }
+	.news-section { margin-top: clamp(7rem,12vw,12rem); color: #fff; background: #0d0d0d; }
+	.news-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .75rem; }
+	.news-grid img:nth-child(even) { transform: translateY(3rem); }
+	.closing-section { padding: clamp(8rem,14vw,14rem) 0 clamp(3rem,5vw,5rem); }
+	@media (max-width:900px) {
+		.hero-row,.showcase-head { grid-template-columns: 1fr; gap: 1.5rem; }
+		.summary { max-width: 38rem; }
+		.news-grid { grid-template-columns: repeat(2,1fr); }
+		.news-grid img:nth-child(even) { transform: none; }
+	}
+	@media (max-width:620px) {
+		header { height: 4.75rem; padding: 0 1rem; grid-template-columns: 1fr; }
+		.brand,.page-count { display: none; }
+		main { padding-inline: 1rem; }
+		.project-hero { padding: 3.5rem 0 3rem; }
+		.eyebrow,.section-label,.showcase-head > span { font-size: .7rem; line-height: 1.5; letter-spacing: .1em; overflow-wrap: anywhere; }
+		h1 { max-width: 100%; line-height: .75; }
+		.summary { max-width: 100%; font-size: 1rem; line-height: 1.6; overflow-wrap: anywhere; }
+		.cover-stage { height: 27rem; padding: 1rem; gap: .5rem; }
+		.cover { flex-basis: 31%; }
+		.cover-main { flex-basis: 43%; }
+		.section-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+		.rich-text h2,.showcase-head h2 { font-size: clamp(2.35rem,12vw,3.8rem); line-height: .92; overflow-wrap: anywhere; }
+		.rich-text p,.showcase-head p { font-size: 1rem; overflow-wrap: anywhere; }
+		.showcase,.covers-section,.news-section,.spread-frame { padding: 1rem; }
+		.spread-pair { grid-template-columns: 1fr; gap: .75rem; }
+		.showcase .spread-pair,.spread-frame .spread-pair { width: 100%; box-shadow: none; }
+		.covers-grid { width: 100%; gap: .75rem; }
+		.covers-grid img { transform: none !important; }
+		.news-grid { grid-template-columns: 1fr; }
+	}
+	@media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; transition-duration:.01ms !important; } }
+	:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
+</style>

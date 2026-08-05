@@ -1,0 +1,517 @@
+---
+import BackToTop from '../components/BackToTop.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { Image } from 'astro:assets';
+import homeKipdCover from '../assets/home/kipd-cover.webp';
+import homeIofsCover from '../assets/home/iofs-cover.webp';
+import homeUnescoCover from '../assets/home/unesco-cover.webp';
+import homeInfographic017 from '../assets/home/infographic-017.webp';
+import homeInfographic040 from '../assets/home/infographic-040.webp';
+import homeInfographic059 from '../assets/home/infographic-059.webp';
+
+const year = new Date().getFullYear();
+const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%0A%0A%D0%9F%D0%B8%D1%88%D1%83+%D0%BF%D0%BE+%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83+%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8+%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%87%D0%BD%D0%BE%D0%B3%D0%BE+%D0%B8%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F.%0A%0A&type=phone_number&app_absent=0';
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta
+			name="description"
+			content="InDesign Studio — профессиональная вёрстка и инфографика в Астане."
+		/>
+		<meta name="theme-color" content="#ffffff" />
+		<title>InDesign Studio — вёрстка и инфографика</title>
+	</head>
+	<body id="top">
+		<SiteHeader />
+		<main class="hero">
+			<section class="hero-grid">
+				<div class="intro">
+					<p class="eyebrow"><span>01</span><a href="https://go.2gis.com/92Taw" target="_blank" rel="noreferrer">InDesign Studio · Астана ↗</a></p>
+					<h1>
+						Верстаем точно.<br />
+						Показываем<br />
+						<span class="title-accent">наглядно.</span>
+					</h1>
+					<p class="lead" id="about">
+						Профессиональная вёрстка каталогов, презентаций и многостраничных изданий. Создаём инфографику, которая показывает связи, динамику и ключевые выводы.
+					</p>
+
+					<div class="actions">
+						<a class="button button-primary" href={whatsappUrl} target="_blank" rel="noreferrer">
+							<span class="button-label">Обсудить проект</span>
+							<span class="button-icon" aria-hidden="true">↗</span>
+						</a>
+					</div>
+
+					<section class="proof" aria-label="Факты о студии">
+						<dl class="proof-facts">
+							<div><dt>10+</dt><dd>лет работы</dd></div>
+							<div><dt>100+</dt><dd>выпусков и изданий</dd></div>
+							<div><dt>Своё</dt><dd>печатное производство</dd></div>
+						</dl>
+						<p>Государственные органы, международные организации, исследовательские центры и бизнес. Образование, сельское хозяйство, социальные и научные проекты.</p>
+					</section>
+
+					<div class="footnote">
+						<span>Вёрстка · Инфографика · Каталоги · Презентации</span>
+						<span>© {year}</span>
+					</div>
+				</div>
+
+				<section class="projects-grid" id="work" aria-label="Направления портфолио">
+					<a class="portfolio-card publications" href="/projects/publications" aria-label="Открыть многостраничные издания">
+						<div class="card-head">
+							<div><span>Направление / 01</span><h2>Многостраничные<br />издания</h2></div>
+							<b class="card-arrow" aria-hidden="true">↗</b>
+						</div>
+						<div class="publication-preview" aria-hidden="true">
+							<Image class="publication-cover cover-kipd" src={homeKipdCover} alt="" widths={[160, 240, 320]} sizes="12rem" loading="lazy" />
+							<Image class="publication-cover cover-iofs" src={homeIofsCover} alt="" widths={[160, 240, 320]} sizes="12rem" loading="lazy" />
+							<Image class="publication-cover cover-unesco" src={homeUnescoCover} alt="" widths={[160, 240, 320]} sizes="12rem" loading="lazy" />
+						</div>
+						<div class="card-footer"><span>Каталоги · Журналы · Отчёты</span><span>Открыть</span></div>
+					</a>
+
+					<a class="portfolio-card presentations" href="/projects/presentations" aria-label="Открыть презентации">
+						<div class="card-head">
+							<div><span>Направление / 02</span><h2>Презентации</h2></div>
+						</div>
+						<div class="slide-preview" aria-hidden="true">
+							<div class="slide slide-back"><i></i><i></i><i></i></div>
+							<div class="slide slide-front"><small>NDA / PRIVATE</small><strong>BUSINESS<br />PRESENTATIONS</strong><b>→</b></div>
+						</div>
+						<div class="card-footer"><span>Питч-деки · Отчёты</span><span>Открыть</span></div>
+					</a>
+
+					<a class="portfolio-card infographics" href="/projects/infographics" aria-label="Открыть инфографику">
+						<div class="card-head">
+							<div><span>Направление / 03</span><h2>Инфографика</h2></div>
+						</div>
+						<div class="data-preview" aria-hidden="true">
+							<Image class="infographic-sheet infographic-left" src={homeInfographic017} alt="" widths={[128, 192, 256, 320]} sizes="10rem" loading="lazy" />
+							<Image class="infographic-sheet infographic-center" src={homeInfographic040} alt="" widths={[128, 192, 256, 320]} sizes="10rem" loading="lazy" />
+							<Image class="infographic-sheet infographic-right" src={homeInfographic059} alt="" widths={[128, 192, 256, 320]} sizes="10rem" loading="lazy" />
+						</div>
+						<div class="card-footer"><span>Данные · Схемы</span><span>Открыть</span></div>
+					</a>
+				</section>
+			</section>
+
+			<section class="benefits-section" aria-labelledby="benefits-title">
+				<h2 class="section-kicker" id="benefits-title"><span aria-hidden="true"></span>Преимущества</h2>
+				<div class="benefits-grid">
+					<article class="benefit-card">
+						<span class="card-icon card-icon-team" aria-hidden="true">●●●</span>
+						<strong>Команда<br />специалистов</strong>
+						<p>Над проектом работают дизайнеры, верстальщики и специалисты по инфографике.</p>
+					</article>
+					<article class="benefit-card">
+						<span class="card-icon" aria-hidden="true">◒</span>
+						<strong>Понятная подача<br />данных</strong>
+						<p>Разделяем материал на уровни, выстраиваем навигацию и показываем связи между текстом и данными.</p>
+					</article>
+					<article class="benefit-card">
+						<span class="card-icon" aria-hidden="true">↻</span>
+						<strong>Полный цикл<br />работы</strong>
+						<p>От разработки концепции до готового тиража: верстаем, готовим файлы и печатаем сами.</p>
+					</article>
+				</div>
+			</section>
+
+			<section class="solutions-section" aria-labelledby="solutions-title">
+				<h2 class="section-kicker section-kicker-light" id="solutions-title"><span aria-hidden="true"></span>Какие проблемы мы решаем</h2>
+				<div class="solutions-list">
+					<article class="solution-row"><div><small>01</small><strong>Перегруженный материал</strong></div><p>Организуем большой объём информации, выстраиваем навигацию и расставляем акценты.</p></article>
+					<article class="solution-row"><div><small>02</small><strong>Разрозненный дизайн и ошибки</strong></div><p>Задаём общие правила для страниц, графиков и иллюстраций, проверяем сетку, стили, изображения и технические параметры.</p></article>
+					<article class="solution-row"><div><small>03</small><strong>Сжатые сроки и поток правок</strong></div><p>Планируем этапы, собираем комментарии по темам и аккуратно ведём версии макетов.</p></article>
+				</div>
+			</section>
+
+			<section class="production-section" aria-labelledby="production-title">
+				<div class="production-copy">
+					<h2 class="section-kicker" id="production-title"><span aria-hidden="true"></span>Печать и производство</h2>
+					<strong>Печатаем тираж сами.</strong>
+					<p>Контролируем материалы, цвет, сборку и послепечатную обработку на собственном производстве.</p>
+				</div>
+				<div class="production-list">
+					<article><span>01</span><div><strong>Материалы и обложки</strong><p>Мелованная и крафтовая бумага, дизайнерские фактуры, картон, твёрдые и мягкие обложки, ламинация и софт-тач.</p></div></article>
+					<article><span>02</span><div><strong>Формы и обработка</strong><p>Классика, гармошка, пружина, кольцевой механизм, тиснение, конгрев, выборочный лак и фигурная вырубка.</p></div></article>
+					<article><span>03</span><div><strong>Аксессуары и нестандартные решения</strong><p>Тейбл-тенты, таблички, наклейки, гравировка по дереву и пластику.</p></div></article>
+				</div>
+			</section>
+
+			<section class="process-section" aria-labelledby="process-title">
+				<h2 class="section-kicker section-kicker-light" id="process-title"><span aria-hidden="true"></span>От идеи до готового тиража — всего 4 шага</h2>
+				<div class="process-grid">
+					<article class="process-card"><span>1.</span><strong>Бриф<br />и погружение</strong><p>Знакомимся, изучаем задачу, материалы, аудиторию и пожелания.</p></article>
+					<article class="process-card"><span>2.</span><strong>Разработка концепции</strong><p>Предлагаем направление оформления, сетку и принципы работы с текстом и графикой.</p></article>
+					<article class="process-card"><span>3.</span><strong>Вёрстка и согласование</strong><p>Собираем макет, создаём инфографику и последовательно вносим правки.</p></article>
+					<article class="process-card"><span>4.</span><strong>Печать и реализация</strong><p>Готовим файлы и печатаем готовый тираж на собственном производстве.</p></article>
+				</div>
+			</section>
+
+			<section class="portfolio-mini-section" aria-labelledby="portfolio-mini-title">
+				<h2 class="section-kicker" id="portfolio-mini-title"><span aria-hidden="true"></span>Смотреть портфолио</h2>
+				<div class="portfolio-mini-grid">
+					<a class="portfolio-mini-card mini-publications" href="/projects/publications"><div><small>01 / Направление</small><h3>Многостраничные<br />издания</h3></div><span aria-hidden="true">↗</span></a>
+					<a class="portfolio-mini-card mini-presentations" href="/projects/presentations"><div><small>02 / Направление</small><h3>Презентации</h3></div><span aria-hidden="true">↗</span></a>
+					<a class="portfolio-mini-card mini-infographics" href="/projects/infographics"><div><small>03 / Направление</small><h3>Инфографика</h3></div><span aria-hidden="true">↗</span></a>
+				</div>
+			</section>
+
+		</main>
+		<BackToTop />
+	</body>
+</html>
+
+<style>
+	:root {
+		font-family: Inter, "Segoe UI", Arial, sans-serif;
+		color: #111111;
+		background: #ffffff;
+		font-synthesis: none;
+	}
+
+	* { box-sizing: border-box; }
+
+	html { scroll-behavior: smooth; }
+
+	body {
+		margin: 0;
+		min-width: 0;
+		overflow-x: clip;
+		background: #ffffff;
+	}
+
+	a { color: inherit; }
+
+	.hero {
+		min-height: calc(100svh - 6rem);
+		padding: clamp(1.25rem, 2.2vw, 2.25rem) clamp(1.25rem, 4vw, 4.5rem) clamp(1.5rem, 3vw, 3rem);
+		overflow: hidden;
+	}
+
+	.hero-grid {
+		display: grid;
+		grid-template-columns: minmax(0, .92fr) minmax(27rem, .75fr);
+		gap: clamp(3rem, 7vw, 8rem);
+		align-items: center;
+		padding-top: clamp(3rem, 8vh, 7rem);
+	}
+	.hero-grid > *,.intro,.projects-grid,.portfolio-card { min-width: 0; }
+
+	.intro { align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+
+	.eyebrow {
+		margin: 0 0 clamp(1.5rem, 4vh, 3.8rem);
+		font-size: .69rem;
+		font-weight: 700;
+		letter-spacing: .15em;
+		text-transform: uppercase;
+		color: #6e7180;
+	}
+
+	.eyebrow span { color: var(--color-accent); margin-right: .85rem; }
+	.eyebrow a { color: inherit; text-decoration: none; transition: color .2s ease; }
+	.eyebrow a:hover { color: var(--color-accent); }
+
+	h1 {
+		margin: 0;
+		font-size: var(--text-display-md);
+		line-height: .88;
+		letter-spacing: -.075em;
+		font-weight: 720;
+		max-width: 10ch;
+	}
+
+	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:.82em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:-.055em; }
+
+	.lead {
+		max-width: 35rem;
+		margin: clamp(1.8rem, 4vh, 3.5rem) 0 0;
+		font-size: clamp(.98rem, 1.2vw, 1.16rem);
+		line-height: 1.65;
+		color: #555b68;
+	}
+
+	.actions {
+		margin: clamp(1.75rem, 4vh, 3rem) 0 0;
+		display: flex;
+		align-items: center;
+		gap: 1.7rem;
+	}
+
+	.button { font-size: .76rem; font-weight: 750; text-decoration: none; }
+
+	.button-primary {
+		display: inline-flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2.5rem;
+		min-width: 15rem;
+		min-height: 4rem;
+		background: #111111;
+		color: #fff;
+		border: 0;
+		font-family: inherit;
+		font-size: .82rem;
+		font-weight: 750;
+		letter-spacing: .01em;
+		white-space: nowrap;
+		cursor: pointer;
+		padding: .55rem .6rem .55rem 1.45rem;
+		border-radius: var(--radius-pill);
+		box-shadow: 0 .8rem 2rem rgba(17,17,17,.16);
+		transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+	}
+
+	.button-primary .button-icon {
+		display: grid;
+		place-items: center;
+		width: 2.85rem;
+		height: 2.85rem;
+		background: var(--color-accent);
+		border-radius: 50%;
+		font-size: 1rem;
+		transition: transform .25s ease, background .25s ease;
+	}
+
+	.button-primary:hover { transform: translateY(var(--cta-hover-lift)); background: var(--color-accent); box-shadow: var(--cta-hover-shadow); }
+	.button-primary:hover .button-icon { transform: rotate(45deg); background: #ffffff; color: var(--color-accent); }
+	.button-primary:active { transform: translateY(var(--cta-active-lift)); box-shadow: none; }
+
+	.proof {
+		max-width: 35rem;
+		margin: clamp(1.5rem, 3vh, 2.25rem) 0 0;
+	}
+
+	.proof-facts {
+		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		border-top: 1px solid rgba(17,17,17,.14);
+		border-bottom: 1px solid rgba(17,17,17,.14);
+	}
+
+	.proof-facts div {
+		min-width: 0;
+		padding: .8rem clamp(.45rem, 1vw, .8rem);
+		border-right: 1px solid rgba(17,17,17,.14);
+	}
+
+	.proof-facts div:first-child { padding-left: 0; }
+	.proof-facts div:last-child { padding-right: 0; border-right: 0; }
+	.proof-facts dt { color: var(--color-accent); font-size: clamp(1.45rem, 2.1vw, 2rem); font-weight: 780; line-height: .9; letter-spacing: -.055em; }
+	.proof-facts dd { margin: .5rem 0 0; color: #696d76; font-size: .56rem; font-weight: 750; letter-spacing: .08em; line-height: 1.35; text-transform: uppercase; }
+	.proof > p { margin: .75rem 0 0; color: #696d76; font-size: .68rem; line-height: 1.5; }
+
+	.footnote {
+		margin-top: auto;
+		padding-top: clamp(1.5rem, 3vh, 2.5rem);
+		display: flex;
+		justify-content: space-between;
+		font-size: .62rem;
+		font-weight: 700;
+		letter-spacing: .1em;
+		text-transform: uppercase;
+		color: #8a8c93;
+	}
+
+	.projects-grid {
+		align-self: stretch;
+		min-height: 39rem;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-rows: 1.12fr .88fr;
+		gap: .8rem;
+	}
+
+	.portfolio-card {
+		min-width: 0;
+		padding: clamp(1.1rem, 1.8vw, 1.6rem);
+		border-radius: var(--radius-card);
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		position: relative;
+		overflow: hidden;
+		transition: transform .35s cubic-bezier(.2,.75,.25,1), box-shadow .35s ease;
+	}
+
+	a.portfolio-card { text-decoration: none; }
+	.portfolio-card:hover { transform: translateY(-.3rem); }
+	.publications { grid-column: 1 / -1; color: #ffffff; background: #0b0b0b; box-shadow: 0 1.5rem 4rem rgba(0,0,0,.18); }
+	.presentations { color: #ffffff; background: var(--color-accent); }
+	.infographics { color: #111111; background: #f5f5f3; border: 1px solid rgba(17,17,17,.12); }
+
+	.card-head { z-index: 3; display: flex; justify-content: space-between; align-items: start; position: relative; }
+	.card-head span { display: block; opacity: .55; font-size: .52rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+	.card-head h2 { margin: .4rem 0 0; font-size: clamp(1.25rem, 1.8vw, 1.8rem); line-height: .96; letter-spacing: -.045em; }
+	.card-arrow { width: 2.65rem; height: 2.65rem; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; font-size: .85rem; transition: transform .25s ease, background .25s ease; }
+	.publications:hover .card-arrow { transform: rotate(45deg); background: var(--color-accent); }
+
+	.card-footer { z-index: 3; display: flex; justify-content: space-between; gap: .7rem; position: relative; font-size: .49rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; opacity: .65; }
+
+	.publication-preview { min-height: 13rem; display: grid; place-items: center; position: relative; }
+	.publication-preview::before { content: ""; position: absolute; width: 14rem; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.13); border-radius: 50%; }
+	.publication-cover { position: absolute; width: auto; height: clamp(10rem,21vw,14rem); border-radius: var(--radius-thumb); object-fit: cover; box-shadow: 0 1.2rem 2.8rem rgba(0,0,0,.45); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+	.cover-kipd { z-index: 1; transform: translateX(-62%) rotate(-8deg); }
+	.cover-iofs { z-index: 3; transform: rotate(-1deg); }
+	.cover-unesco { z-index: 2; transform: translateX(62%) rotate(8deg); }
+	.publications:hover .cover-kipd { transform: translateX(-78%) rotate(-10deg); }
+	.publications:hover .cover-iofs { transform: rotate(1deg) scale(1.035); }
+	.publications:hover .cover-unesco { transform: translateX(78%) rotate(10deg); }
+
+	.slide-preview { display: grid; place-items: center; position: relative; min-height: 8rem; }
+	.slide { position: absolute; width: 70%; aspect-ratio: 1.55; border-radius: var(--radius-thumb); }
+	.slide-back { background: #8f1719; transform: translate(9%, -7%) rotate(6deg); display: flex; gap: .2rem; padding: .5rem; }
+	.slide-back i { width: .25rem; height: .25rem; border-radius: 50%; background: rgba(255,255,255,.4); }
+	.slide-front { padding: 7%; color: #111111; background: #ffffff; transform: rotate(-3deg); box-shadow: 0 1rem 2rem rgba(78,0,0,.25); transition: transform .4s ease; }
+	.presentations:hover .slide-front { transform: rotate(0deg) scale(1.03); }
+	.slide-front small { font-size: .28rem; }
+	.slide-front strong { display: block; margin-top: 10%; font-size: clamp(.65rem, 1.25vw, 1.15rem); line-height: .85; }
+	.slide-front b { position: absolute; right: 7%; bottom: 7%; color: var(--color-accent); }
+
+	.data-preview { display: grid; place-items: center; min-height: 8rem; position: relative; isolation: isolate; }
+	.data-preview::before { content: ""; position: absolute; width: 9rem; aspect-ratio: 1; border: 1px solid rgba(17,17,17,.1); border-radius: 50%; }
+	.infographic-sheet { position: absolute; width: clamp(6.2rem,11vw,8.2rem); height: clamp(5.8rem,9.5vw,7.1rem); padding: .3rem; object-fit: contain; background: #fff; border: 1px solid rgba(17,17,17,.1); border-radius: var(--radius-thumb); box-shadow: 0 1rem 2rem rgba(0,0,0,.18); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+	.infographic-left { z-index: 1; transform: translateX(-54%) rotate(-8deg); }
+	.infographic-center { z-index: 3; transform: translateY(-4%); }
+	.infographic-right { z-index: 2; transform: translateX(54%) rotate(8deg); }
+	.infographics:hover .infographic-left { transform: translateX(-72%) rotate(-10deg); }
+	.infographics:hover .infographic-center { transform: translateY(-7%) scale(1.035); }
+	.infographics:hover .infographic-right { transform: translateX(72%) rotate(10deg); }
+
+	.benefits-section, .solutions-section, .production-section, .process-section, .portfolio-mini-section { width: 100%; max-width: 82rem; margin-left: auto; margin-right: auto; }
+	.benefits-section { margin-top: clamp(7rem, 12vw, 12rem); }
+	.section-kicker { margin: 0 0 clamp(1.1rem, 1.6vw, 1.5rem); display: flex; align-items: center; gap: .8rem; font-size: clamp(1.2rem, 2vw, 1.8rem); letter-spacing: -.035em; text-transform: uppercase; }
+	.section-kicker > span { width: .65rem; height: .65rem; flex: 0 0 auto; border-radius: 50%; background: var(--color-accent); }
+	.benefits-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.8rem, 1.5vw, 1.25rem); }
+	.benefit-card { min-height: 18rem; padding: clamp(1.5rem, 2.5vw, 2.5rem); display: flex; flex-direction: column; justify-content: flex-end; background: #f5f5f3; border: 1px solid rgba(17,17,17,.08); border-radius: var(--radius-card); }
+	.card-icon { width: 3.5rem; height: 3.5rem; display: grid; place-items: center; color: var(--color-accent); border: 1px solid rgba(201,36,39,.38); border-radius: 50%; font-family: Arial, "Segoe UI Symbol", sans-serif; font-size: 1.65rem; font-weight: 500; line-height: 1; }
+	.card-icon-team { padding-left: .18em; font-size: .56rem; letter-spacing: .18em; }
+	.benefit-card > .card-icon { margin-bottom: 2rem; }
+	.benefit-card strong { display: block; font-size: clamp(1.25rem, 1.8vw, 1.8rem); line-height: 1.05; letter-spacing: -.04em; }
+	.benefit-card p { margin: 1rem 0 0; max-width: 28rem; color: #5f626a; font-size: clamp(.88rem, 1vw, 1rem); line-height: 1.55; }
+
+	.solutions-section { margin-top: clamp(3rem, 5vw, 4.5rem); padding: clamp(2rem, 4vw, 4rem); color: #fff; background: #0b0b0b; border-radius: var(--radius-shell); }
+	.section-kicker-light { margin-bottom: clamp(1.1rem, 1.6vw, 1.5rem); }
+	.solutions-list { margin-top: clamp(2rem, 4vw, 4rem); border-top: 1px solid rgba(255,255,255,.22); }
+	.solution-row { padding: clamp(1.4rem, 2.5vw, 2.2rem) 0; display: grid; grid-template-columns: minmax(17rem, .8fr) 1fr; gap: clamp(2rem, 6vw, 7rem); align-items: start; border-bottom: 1px solid rgba(255,255,255,.22); }
+	.solution-row > div { display: grid; grid-template-columns: 2.25rem 1fr; gap: 1rem; align-items: start; }
+	.solution-row small { padding-top: .25rem; color: var(--color-accent); font-size: .62rem; font-weight: 800; letter-spacing: .12em; }
+	.solution-row strong { font-size: clamp(1.3rem, 2vw, 2rem); line-height: 1.05; letter-spacing: -.04em; }
+	.solution-row p { max-width: 40rem; margin: 0; color: #aaa; font-size: clamp(.9rem, 1vw, 1rem); line-height: 1.6; }
+
+	.production-section { margin-top: clamp(3rem, 5vw, 4.5rem); padding-block: clamp(3rem, 6vw, 6rem); display: grid; grid-template-columns: minmax(18rem, .7fr) 1fr; gap: clamp(3rem, 8vw, 9rem); align-items: start; }
+	.production-copy .section-kicker { margin-bottom: clamp(2rem, 4vw, 4rem); }
+	.production-copy > strong { display: block; max-width: 11ch; font-size: clamp(2.8rem, 5vw, 5.2rem); line-height: .88; letter-spacing: -.065em; }
+	.production-copy > p { max-width: 29rem; margin: 1.5rem 0 0; color: #5f626a; font-size: clamp(.92rem, 1vw, 1rem); line-height: 1.65; }
+	.production-list { border-top: 1px solid rgba(17,17,17,.15); }
+	.production-list article { padding: clamp(1.4rem, 2.5vw, 2.2rem) 0; display: grid; grid-template-columns: 2.5rem 1fr; gap: clamp(1rem, 2vw, 2rem); border-bottom: 1px solid rgba(17,17,17,.15); }
+	.production-list article > span { padding-top: .25rem; color: var(--color-accent); font-size: .62rem; font-weight: 800; letter-spacing: .12em; }
+	.production-list strong { font-size: clamp(1.2rem, 1.6vw, 1.55rem); line-height: 1.08; letter-spacing: -.035em; }
+	.production-list p { margin: .75rem 0 0; color: #5f626a; font-size: clamp(.86rem, .95vw, .96rem); line-height: 1.6; }
+
+	.process-section { margin-top: clamp(3rem, 5vw, 4.5rem); padding: clamp(2rem, 4vw, 4rem); color: #fff; background: #0b0b0b; border-radius: var(--radius-shell); }
+	.process-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,.22); border-bottom: 1px solid rgba(255,255,255,.22); }
+	.process-card { min-height: 15rem; padding: clamp(1.4rem, 2.2vw, 2.2rem); display: flex; flex-direction: column; border-right: 1px solid rgba(255,255,255,.22); }
+	.process-card:last-child { border-right: 0; }
+	.process-card > span { color: var(--color-accent); font-size: clamp(2.3rem, 3.5vw, 3.6rem); font-weight: 780; line-height: .8; letter-spacing: -.07em; }
+	.process-card strong { margin-top: clamp(2rem, 4vw, 4rem); font-size: clamp(1.15rem, 1.5vw, 1.5rem); line-height: 1.05; letter-spacing: -.04em; }
+	.process-card p { margin: .85rem 0 0; color: #aaa; font-size: clamp(.84rem, .9vw, .94rem); line-height: 1.55; }
+
+	.portfolio-mini-section { margin-top: clamp(3rem, 5vw, 4.5rem); }
+	.portfolio-mini-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.8rem, 1.5vw, 1.25rem); }
+	.portfolio-mini-card { min-width: 0; min-height: 12rem; padding: clamp(1.3rem, 2vw, 2rem); display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; position: relative; border-radius: var(--radius-card); text-decoration: none; transition: transform .25s ease, box-shadow .25s ease; }
+	.portfolio-mini-card:hover { transform: translateY(-.3rem); box-shadow: 0 1.25rem 3rem rgba(0,0,0,.14); }
+	.portfolio-mini-card small { position: absolute; top: clamp(1.3rem, 2vw, 2rem); left: clamp(1.3rem, 2vw, 2rem); opacity: .55; font-size: .55rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+	.portfolio-mini-card > div { min-width: 0; }
+	.portfolio-mini-card h3 { margin: 0; font-size: clamp(1.45rem, 2.2vw, 2.25rem); line-height: .94; letter-spacing: -.05em; overflow-wrap: normal; word-break: normal; hyphens: none; }
+	.portfolio-mini-card > span { width: 2.75rem; height: 2.75rem; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; transition: transform .25s ease; }
+	.portfolio-mini-card:hover > span { transform: rotate(45deg); }
+	.mini-publications { color: #fff; background: #0b0b0b; }
+	.mini-presentations { color: #fff; background: var(--color-accent); }
+	.mini-infographics { color: #111; background: #f5f5f3; border: 1px solid rgba(17,17,17,.1); }
+
+	@media (max-width: 1000px) {
+		.hero-grid { grid-template-columns: 1fr; padding-top: 4rem; }
+		.hero { overflow: visible; }
+		.intro { min-height: calc(100svh - 8rem); }
+		.projects-grid { min-height: 46rem; }
+		.footnote { margin-top: 4rem; }
+		.production-section { grid-template-columns: 1fr; gap: 3rem; }
+		.production-copy > strong { max-width: 14ch; }
+		.process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.process-card:nth-child(2) { border-right: 0; }
+		.process-card:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.22); }
+	}
+
+	@media (max-width: 620px) {
+		.hero { min-height: calc(100svh - 5rem); padding-inline: 1rem; }
+		.hero-grid { gap: 1.25rem; }
+		.intro { min-height: calc(100svh - 5rem); }
+		.eyebrow { font-size: .7rem; line-height: 1.5; letter-spacing: .1em; overflow-wrap: anywhere; }
+		h1 { width: 100%; max-width: calc(100vw - 2rem); line-height: .9; letter-spacing: -.065em; }
+		.lead, .actions, .proof { margin-left: 0; }
+		.lead { width: 100%; max-width: calc(100vw - 2rem); font-size: 1rem; overflow-wrap: anywhere; word-break: break-word; }
+		.actions { align-items: flex-start; flex-direction: column; gap: 1rem; }
+		.button-primary { width: 100%; min-width: 0; }
+		.proof-facts div { padding-inline: .5rem; }
+		.proof-facts div:first-child { padding-left: 0; }
+		.proof-facts div:last-child { padding-right: 0; }
+		.proof-facts dt { font-size: clamp(1.4rem, 7vw, 1.8rem); }
+		.proof-facts dd { font-size: .62rem; line-height: 1.45; letter-spacing: .05em; }
+		.proof > p { font-size: .72rem; line-height: 1.55; }
+		.footnote span:first-child { max-width: 15rem; line-height: 1.5; }
+		.projects-grid { min-height: 0; grid-template-columns: 1fr; grid-template-rows: none; }
+		.publications { grid-column: auto; min-height: 27rem; }
+		.presentations, .infographics { min-height: 22rem; }
+		.publication-preview { min-height: 16rem; }
+		.data-preview { min-height: 12rem; }
+		.infographic-sheet { width: clamp(7.5rem, 32vw, 10rem); height: clamp(7rem, 28vw, 9rem); }
+		.benefits-section { margin-top: 6rem; }
+		.benefits-grid { grid-template-columns: 1fr; gap: 1rem; }
+		.benefit-card { min-height: 13rem; padding: 1.35rem; }
+		.solutions-section { margin-inline: 0; padding: 1rem; }
+		.solutions-list { margin-top: 2rem; }
+		.solution-row { grid-template-columns: 1fr; gap: .9rem; }
+		.solution-row > div { grid-template-columns: 1.75rem 1fr; gap: .65rem; }
+		.section-kicker { margin-bottom: 1rem; padding-inline: 0; font-size: 1.1rem; line-height: 1.08; }
+		.solutions-section, .production-section, .process-section, .portfolio-mini-section { margin-top: 3rem; }
+		.production-section { padding-block: 3rem; gap: 3rem; }
+		.production-copy > strong { font-size: clamp(2.7rem, 13vw, 4rem); }
+		.process-section { margin-inline: 0; padding: 1rem; }
+		.process-grid { grid-template-columns: 1fr; }
+		.process-card,
+		.process-card:nth-child(2) { min-height: 12rem; padding: 1.35rem; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.22); }
+		.process-card:last-child { border-bottom: 0; }
+		.process-card strong { margin-top: 2rem; }
+		.portfolio-mini-grid { grid-template-columns: 1fr; }
+		.portfolio-mini-card { min-height: 10rem; padding: 1.35rem; }
+		.portfolio-mini-card small { top: 1.35rem; left: 1.35rem; }
+		.card-footer { font-size: .65rem; line-height: 1.45; }
+		.portfolio-mini-card small { font-size: .65rem; line-height: 1.45; }
+	}
+
+	@media (max-width: 360px) {
+		.proof-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.proof-facts div:nth-child(2) { padding-right: 0; border-right: 0; }
+		.proof-facts div:nth-child(3) {
+			grid-column: 1 / -1;
+			padding-inline: 0;
+			border-top: 1px solid rgba(17,17,17,.14);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html { scroll-behavior: auto; }
+		*, *::before, *::after { transition-duration: .01ms !important; }
+	}
+
+	:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
+</style>

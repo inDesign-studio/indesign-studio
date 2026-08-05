@@ -1,0 +1,267 @@
+---
+import BackToTop from '../../../components/BackToTop.astro';
+import CaseFacts from '../../../components/CaseFacts.astro';
+import CaseGallery from '../../../components/CaseGallery.astro';
+import CaseIndex from '../../../components/CaseIndex.astro';
+import CaseLightbox from '../../../components/CaseLightbox.astro';
+import CasePagination from '../../../components/CasePagination.astro';
+import CaseResults from '../../../components/CaseResults.astro';
+import ProjectCta from '../../../components/ProjectCta.astro';
+import ProjectFooter from '../../../components/ProjectFooter.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+
+const gallery = [
+	['identity-mobility.webp', 'Множественность идентичностей · Социальная мобильность'],
+	['identity-attitudes-1.webp', 'Множественность идентичностей · Сравнение показателей'],
+	['identity-attitudes-2.webp', 'Множественность идентичностей · Визуализация ответов'],
+	['legal-title.webp', 'Правовые реформы · Титульная страница'],
+	['legal-illustration-1.webp', 'Правовые реформы · Образование и правопорядок'],
+	['legal-data-3.webp', 'Правовые реформы · Данные исследования'],
+	['legal-data-4.webp', 'Правовые реформы · Сравнение показателей'],
+	['citizenship-illustration-kz.webp', 'Формирование гражданственности · Визуальная вставка'],
+	['citizenship-data-kz-2.webp', 'Формирование гражданственности · Данные опроса'],
+	['citizenship-data-ru-2.webp', 'Формирование гражданственности · Аналитическая полоса'],
+	['citizenship-data-ru-3.webp', 'Формирование гражданственности · Результаты исследования'],
+];
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content="КИОР / KIPD — дизайн, вёрстка и инфографика серии аналитических докладов на казахском и русском языках." />
+		<meta name="theme-color" content="#ffffff" />
+		<title>КИОР / KIPD — InDesign Studio</title>
+	</head>
+	<body id="top">
+		<SiteHeader />
+
+		<main>
+			<CaseIndex
+				backHref="/projects/publications"
+				items={[
+					{ id: 'case-task', label: 'Задача' },
+					{ id: 'case-series', label: 'Серия' },
+					{ id: 'case-system', label: 'Макеты' },
+					{ id: 'case-result', label: 'Результат' },
+					{ id: 'case-gallery', label: 'Галерея' },
+				]}
+			/>
+
+			<section class="project-hero">
+				<p class="eyebrow">Многостраничные издания · Серия исследований</p>
+				<div class="hero-row">
+					<h1>КИОР<br /><span class="title-accent">KIPD</span></h1>
+					<p class="summary">Серия аналитических докладов о гражданском обществе, идентичности и правовых реформах. Мы разработали модульную сетку, типографику и шаблоны для текста и данных, выполнили вёрстку и инфографику.</p>
+				</div>
+			</section>
+
+			<figure class="cover-stage">
+				<div class="cover cover-left"><img src="/portfolio/kipd/identity-cover.webp" alt="Обложка доклада КИОР о множественности идентичностей" loading="eager" /></div>
+				<div class="cover cover-main"><img src="/portfolio/kipd/legal-cover.webp" alt="Обложка доклада КИОР о правовых реформах" loading="eager" /></div>
+				<div class="cover cover-right"><img src="/portfolio/kipd/citizenship-cover.webp" alt="Обложка доклада КИОР о формировании гражданственности" loading="eager" /></div>
+			</figure>
+
+			<section class="overview section-grid" id="case-task" data-case-section>
+				<p class="section-label">01 / Задача</p>
+				<div class="rich-text">
+					<h2>Три темы. Общие правила вёрстки.</h2>
+					<p>В каждом докладе — десятки страниц аналитического текста, таблиц, результатов опросов и комментариев. Задача дизайна — не упростить исследование, а сделать его структуру видимой: разделить уровни информации, задать порядок разделов и помочь читателю быстро находить выводы.</p>
+					<p>Общая сетка и типографика объединяют серию. При этом способ подачи меняется от темы к теме: иллюстративная социология, архитектурная графика или спокойная документальная фотография.</p>
+				</div>
+			</section>
+
+			<CaseFacts items={[
+				['Клиент', 'КИОР / KIPD'],
+				['Формат', 'Серия аналитических докладов'],
+				['Работы', 'Дизайн · Вёрстка · Инфографика'],
+				['Языки', 'Казахский · Русский'],
+			]} />
+
+			<section class="showcase showcase-dark" id="case-series" data-case-section>
+				<div class="showcase-head">
+					<span>02 / Множественность идентичностей</span>
+					<h2>Данные<br />о людях.</h2>
+					<p>Социально-демографические показатели показаны через диаграммы, подписи и ключевые значения. Один цветовой код помогает сопоставлять данные о людях и их идентичности.</p>
+				</div>
+				<div class="identity-layout">
+					<div class="identity-pages">
+						<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/identity-demography-1.webp" data-caption="Множественность идентичностей · Демография"><img src="/portfolio/kipd/identity-demography-1.webp" alt="Инфографика демографического профиля исследования" loading="lazy" /></button></figure>
+						<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/identity-demography-2.webp" data-caption="Множественность идентичностей · Социальный профиль"><img src="/portfolio/kipd/identity-demography-2.webp" alt="Инфографика социального профиля исследования" loading="lazy" /></button></figure>
+						<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/identity-profile-1.webp" data-caption="Множественность идентичностей · Профиль респондентов"><img src="/portfolio/kipd/identity-profile-1.webp" alt="Инфографика профиля респондентов" loading="lazy" /></button></figure>
+						<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/identity-profile-2.webp" data-caption="Множественность идентичностей · Период проживания"><img src="/portfolio/kipd/identity-profile-2.webp" alt="Инфографика периода проживания респондентов" loading="lazy" /></button></figure>
+					</div>
+				</div>
+			</section>
+
+			<section class="legal-section" id="case-system" data-case-section>
+				<div class="section-grid compact-grid">
+					<p class="section-label">03 / Правовые реформы</p>
+					<div class="rich-text">
+						<h2>Строгая сетка для правовой темы.</h2>
+						<p>Большие текстовые массивы собраны на спокойной модульной сетке. Иерархия, воздух и сдержанный оранжевый акцент помогают быстро находить ключевые значения внутри диаграмм.</p>
+					</div>
+				</div>
+				<div class="legal-stage">
+					<div class="legal-spread">
+						<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/legal-section-1.webp" data-caption="Правовые реформы · Раздел исследования"><img src="/portfolio/kipd/legal-section-1.webp" alt="Вводная полоса раздела о правовых реформах" loading="lazy" /></button></figure>
+						<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/legal-section-2.webp" data-caption="Правовые реформы · Аналитическая полоса"><img src="/portfolio/kipd/legal-section-2.webp" alt="Аналитическая полоса доклада о правовых реформах" loading="lazy" /></button></figure>
+						<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/legal-data-1.webp" data-caption="Правовые реформы · Диаграммы"><img src="/portfolio/kipd/legal-data-1.webp" alt="Диаграммы исследования правовых реформ" loading="lazy" /></button></figure>
+						<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/legal-data-2.webp" data-caption="Правовые реформы · Сравнение данных"><img src="/portfolio/kipd/legal-data-2.webp" alt="Сравнительные диаграммы исследования правовых реформ" loading="lazy" /></button></figure>
+					</div>
+				</div>
+			</section>
+
+			<section class="citizenship showcase-dark">
+				<div class="showcase-head">
+					<span>04 / Формирование гражданственности</span>
+					<h2>Два языка.<br />Одна сетка.</h2>
+					<p>Казахская и русская версии собраны по общим шаблонам. Сетка выдерживает разную длину текстов, сохраняя одинаковую иерархию и плотность аналитических полос.</p>
+				</div>
+				<div class="citizenship-grid">
+					<figure class="citizen-title"><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/citizenship-title-kz.webp" data-caption="Формирование гражданственности · Казахская версия"><img src="/portfolio/kipd/citizenship-title-kz.webp" alt="Титульная страница казахской версии доклада" loading="lazy" /></button></figure>
+					<figure class="citizen-data"><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/citizenship-data-kz-1.webp" data-caption="Формирование гражданственности · Данные исследования"><img src="/portfolio/kipd/citizenship-data-kz-1.webp" alt="Инфографика казахской версии исследования" loading="lazy" /></button></figure>
+					<figure class="citizen-title"><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/citizenship-title-ru.webp" data-caption="Формирование гражданственности · Русская версия"><img src="/portfolio/kipd/citizenship-title-ru.webp" alt="Титульная страница русской версии доклада" loading="lazy" /></button></figure>
+					<figure class="citizen-data"><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/kipd/citizenship-data-ru-1.webp" data-caption="Формирование гражданственности · Аналитическая полоса"><img src="/portfolio/kipd/citizenship-data-ru-1.webp" alt="Инфографика русской версии исследования" loading="lazy" /></button></figure>
+				</div>
+			</section>
+
+			<section class="result section-grid" id="case-result" data-case-section>
+				<p class="section-label">05 / Результат</p>
+				<div class="rich-text">
+					<h2>Три темы на казахском и русском.</h2>
+					<p>Мы подготовили доклады о множественности идентичностей, правовых реформах и формировании гражданственности на казахском и русском языках. Шаблоны для длинных текстов, таблиц, диаграмм и иллюстраций адаптируются под тему и длину материала. Все версии подготовлены к печати и цифровому распространению.</p>
+					<CaseResults items={[
+						['3 темы', 'идентичности · реформы · гражданственность'],
+						['2 версии', 'казахский и русский языки'],
+						['Шаблоны', 'для текста, таблиц и диаграмм'],
+					]} />
+				</div>
+			</section>
+
+			<ProjectCta subject="дизайн и вёрстку серии аналитических изданий" />
+
+			<CaseGallery
+				label="06 / Галерея"
+				title="Другие страницы серии."
+				description="Дополнительные разделители, аналитические полосы и визуализации из серии докладов. Каждая страница открывается в увеличенном виде."
+				items={gallery.map(([file, caption]) => ({
+					caption,
+					images: [{
+						src: `/portfolio/kipd/${file}`,
+						alt: caption,
+						width: file.startsWith('legal') ? 1240 : 1261,
+						height: file.startsWith('legal') ? 1754 : 1800,
+					}],
+				}))}
+				variant="pages"
+				lightboxId="case-gallery-lightbox"
+			/>
+			<CaseLightbox id="case-gallery-lightbox" variant="single" label="Увеличенная страница проекта КИОР" />
+
+			<CasePagination
+				previous={{ href: '/projects/publications/iofs', label: 'ИОПБ / IOFS' }}
+				next={{ href: '/projects/publications/unesco', label: 'ЮНЕСКО' }}
+			/>
+			<ProjectFooter />
+		</main>
+		<BackToTop />
+
+	</body>
+</html>
+
+<style>
+	:root { font-family: Inter,"Segoe UI",Arial,sans-serif; color:#111; background:#fff; font-synthesis:none; }
+	* { box-sizing:border-box; }
+	html { scroll-behavior:smooth; }
+	body { margin:0; min-width:0; overflow-x:clip; background:#fff; }
+	a { color:inherit; }
+	button { font:inherit; }
+	header { height:6rem; padding:0 clamp(1.25rem,4vw,4.5rem); display:grid; grid-template-columns:1fr auto 1fr; align-items:center; }
+	.back { display:flex; align-items:center; gap:.7rem; width:max-content; font-size:.72rem; font-weight:750; text-decoration:none; }
+	.back span { width:2.25rem; height:2.25rem; display:grid; place-items:center; border:1px solid #1113; border-radius:50%; transition:transform .2s ease; }
+	.back:hover span { transform:translateX(-.25rem); }
+	.brand { width:clamp(7.8rem,10vw,10rem); line-height:0; }
+	.brand img { display:block; width:100%; }
+	.page-count { justify-self:end; color:#777; font-size:.62rem; font-weight:750; letter-spacing:.1em; text-transform:uppercase; }
+	main { padding:0 clamp(1.25rem,4vw,4.5rem) clamp(2rem,5vw,5rem); }
+	.project-hero { width:100%; max-width:88rem; margin:0 auto; padding:clamp(4rem,8vw,7rem) 0 clamp(4rem,7vw,7rem); }
+	.eyebrow,.section-label,.showcase-head>span { margin:0; color:var(--color-accent); font-size:.64rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+	.hero-row { display:grid; grid-template-columns:minmax(0,1fr) minmax(20rem,.42fr); gap:4rem; align-items:end; }
+	.hero-row>*,.section-grid>*,.showcase-head>* { min-width:0; }
+	h1 { margin:0; font-size:var(--text-display-lg); line-height:.73; letter-spacing:-.08em; }
+	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:.82em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:-.055em; }
+	.summary { margin:0; color:#565656; font-size:clamp(1rem,1.25vw,1.22rem); line-height:1.65; }
+	.cover-stage { width:100%; max-width:88rem; min-height:clamp(36rem,62vw,62rem); margin:0 auto; padding:clamp(2rem,5vw,5rem); display:flex; justify-content:center; align-items:center; gap:clamp(.7rem,2.2vw,2.2rem); position:relative; overflow:hidden; background:#0b0b0b; border-radius:var(--radius-shell); }
+	.cover-stage::before,.cover-stage::after { content:""; position:absolute; width:72%; aspect-ratio:1; border:1px solid #fff2; border-radius:50%; }
+	.cover-stage::after { width:48%; }
+	.cover { flex:0 1 25%; position:relative; z-index:1; filter:drop-shadow(0 2rem 2rem #0009); }
+	.cover-main { flex-basis:30%; z-index:2; transform:translateY(-2%); }
+	.cover-left { transform:rotate(-7deg) translateY(5%); }
+	.cover-right { transform:rotate(7deg) translateY(5%); }
+	.cover img { display:block; width:100%; height:auto; border-radius:var(--radius-thumb); }
+	.section-grid { width:100%; max-width:82rem; margin:0 auto; display:grid; grid-template-columns:minmax(10rem,.28fr) 1fr; gap:clamp(2rem,7vw,8rem); }
+	.overview { padding:clamp(7rem,12vw,12rem) 0 clamp(4rem,7vw,7rem); }
+	.rich-text h2,.showcase-head h2 { margin:0; font-size:clamp(2.7rem,5vw,5.3rem); line-height:.9; letter-spacing:-.06em; }
+	.rich-text p { max-width:52rem; margin:1.7rem 0 0; color:#5a5a5a; font-size:clamp(1rem,1.15vw,1.16rem); line-height:1.72; }
+	.showcase-dark { width:100%; max-width:88rem; margin:0 auto; padding:clamp(2rem,4vw,4.5rem); color:#fff; background:#0b0b0b; border-radius:var(--radius-shell); }
+	.showcase-head { display:grid; grid-template-columns:.23fr 1fr .54fr; gap:clamp(1.5rem,4vw,4.5rem); align-items:end; margin-bottom:clamp(3rem,6vw,6rem); }
+	.showcase-head p { margin:0; color:#b5b5b5; font-size:1rem; line-height:1.65; }
+	.zoom-trigger { display:block; width:100%; padding:0; overflow:hidden; color:inherit; background:transparent; border:0; cursor:zoom-in; }
+	.zoom-trigger img { display:block; width:100%; height:auto; transition:transform .35s ease; }
+	.zoom-trigger:hover img { transform:scale(1.015); }
+	.zoom-trigger:focus-visible { outline:var(--focus-ring-width) solid var(--focus-ring-color); outline-offset:var(--focus-ring-offset); }
+	.identity-layout figure,.legal-stage figure,.citizenship-grid figure { margin:0; }
+	.identity-pages figure,.legal-spread,.citizenship-grid figure { padding:clamp(.4rem,.8vw,.7rem); background:#fff; border-radius:var(--radius-thumb); box-shadow:0 1.5rem 3rem #0007; }
+	.identity-pages { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.6rem; align-items:start; }
+	.identity-pages figure:nth-child(even) { margin-top:2.5rem; }
+	.legal-section { width:100%; max-width:88rem; margin:0 auto; padding:clamp(8rem,13vw,13rem) 0; }
+	.compact-grid { margin-bottom:clamp(3rem,6vw,6rem); }
+	.legal-stage { padding:clamp(1.25rem,3vw,3rem); background:#0b0b0b; border-radius:var(--radius-shell); }
+	.legal-spread { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.25rem; }
+	.citizenship { margin-top:0; }
+	.citizenship-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.65rem; align-items:center; }
+	.result { padding:clamp(8rem,14vw,14rem) 0 clamp(3rem,5vw,5rem); }
+
+	@media(max-width:980px){
+		.hero-row { grid-template-columns:1fr; gap:2rem; }
+		.summary { max-width:43rem; }
+		.showcase-head { grid-template-columns:1fr 2fr; }
+		.showcase-head p { grid-column:2; }
+	}
+
+	@media(max-width:700px){
+		header { height:5rem; padding-inline:1rem; grid-template-columns:1fr auto; }
+		.brand { display:none; }
+		.page-count { font-size:.52rem; }
+		main { padding-inline:1rem; }
+		.project-hero { padding:3.5rem 0 4rem; }
+		.eyebrow,.section-label,.showcase-head>span { font-size:.7rem; line-height:1.5; letter-spacing:.1em; }
+		h1 { line-height:.78; }
+		.cover-stage { min-height:29rem; padding:1.2rem; gap:.35rem; }
+		.cover { flex-basis:29%; }
+		.cover-main { flex-basis:34%; }
+		.section-grid,.showcase-head { grid-template-columns:1fr; gap:1.4rem; }
+		.rich-text h2,.showcase-head h2 { font-size:clamp(2.35rem,12vw,3.8rem); }
+		.overview { padding:6rem 0 4rem; }
+		.showcase-dark,.legal-stage { padding:1.25rem; }
+		.showcase-head p { grid-column:auto; }
+		.identity-pages { grid-template-columns:repeat(2,minmax(0,1fr)); }
+		.identity-pages figure:nth-child(even) { margin-top:1rem; }
+		.legal-section { padding:7rem 0; }
+		.legal-spread { grid-template-columns:repeat(2,minmax(0,1fr)); }
+		.citizenship-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+		.result { padding:7rem 0 3rem; }
+	}
+
+	@media(max-width:440px){
+		.back { font-size:.65rem; }
+		.back span { width:2rem; height:2rem; }
+		.page-count { max-width:6rem; text-align:right; line-height:1.35; }
+		.cover-stage { min-height:24rem; }
+	}
+
+	@media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition-duration:.01ms!important} }
+</style>

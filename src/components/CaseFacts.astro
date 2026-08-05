@@ -1,0 +1,42 @@
+---
+interface Props {
+	items: Array<[string, string]>;
+}
+
+const { items } = Astro.props;
+---
+
+<dl class="case-facts">
+	{items.map(([term, value]) => <div><dt>{term}</dt><dd>{value}</dd></div>)}
+</dl>
+
+<style>
+	.case-facts {
+		width: 100%;
+		max-width: 82rem;
+		margin: 0 auto clamp(7rem, 11vw, 11rem);
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		border: 1px solid rgba(17,17,17,.12);
+		border-radius: var(--radius-card);
+		overflow: hidden;
+	}
+
+	.case-facts div {
+		min-width: 0;
+		padding: clamp(1.25rem, 2.5vw, 2.5rem);
+		border-right: 1px solid rgba(17,17,17,.12);
+	}
+
+	.case-facts div:last-child { border-right: 0; }
+	.case-facts dt { color: #777; font-size: .59rem; font-weight: 800; letter-spacing: .1em; line-height: 1.45; text-transform: uppercase; }
+	.case-facts dd { margin: 1rem 0 0; font-size: clamp(.9rem,1.25vw,1.1rem); font-weight: 750; line-height: 1.4; overflow-wrap: anywhere; }
+
+	@media (max-width: 620px) {
+		.case-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 6rem; }
+		.case-facts div { padding: 1.25rem .75rem; }
+		.case-facts div:nth-child(2n) { border-right: 0; }
+		.case-facts div:nth-child(-n+2) { border-bottom: 1px solid rgba(17,17,17,.12); }
+		.case-facts dt { font-size: .7rem; }
+	}
+</style>

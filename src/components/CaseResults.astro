@@ -1,0 +1,39 @@
+---
+interface Props {
+	items: Array<[string, string]>;
+}
+
+const { items } = Astro.props;
+---
+
+<div class="case-results">
+	{items.map(([value, label]) => <div><strong>{value}</strong><span>{label}</span></div>)}
+</div>
+
+<style>
+	.case-results {
+		margin-top: clamp(3rem,6vw,6rem);
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	.case-results div {
+		min-height: 12rem;
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		background: #f3f3f0;
+		border-radius: var(--radius-card);
+	}
+
+	.case-results strong { color: var(--color-accent); font-size: clamp(2.8rem,5vw,5rem); line-height: 1; letter-spacing: -.055em; }
+	.case-results span { max-width: 11rem; color: #666; font-size: .68rem; font-weight: 800; letter-spacing: .08em; line-height: 1.45; text-transform: uppercase; }
+
+	@media (max-width: 620px) {
+		.case-results { grid-template-columns: 1fr; }
+		.case-results div { min-height: 9rem; }
+		.case-results span { font-size: .72rem; }
+	}
+</style>
