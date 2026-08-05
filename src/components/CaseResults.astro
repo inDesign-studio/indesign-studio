@@ -7,7 +7,12 @@ const { items } = Astro.props;
 ---
 
 <div class="case-results">
-	{items.map(([value, label]) => <div><strong>{value}</strong><span>{label}</span></div>)}
+	{items.map(([value, label]) => (
+		<div>
+			<strong class:list={{ 'is-long': value.split(/\s+/).some((word) => word.length > 8) }}>{value}</strong>
+			<span>{label}</span>
+		</div>
+	))}
 </div>
 
 <style>
@@ -19,6 +24,8 @@ const { items } = Astro.props;
 	}
 
 	.case-results div {
+		container-type: inline-size;
+		min-width: 0;
 		min-height: 12rem;
 		padding: 1.5rem;
 		display: flex;
@@ -28,7 +35,8 @@ const { items } = Astro.props;
 		border-radius: var(--radius-card);
 	}
 
-	.case-results strong { color: var(--color-accent); font-size: clamp(2.8rem,5vw,5rem); line-height: 1; letter-spacing: -.055em; }
+	.case-results strong { max-width: 100%; color: var(--color-accent); font-size: clamp(2.8rem,5vw,5rem); line-height: 1; letter-spacing: -.055em; overflow-wrap: anywhere; }
+	.case-results strong.is-long { font-size: clamp(2.2rem,17cqi,2.8rem); }
 	.case-results span { max-width: 11rem; color: #666; font-size: .68rem; font-weight: 800; letter-spacing: .08em; line-height: 1.45; text-transform: uppercase; }
 
 	@media (max-width: 620px) {
