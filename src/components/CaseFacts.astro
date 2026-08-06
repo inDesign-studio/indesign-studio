@@ -29,7 +29,7 @@ const { items } = Astro.props;
 	}
 
 	.case-facts div:last-child { border-right: 0; }
-	.case-facts dt { color: #777; font-size: .59rem; font-weight: 800; letter-spacing: .1em; line-height: 1.45; text-transform: uppercase; }
+	.case-facts dt { color: #777; font-size: var(--text-caption); font-weight: 800; letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); text-transform: uppercase; }
 	.case-facts dd { margin: 1rem 0 0; font-size: clamp(.9rem,1.25vw,1.1rem); font-weight: 750; line-height: 1.4; overflow-wrap: anywhere; }
 
 	@media (max-width: 620px) {
@@ -37,6 +37,5 @@ const { items } = Astro.props;
 		.case-facts div { padding: 1.25rem .75rem; }
 		.case-facts div:nth-child(2n) { border-right: 0; }
 		.case-facts div:nth-child(-n+2) { border-bottom: 1px solid rgba(17,17,17,.12); }
-		.case-facts dt { font-size: .7rem; }
 	}
 </style>

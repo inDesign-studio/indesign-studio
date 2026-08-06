@@ -1,0 +1,73 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+	imageAlt?: string;
+}
+
+const {
+	title,
+	description,
+	image = '/og/indesign-studio.png',
+	imageAlt = 'InDesign Studio — вёрстка, инфографика и презентации',
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://indesign-studio-layout.vercel.app');
+const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
+const canonical = new URL(canonicalPath, site).toString();
+const socialImage = new URL(image, site).toString();
+const studioId = new URL('/#studio', site).toString();
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfessionalService',
+	'@id': studioId,
+	name: 'InDesign Studio',
+	url: new URL('/', site).toString(),
+	image: socialImage,
+	description: 'Студия профессиональной вёрстки, инфографики и презентаций в Астане.',
+	email: 'info@indstudio.kz',
+	telephone: '+77084251518',
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Астана',
+		addressCountry: 'KZ',
+	},
+	sameAs: [
+		'https://www.instagram.com/indesign_studio/',
+		'https://go.2gis.com/92Taw',
+	],
+};
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="preload" href="/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="canonical" href={canonical} />
+<link rel="sitemap" href={new URL('/sitemap.xml', site).toString()} />
+<meta name="description" content={description} />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#ffffff" />
+<title>{title}</title>
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ru_KZ" />
+<meta property="og:site_name" content="InDesign Studio" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={socialImage} />
+<meta property="og:image:secure_url" content={socialImage} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImage} />
+<meta name="twitter:image:alt" content={imageAlt} />
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

@@ -5,7 +5,9 @@ import CaseIndex from '../../../components/CaseIndex.astro';
 import CaseLightbox from '../../../components/CaseLightbox.astro';
 import ProjectCta from '../../../components/ProjectCta.astro';
 import ProjectFooter from '../../../components/ProjectFooter.astro';
+import ResponsiveImage from '../../../components/ResponsiveImage.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const filters = [
 	{ id: 'all', label: 'Все работы' },
@@ -42,20 +44,13 @@ const getCategories = (number: number) => {
 	return categories;
 };
 
-const infographicSizes = '1258x1789,1258x1789,1258x1789,1258x1789,1258x1789,544x581,1063x937,1063x1033,1027x430,963x1229,959x1469,1060x506,1064x590,1064x1234,1060x566,1048x490,1064x1258,1068x474,1068x578,1052x1090,1060x794,1258x1789,1800x865,1800x1317,1800x994,1800x1249,1800x1148,1619x1800,1800x1443,1800x702,1800x1049,1800x1019,1800x889,1800x1300,1800x1016,1800x1268,1800x1189,1800x1404,1800x708,1050x977,1054x546,1042x474,1062x446,1058x437,1034x490,1050x526,1046x694,1070x422,1066x669,1058x414,1062x562,1062x658,1066x494,1054x622,1066x565,1050x482,1042x553,1062x813,1078x758,1261x1800,1062x498,1062x714,1046x977,1062x1273,1062x666,1054x582,1058x510,1058x634,1086x753,1062x438,1050x489,1046x629,1054x578,1062x510,1066x598,519x723,1054x457,1070x490,1058x486,1078x593,1054x574,1038x506,1082x597,990x398,1054x689,1070x430,1078x605,1062x757,1066x645,527x853,1261x1800,1062x426,1058x366,1078x394,1062x558,1058x429,1082x433,1058x370,1058x362,1086x426,1090x394'
-	.split(',')
-	.map((size) => size.split('x').map(Number) as [number, number]);
-
 const allImages = Array.from({ length: 101 }, (_, index) => {
 	const number = index + 1;
-	const [width, height] = infographicSizes[index];
 	return {
 		number,
 		src: `/portfolio/infographics/graphic-${String(number).padStart(3, '0')}.webp`,
 		group: getGroup(number),
 		categories: getCategories(number),
-		width,
-		height,
 	};
 });
 
@@ -73,17 +68,10 @@ const galleryImages = allImages
 const initialGalleryCount = 24;
 ---
 
-<!doctype html>
-<html lang="ru">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="description" content="Инфографика InDesign Studio: анализируем данные, формулируем вывод и показываем цифры в диаграммах, картах и схемах." />
-		<meta name="theme-color" content="#ffffff" />
-		<title>Инфографика — InDesign Studio</title>
-	</head>
-	<body id="top">
+	<BaseLayout
+		title="Инфографика — InDesign Studio"
+		description="Инфографика InDesign Studio: анализируем данные, формулируем вывод и показываем цифры в диаграммах, картах и схемах."
+	>
 		<SiteHeader />
 
 		<main>
@@ -130,8 +118,8 @@ const initialGalleryCount = 24;
 					</div>
 				</div>
 				<div class="meaning-grid">
-					<figure class="meaning-main"><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-017.webp" data-caption="Социальные исследования и правовые реформы"><img src="/portfolio/infographics/graphic-017.webp" alt="Инфографика исследования с диаграммой и тематической иллюстрацией" loading="eager" /></button></figure>
-					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-032.webp" data-caption="Гражданские исследования"><img src="/portfolio/infographics/graphic-032.webp" alt="Инфографика гражданского исследования с иллюстрацией" loading="lazy" /></button></figure>
+					<figure class="meaning-main"><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-017.webp" data-caption="Социальные исследования и правовые реформы"><ResponsiveImage src="/portfolio/infographics/graphic-017.webp" alt="Инфографика исследования с диаграммой и тематической иллюстрацией" sizes="(max-width: 700px) 100vw, 65vw" loading="eager" fetchpriority="high" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-032.webp" data-caption="Гражданские исследования"><ResponsiveImage src="/portfolio/infographics/graphic-032.webp" alt="Инфографика гражданского исследования с иллюстрацией" sizes="(max-width: 700px) 100vw, 33vw" /></button></figure>
 				</div>
 			</section>
 
@@ -144,10 +132,10 @@ const initialGalleryCount = 24;
 					</div>
 				</div>
 				<div class="story-grid">
-					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-040.webp" data-caption="Социально-демографические исследования"><img src="/portfolio/infographics/graphic-040.webp" alt="Инфографика социально-демографического исследования" loading="lazy" /></button></figure>
-					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-041.webp" data-caption="Социально-демографические исследования"><img src="/portfolio/infographics/graphic-041.webp" alt="Инфографика об образовании" loading="lazy" /></button></figure>
-					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-047.webp" data-caption="Социально-демографические исследования"><img src="/portfolio/infographics/graphic-047.webp" alt="Инфографика уровня доходов" loading="lazy" /></button></figure>
-					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-059.webp" data-caption="Социально-демографические исследования"><img src="/portfolio/infographics/graphic-059.webp" alt="Иллюстративная инфографика исследования" loading="lazy" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-040.webp" data-caption="Социально-демографические исследования"><ResponsiveImage src="/portfolio/infographics/graphic-040.webp" alt="Инфографика социально-демографического исследования" sizes="(max-width: 700px) 50vw, 25vw" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-041.webp" data-caption="Социально-демографические исследования"><ResponsiveImage src="/portfolio/infographics/graphic-041.webp" alt="Инфографика об образовании" sizes="(max-width: 700px) 50vw, 25vw" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-047.webp" data-caption="Социально-демографические исследования"><ResponsiveImage src="/portfolio/infographics/graphic-047.webp" alt="Инфографика уровня доходов" sizes="(max-width: 700px) 50vw, 25vw" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-059.webp" data-caption="Социально-демографические исследования"><ResponsiveImage src="/portfolio/infographics/graphic-059.webp" alt="Иллюстративная инфографика исследования" sizes="(max-width: 700px) 50vw, 25vw" /></button></figure>
 				</div>
 			</section>
 
@@ -160,9 +148,9 @@ const initialGalleryCount = 24;
 					</div>
 				</div>
 				<div class="science-grid">
-					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-076.webp" data-caption="Научные и климатические данные"><img src="/portfolio/infographics/graphic-076.webp" alt="Научная инфографика с объёмной диаграммой" loading="lazy" /></button></figure>
-					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-083.webp" data-caption="Научные и климатические данные"><img src="/portfolio/infographics/graphic-083.webp" alt="Тепловая карта научного исследования" loading="lazy" /></button></figure>
-					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-089.webp" data-caption="Научные и климатические данные"><img src="/portfolio/infographics/graphic-089.webp" alt="Схема процесса в научном исследовании" loading="lazy" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-076.webp" data-caption="Научные и климатические данные"><ResponsiveImage src="/portfolio/infographics/graphic-076.webp" alt="Научная инфографика с объёмной диаграммой" sizes="(max-width: 700px) 100vw, 33vw" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-083.webp" data-caption="Научные и климатические данные"><ResponsiveImage src="/portfolio/infographics/graphic-083.webp" alt="Тепловая карта научного исследования" sizes="(max-width: 700px) 100vw, 33vw" /></button></figure>
+					<figure><button class="zoom-trigger" data-lightbox-target="case-gallery-lightbox" type="button" data-src="/portfolio/infographics/graphic-089.webp" data-caption="Научные и климатические данные"><ResponsiveImage src="/portfolio/infographics/graphic-089.webp" alt="Схема процесса в научном исследовании" sizes="(max-width: 700px) 100vw, 33vw" /></button></figure>
 			</div>
 			</section>
 
@@ -180,12 +168,12 @@ const initialGalleryCount = 24;
 				label="06 / Галерея"
 				title="92 работы о данных."
 				description="Сначала показаны 24 сильных и разнообразных примера. Темы доступны в фильтрах, а остальные работы загружаются порциями по кнопке «Показать ещё»."
-				items={galleryImages.map(({ number, src, group, categories, width, height }, index) => ({
+				items={galleryImages.map(({ number, src, group, categories }, index) => ({
 					caption: group,
 					number: String(number).padStart(3, '0'),
 					categories,
 					hidden: index >= initialGalleryCount,
-					images: [{ src, alt: `${group}: пример инфографики ${number}`, width, height }],
+					images: [{ src, alt: `${group}: пример инфографики ${number}` }],
 				}))}
 				variant="numbered"
 				lightboxId="case-gallery-lightbox"
@@ -268,50 +256,44 @@ const initialGalleryCount = 24;
 			updateGallery();
 
 		</script>
-	</body>
-</html>
+	</BaseLayout>
 
 <style>
-	:root { font-family: Inter, "Segoe UI", Arial, sans-serif; color: #0b0b0b; background: #fff; font-synthesis: none; }
-	* { box-sizing: border-box; }
-	html { scroll-behavior: smooth; }
-	body { margin: 0; min-width: 0; overflow-x: clip; background: #fff; }
-	a { color: inherit; }
-	button { font: inherit; }
-	header { height: 6rem; padding: 0 clamp(1.25rem,4vw,4.5rem); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
-	.back { display: flex; align-items: center; gap: .7rem; width: max-content; font-size: .72rem; font-weight: 750; text-decoration: none; }
+	:root { color: #0b0b0b; }
+	header { height: 6rem; padding: 0 clamp(1.25rem,4vw,4.5rem); display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; }
+	.back { display: flex; align-items: center; gap: .7rem; width: max-content; font-size: var(--text-navigation); font-weight: 750; text-decoration: none; }
 	.back span { width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border: 1px solid #1113; border-radius: 50%; transition: transform .2s ease; }
 	.back:hover span { transform: translateX(-.25rem); }
 	.brand { width: clamp(7.8rem,10vw,10rem); line-height: 0; }
 	.brand img { display: block; width: 100%; }
-	.page-count { justify-self: end; color: #777; font-size: .62rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+	.page-count { justify-self: end; color: #777; font-size: var(--text-caption); font-weight: 750; line-height: var(--leading-caption); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
 	main { padding: 0 clamp(1.25rem,4vw,4.5rem) clamp(2rem,5vw,5rem); }
 	.project-hero { width: 100%; max-width: 88rem; margin: 0 auto; padding: clamp(4rem,8vw,7rem) 0 clamp(4rem,7vw,7rem); }
-	.eyebrow,.section-label,.showcase-head > p { margin: 0; color: var(--color-accent); font-size: .64rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+	.eyebrow,.section-label,.showcase-head > p { margin: 0; color: var(--color-accent); font-size: var(--text-label); font-weight: 800; line-height: var(--leading-label); letter-spacing: var(--tracking-label); text-transform: uppercase; }
 	.hero-row { display: grid; grid-template-columns: minmax(0,1fr) minmax(20rem,.42fr); gap: 4rem; align-items: end; }
-	.hero-row > *,.section-grid > *,.showcase-head > * { min-width: 0; }
-	h1 { margin: 0; max-width: 60rem; font-size: var(--text-display-lg); line-height: .79; letter-spacing: -.075em; }
+	header > *,.hero-row > *,.section-grid > *,.showcase-head > *,.process > *,.meaning-grid > *,.story-grid > *,.science-grid > *,.gallery-toolbar > * { min-width: 0; }
+	h1 { margin: 0; max-width: 60rem; font-size: var(--text-display-lg); line-height: var(--leading-display-lg); letter-spacing: var(--tracking-display-lg); }
 	h1 .title-accent { display:block; color:var(--color-accent); font-family:inherit; font-size:1em; font-style:normal; font-weight:inherit; line-height:inherit; letter-spacing:inherit; overflow-wrap:anywhere; }
-	.summary { margin: 0; color: #565656; font-size: clamp(1rem,1.25vw,1.22rem); line-height: 1.65; }
-	.section-grid { width: 100%; max-width: 82rem; margin: 0 auto; display: grid; grid-template-columns: minmax(10rem,.28fr) 1fr; gap: clamp(2rem,7vw,8rem); }
+	.summary { margin: 0; color: #565656; font-size: var(--text-lead); line-height: var(--leading-lead); }
+	.section-grid { width: 100%; max-width: 82rem; margin: 0 auto; display: grid; grid-template-columns: minmax(10rem,.28fr) minmax(0,1fr); gap: clamp(2rem,7vw,8rem); }
 	.approach { padding: 0 0 clamp(4rem,7vw,7rem); }
-	.rich-text h2,.statement h2,.showcase-head h2 { margin: 0; font-size: var(--text-display-section); line-height: .9; letter-spacing: -.06em; }
-	.rich-text p,.statement p { max-width: 52rem; margin: 1.7rem 0 0; color: #5a5a5a; font-size: clamp(1rem,1.15vw,1.16rem); line-height: 1.72; }
-	.process { width: 100%; max-width: 82rem; margin: 0 auto clamp(7rem,12vw,12rem); display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid #1112; border-bottom: 1px solid #1112; }
+	.rich-text h2,.statement h2,.showcase-head h2 { margin: 0; font-size: var(--text-display-section); line-height: var(--leading-display-section); letter-spacing: var(--tracking-display-section); }
+	.rich-text p,.statement p { max-width: 52rem; margin: 1.7rem 0 0; color: #5a5a5a; font-size: var(--text-body-lg); line-height: var(--leading-body-lg); }
+	.process { width: 100%; max-width: 82rem; margin: 0 auto clamp(7rem,12vw,12rem); display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); border-top: 1px solid #1112; border-bottom: 1px solid #1112; }
 	.process div { padding: 1.7rem 1.2rem; border-right: 1px solid #1112; }
 	.process div:last-child { border-right: 0; }
-	.process dt { color: var(--color-accent); font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+	.process dt { color: var(--color-accent); font-size: var(--text-caption); font-weight: 800; line-height: var(--leading-caption); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
 	.process dd { margin: .8rem 0 0; font-size: .92rem; font-weight: 700; line-height: 1.4; }
 	.showcase { width: 100%; max-width: 88rem; margin: 0 auto; padding: clamp(2rem,4vw,4.5rem); border-radius: var(--radius-shell); }
 	.showcase-dark { color: #fff; background: #0b0b0b; }
-	.showcase-head { display: grid; grid-template-columns: .23fr 1fr .54fr; gap: clamp(1.5rem,4vw,4.5rem); align-items: end; margin-bottom: clamp(3rem,6vw,6rem); }
-	.showcase-head > div p { margin: 0; color: #b5b5b5; font-size: 1rem; line-height: 1.65; }
+	.showcase-head { display: grid; grid-template-columns: minmax(0,.23fr) minmax(0,1fr) minmax(0,.54fr); gap: clamp(1.5rem,4vw,4.5rem); align-items: end; margin-bottom: clamp(3rem,6vw,6rem); }
+	.showcase-head > div p { margin: 0; color: #b5b5b5; font-size: var(--text-body); line-height: var(--leading-body); }
 	.showcase-head > div p + p { margin-top: 1rem; }
 	.zoom-trigger { display: block; width: 100%; padding: 0; overflow: hidden; color: inherit; background: transparent; border: 0; cursor: zoom-in; }
 	.zoom-trigger img { display: block; width: 100%; height: auto; transition: transform .35s ease; }
 	.zoom-trigger:hover img { transform: scale(1.015); }
 	.zoom-trigger:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
-	.meaning-grid { width: min(86%,69rem); margin: 0 auto; display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(1rem,3vw,3rem); align-items: center; }
+	.meaning-grid { width: min(86%,69rem); margin: 0 auto; display: grid; grid-template-columns: minmax(0,1.08fr) minmax(0,.92fr); gap: clamp(1rem,3vw,3rem); align-items: center; }
 	.meaning-grid figure,.story-grid figure,.science-grid figure { margin: 0; }
 	.meaning-grid figure { padding: clamp(.5rem,1.2vw,1rem); background: #fff; border-radius: var(--radius-thumb); box-shadow: 0 2rem 5rem #0008; }
 	.meaning-grid figure:last-child { transform: translateY(3rem) rotate(2deg); }
@@ -321,7 +303,7 @@ const initialGalleryCount = 24;
 	.story-grid figure { padding: clamp(.45rem,1vw,.8rem); background: #fff; border: 1px solid #1112; border-radius: var(--radius-thumb); box-shadow: 0 1.5rem 3rem #00000010; }
 	.story-grid figure:nth-child(even) { margin-top: 4rem; }
 	.science { width: 100%; max-width: 88rem; margin: 0 auto; padding: clamp(2rem,4vw,4.5rem); border-radius: var(--radius-shell); }
-	.science-grid { display: grid; grid-template-columns: .9fr 1.15fr .95fr; gap: clamp(.8rem,2vw,2rem); align-items: center; }
+	.science-grid { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.15fr) minmax(0,.95fr); gap: clamp(.8rem,2vw,2rem); align-items: center; }
 	.science-grid figure { padding: clamp(.45rem,1vw,.8rem); background: #fff; border-radius: var(--radius-thumb); }
 	.science-grid figure:nth-child(2) { transform: translateY(2rem); }
 	.statement { padding: clamp(8rem,14vw,14rem) 0 clamp(3rem,5vw,5rem); }
@@ -339,13 +321,16 @@ const initialGalleryCount = 24;
 	.gallery-more:hover { background: var(--color-accent); transform: translateY(var(--cta-hover-lift)); box-shadow: var(--cta-hover-shadow); }
 	.gallery-more:active { transform: translateY(var(--cta-active-lift)); box-shadow: none; }
 	.gallery-more:focus-visible,.gallery-reset:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
+	@media (max-width: 1100px) {
+		.tags { flex-wrap: wrap; }
+	}
 
 	@media (max-width: 980px) {
-		.hero-row { grid-template-columns: 1fr; gap: 2rem; }
+		.hero-row { grid-template-columns: minmax(0,1fr); gap: 2rem; }
 		.summary { max-width: 43rem; }
-		.showcase-head { grid-template-columns: 1fr 2fr; }
+		.showcase-head { grid-template-columns: minmax(0,1fr) minmax(0,2fr); }
 		.showcase-head > div { grid-column: 2; }
-		.process { grid-template-columns: repeat(2,1fr); }
+		.process { grid-template-columns: repeat(2,minmax(0,1fr)); }
 		.process div:nth-child(2) { border-right: 0; }
 		.process div:nth-child(-n+2) { border-bottom: 1px solid #1112; }
 		.story-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -353,40 +338,36 @@ const initialGalleryCount = 24;
 	}
 
 	@media (max-width: 700px) {
-		header { height: 5rem; grid-template-columns: 1fr auto; }
+		header { height: 5rem; grid-template-columns: minmax(0,1fr) auto; }
 		.brand { display: none; }
 		.page-count { max-width: 9rem; text-align: right; line-height: 1.35; }
 		main { padding-inline: 1rem; }
 		.project-hero { padding: 3.5rem 0 4rem; }
-		.eyebrow,.section-label,.showcase-head > p { font-size: .7rem; line-height: 1.5; letter-spacing: .1em; }
-		h1 { line-height: .82; }
-		.section-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+		.section-grid { grid-template-columns: minmax(0,1fr); gap: 1.4rem; }
 		.showcase,.science { padding: 1.35rem; }
-		.rich-text h2,.statement h2,.showcase-head h2 { font-size: clamp(2.35rem,12vw,3.8rem); overflow-wrap: anywhere; }
+		.rich-text h2,.statement h2,.showcase-head h2 { overflow-wrap: anywhere; }
 		.tags { flex-wrap: wrap; gap: .45rem; }
 		.format-filter { min-height: 2.75rem; padding: .55rem .8rem; font-size: .74rem; line-height: 1.35; }
 		.approach { padding: 0 0 4rem; }
-		.process { margin-bottom: 6rem; grid-template-columns: 1fr; }
+		.process { margin-bottom: 6rem; grid-template-columns: minmax(0,1fr); }
 		.process div { border-right: 0; border-bottom: 1px solid #1112; }
 		.process div:nth-child(2) { border-bottom: 1px solid #1112; }
 		.process div:last-child { border-bottom: 0; }
-		.showcase-head { grid-template-columns: 1fr; gap: 1.4rem; margin-bottom: 3rem; }
+		.showcase-head { grid-template-columns: minmax(0,1fr); gap: 1.4rem; margin-bottom: 3rem; }
 		.showcase-head > div { grid-column: auto; }
-		.meaning-grid { width: 100%; grid-template-columns: 1fr; }
+		.meaning-grid { width: 100%; grid-template-columns: minmax(0,1fr); }
 		.meaning-grid figure:last-child { transform: none; }
 		.story-section { padding: 7rem 0; }
-		.story-grid { grid-template-columns: 1fr; }
+		.story-grid { grid-template-columns: minmax(0,1fr); }
 		.story-grid figure:nth-child(even) { margin-top: 0; }
-		.science-grid { grid-template-columns: 1fr; }
+		.science-grid { grid-template-columns: minmax(0,1fr); }
 		.science-grid figure:nth-child(2) { transform: none; }
 		.statement { padding: 7rem 0 3rem; }
 		.gallery-status,.gallery-reset { font-size: .72rem; line-height: 1.45; }
 	}
 
 	@media (max-width: 440px) {
-		.back { font-size: .65rem; }
 		.back span { width: 2rem; height: 2rem; }
-		.page-count { font-size: .52rem; }
 	}
 
 	@media (prefers-reduced-motion: reduce) {

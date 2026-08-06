@@ -8,7 +8,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 <div class="site-header">
 	<nav class="site-header-inner" aria-label="Контакты InDesign Studio">
 		<a class="site-brand" href="/" aria-label="InDesign Studio — на главную">
-			<img src={logoUrl} alt="InDesign Studio" />
+			<img src={logoUrl} alt="InDesign Studio" width="125" height="28" />
 		</a>
 
 		<div class="site-nav-links">
@@ -155,7 +155,8 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 		backdrop-filter: blur(16px);
 	}
 
-	.site-header-inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+	.site-header-inner { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; }
+	.site-header-inner > * { min-width: 0; }
 	.site-brand { display: block; width: clamp(7.8rem,10vw,10rem); line-height: 0; }
 	.site-brand img { display: block; width: 100%; height: auto; }
 	.site-nav-links { display: flex; align-items: center; gap: clamp(1.25rem,3vw,3.2rem); }
@@ -174,7 +175,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 
 	@media (max-width: 900px) {
 		.site-header { min-height: 4.75rem; padding: .75rem 1rem; }
-		.site-header-inner { position: relative; grid-template-columns: auto 1fr; gap: .75rem; }
+		.site-header-inner { position: relative; grid-template-columns: auto minmax(0,1fr); gap: .75rem; }
 		.site-brand { width: 5rem; }
 		.site-nav-links,.site-status { display: none; }
 		.mobile-nav { min-width: 0; display: flex; justify-content: flex-end; gap: .45rem; }
@@ -243,7 +244,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 		.site-brand { width: 4.5rem; }
 		.mobile-nav { gap: .35rem; }
 		.mobile-nav a,.mobile-nav button { padding-inline: .7rem; font-size: .75rem; }
-		.mobile-contact-panel a,.mobile-contact-panel button { grid-template-columns:1fr 1.3rem; gap:.35rem .75rem; }
+		.mobile-contact-panel a,.mobile-contact-panel button { grid-template-columns:minmax(0,1fr) 1.3rem; gap:.35rem .75rem; }
 		.mobile-contact-panel span { grid-column:1; }
 		.mobile-contact-panel strong { grid-column:1; }
 		.mobile-contact-panel i,.mobile-contact-panel .copy-icon { grid-column:2; grid-row:1 / span 2; }

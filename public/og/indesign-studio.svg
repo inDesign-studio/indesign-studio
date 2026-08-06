@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+	<rect width="1200" height="630" fill="#fff"/>
+	<circle cx="72" cy="68" r="8" fill="#c92427"/>
+	<text x="96" y="83" font-family="Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="-3">
+		<tspan fill="#c92427">In</tspan><tspan fill="#0b0b0b">Design</tspan>
+	</text>
+	<text x="72" y="148" fill="#677080" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">STUDIO · ASTANA</text>
+	<text x="72" y="272" fill="#0b0b0b" font-family="Arial, sans-serif" font-size="82" font-weight="700" letter-spacing="-4">Верстаем точно.</text>
+	<text x="72" y="362" fill="#0b0b0b" font-family="Arial, sans-serif" font-size="82" font-weight="700" letter-spacing="-4">Показываем</text>
+	<text x="72" y="452" fill="#c92427" font-family="Arial, sans-serif" font-size="82" font-weight="700" letter-spacing="-4">наглядно.</text>
+	<text x="76" y="540" fill="#5e6570" font-family="Arial, sans-serif" font-size="25">Вёрстка · Инфографика · Презентации</text>
+</svg>

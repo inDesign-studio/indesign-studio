@@ -52,6 +52,7 @@ import CaseLightbox from './CaseLightbox.astro';
 		border-top: 1px solid rgba(17,17,17,.12);
 		color: #111;
 	}
+	.project-footer > *,.footer-contacts > *,.footer-copy > * { min-width: 0; }
 
 	.footer-contacts {
 		display: grid;
@@ -91,8 +92,8 @@ import CaseLightbox from './CaseLightbox.astro';
 		align-items: center;
 		gap: .18em;
 		font-size: var(--text-display-subsection);
-		line-height: .95;
-		letter-spacing: -.055em;
+		line-height: var(--leading-display-subsection);
+		letter-spacing: var(--tracking-display-subsection);
 		text-align: right;
 	}
 

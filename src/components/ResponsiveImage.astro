@@ -1,0 +1,44 @@
+---
+import { getImage, Image } from 'astro:assets';
+import { getPortfolioImage } from '../lib/portfolio-images';
+
+interface Props {
+	src: string;
+	alt: string;
+	sizes?: string;
+	widths?: number[];
+	loading?: 'eager' | 'lazy';
+	decoding?: 'async' | 'auto' | 'sync';
+	fetchpriority?: 'high' | 'low' | 'auto';
+	class?: string;
+	style?: string;
+}
+
+const {
+	src,
+	alt,
+	sizes = '(max-width: 700px) 100vw, 50vw',
+	widths,
+	loading = 'lazy',
+	decoding = 'async',
+	...attributes
+} = Astro.props;
+
+const image = getPortfolioImage(src);
+const responsiveWidths = widths ?? [...new Set([
+	...([320, 640, 1440].filter((width) => width < image.width)),
+	Math.min(image.width, 1440),
+])];
+const fullImage = await getImage({ src: image, width: Math.min(image.width, 1440), format: 'webp' });
+---
+
+<Image
+	src={image}
+	alt={alt}
+	widths={responsiveWidths}
+	sizes={sizes}
+	loading={loading}
+	decoding={decoding}
+	data-full-src={fullImage.src}
+	{...attributes}
+/>

@@ -7,12 +7,16 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "check:case-modules": "node scripts/check-case-modules.mjs",
-    "preview": "astro preview",
+		"build": "astro build",
+		"check:case-modules": "node scripts/check-case-modules.mjs",
+		"test:responsive": "npm run build && node scripts/check-responsive.mjs",
+		"preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^7.0.9"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.62.1"
   }
 }

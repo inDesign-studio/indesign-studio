@@ -1,3 +1,11 @@
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/inter-variable.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+}
+
 :root {
 	--color-accent: #c92427;
 	--radius-shell: 1.5rem;
@@ -10,11 +18,40 @@
 	--cta-hover-lift: -3px;
 	--cta-active-lift: -1px;
 	--cta-hover-shadow: 0 1rem 2.25rem rgba(0,0,0,.18);
+	/* Именованные типографические стили — аналог Paragraph/Text Styles. */
 	--text-display-xl: clamp(3rem, 4vw, 4rem);
 	--text-display-lg: clamp(2.75rem, 3vw, 3.35rem);
 	--text-display-md: clamp(2.5rem, 2.3vw, 3rem);
 	--text-display-section: clamp(2.4rem, 2.6vw, 3.25rem);
 	--text-display-subsection: clamp(2rem, 1.8vw, 2.4rem);
+	--leading-display-xl: .72;
+	--leading-display-lg: .76;
+	--leading-display-md: .79;
+	--leading-display-section: .9;
+	--leading-display-subsection: .9;
+	--tracking-display-xl: -.08em;
+	--tracking-display-lg: -.075em;
+	--tracking-display-md: -.08em;
+	--tracking-display-section: -.06em;
+	--tracking-display-subsection: -.055em;
+	--text-lead: clamp(1rem, 1.25vw, 1.22rem);
+	--leading-lead: 1.65;
+	--text-body-lg: clamp(1rem, 1.15vw, 1.16rem);
+	--leading-body-lg: 1.72;
+	--text-body: clamp(.9rem, 1vw, 1rem);
+	--leading-body: 1.6;
+	--text-body-sm: .84rem;
+	--leading-body-sm: 1.5;
+	--text-card-title: clamp(1.25rem, 1.8vw, 1.8rem);
+	--text-label: .64rem;
+	--leading-label: 1.4;
+	--tracking-label: .13em;
+	--text-caption: .62rem;
+	--leading-caption: 1.45;
+	--tracking-caption: .08em;
+	--text-card-meta: .58rem;
+	--text-action: .76rem;
+	--text-navigation: .72rem;
 }
 
 @media (max-width: 700px) {
@@ -24,5 +61,16 @@
 		--text-display-md: clamp(2.65rem, 11.5vw, 3rem);
 		--text-display-section: clamp(2.35rem, 12vw, 3.8rem);
 		--text-display-subsection: clamp(2.35rem, 12vw, 3.8rem);
+		--text-lead: 1rem;
+		--leading-lead: 1.6;
+		--text-body-lg: 1rem;
+		--text-label: .7rem;
+		--leading-label: 1.5;
+		--tracking-label: .1em;
+		--text-caption: .7rem;
+		--leading-caption: 1.5;
+		--text-card-meta: .65rem;
+		--text-action: .78rem;
+		--text-navigation: .65rem;
 	}
 }

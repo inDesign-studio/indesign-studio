@@ -30,12 +30,11 @@ const { items } = Astro.props;
 	}
 
 	.case-results strong { max-width: 100%; color: var(--color-accent); font-size: clamp(2rem,3vw,3rem); line-height: 1; letter-spacing: -.055em; overflow-wrap: anywhere; }
-	.case-results span { max-width: 11rem; color: #666; font-size: .68rem; font-weight: 800; letter-spacing: .08em; line-height: 1.45; text-transform: uppercase; }
+	.case-results span { max-width: 11rem; color: #666; font-size: var(--text-caption); font-weight: 800; letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); text-transform: uppercase; }
 
 	@media (max-width: 620px) {
-		.case-results { grid-template-columns: 1fr; }
+		.case-results { grid-template-columns: minmax(0,1fr); }
 		.case-results div { min-height: 9rem; }
 		.case-results strong { font-size: clamp(2.8rem,5vw,5rem); }
-		.case-results span { font-size: .72rem; }
 	}
 </style>

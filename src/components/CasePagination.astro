@@ -46,7 +46,7 @@ const { previous, next } = Astro.props;
 		transition: color .2s ease,background .2s ease;
 	}
 	.case-pagination-link + .case-pagination-link { border-left: 1px solid rgba(17,17,17,.14); }
-	.case-pagination-link span { color: #777; font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+	.case-pagination-link span { color: #777; font-size: var(--text-caption); font-weight: 800; line-height: var(--leading-caption); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
 	.case-pagination-link strong { overflow-wrap: anywhere; font-size: clamp(1.8rem,3.3vw,3.5rem); line-height: .9; letter-spacing: -.055em; }
 	.case-pagination-link.next { align-items: flex-end; text-align: right; }
 	.case-pagination-link:hover { color: #fff; background: #111; }
@@ -55,7 +55,7 @@ const { previous, next } = Astro.props;
 	:global(.case-pagination + .project-footer) { margin-top: clamp(3rem,5vw,5rem); }
 
 	@media (max-width: 620px) {
-		.case-pagination { margin-top: 4rem; grid-template-columns: 1fr; }
+		.case-pagination { margin-top: 4rem; grid-template-columns: minmax(0,1fr); }
 		.case-pagination-link { min-height: 7rem; padding: 1.25rem; }
 		.case-pagination-link + .case-pagination-link { border-left: 0; border-top: 1px solid rgba(17,17,17,.14); }
 		.case-pagination-link strong { font-size: 2rem; }

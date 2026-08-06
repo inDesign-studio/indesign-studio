@@ -1,9 +1,11 @@
 ---
+import ResponsiveImage from './ResponsiveImage.astro';
+
 interface GalleryImage {
 	src: string;
 	alt: string;
-	width: number;
-	height: number;
+	width?: number;
+	height?: number;
 }
 
 interface GalleryItem {
@@ -26,6 +28,11 @@ interface Props {
 
 const { id = 'case-gallery', label, title, description, items, variant, lightboxId } = Astro.props;
 const titleId = `${id}-title`;
+const imageSizes = variant === 'spread'
+	? '(max-width: 620px) 25vw, (max-width: 900px) 25vw, 17vw'
+	: variant === 'numbered'
+		? '(max-width: 620px) 50vw, (max-width: 900px) 33vw, 25vw'
+		: '(max-width: 620px) 50vw, (max-width: 900px) 33vw, 20vw';
 ---
 
 <section id={id} class:list={['case-gallery', `case-gallery-${variant}`]} data-case-section aria-labelledby={titleId}>
@@ -52,12 +59,11 @@ const titleId = `${id}-title`;
 					class="case-gallery-trigger"
 					type="button"
 					data-lightbox-target={lightboxId}
-					data-src={images[0]?.src}
 					data-caption={number ? `${caption} · ${number}` : caption}
 					aria-label={`Увеличить: ${caption}`}
 				>
-					{images.map(({ src, alt, width, height }) => (
-						<img src={src} alt={alt} loading="lazy" decoding="async" width={width} height={height} />
+					{images.map(({ src, alt }) => (
+						<ResponsiveImage src={src} alt={alt} sizes={imageSizes} loading="lazy" />
 					))}
 				</button>
 				<figcaption>
@@ -74,9 +80,10 @@ const titleId = `${id}-title`;
 <style>
 	.case-gallery { width: 100%; max-width: 88rem; margin: 0 auto; padding-bottom: clamp(3rem,5vw,5rem); }
 	.case-gallery-head { margin-bottom: clamp(3rem,6vw,6rem); display: grid; grid-template-columns: minmax(8rem,.28fr) minmax(0,1fr); gap: clamp(2rem,7vw,9rem); }
-	.case-gallery-label { margin: 0; color: var(--color-accent); font-size: .64rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
-	.case-gallery h2 { margin: 0; font-size: var(--text-display-section); line-height: .9; letter-spacing: -.06em; }
-	.case-gallery-description { max-width: 48rem; margin: 1.5rem 0 0; color: #666; font-size: 1rem; line-height: 1.7; }
+	.case-gallery-head > * { min-width: 0; }
+	.case-gallery-label { margin: 0; color: var(--color-accent); font-size: var(--text-label); font-weight: 800; line-height: var(--leading-label); letter-spacing: var(--tracking-label); text-transform: uppercase; }
+	.case-gallery h2 { margin: 0; font-size: var(--text-display-section); line-height: var(--leading-display-section); letter-spacing: var(--tracking-display-section); }
+	.case-gallery-description { max-width: 48rem; margin: 1.5rem 0 0; color: #666; font-size: var(--text-body-lg); line-height: var(--leading-body-lg); }
 	.case-gallery-grid { min-width: 0; }
 	.case-gallery-item { min-width: 0; margin: 0; break-inside: avoid; }
 	.case-gallery-item[hidden] { display: none; }
@@ -84,7 +91,7 @@ const titleId = `${id}-title`;
 	.case-gallery-trigger:hover { transform: translateY(-.25rem); box-shadow: 0 1.2rem 2.5rem rgba(0,0,0,.12); }
 	.case-gallery-trigger:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
 	.case-gallery-trigger img { display: block; width: 100%; height: auto; }
-	.case-gallery-item figcaption { margin-top: .7rem; color: #666; font-size: .58rem; font-weight: 750; letter-spacing: .08em; line-height: 1.45; text-transform: uppercase; }
+	.case-gallery-item figcaption { margin-top: .7rem; color: #666; font-size: var(--text-caption); font-weight: 750; letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); text-transform: uppercase; }
 	.case-gallery-item figcaption span { min-width: 0; overflow-wrap: anywhere; }
 
 	.case-gallery-spread .case-gallery-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(1.25rem,2vw,2rem); }
@@ -109,16 +116,15 @@ const titleId = `${id}-title`;
 	}
 
 	@media (max-width: 620px) {
-		.case-gallery-head { grid-template-columns: 1fr; gap: 1.4rem; margin-bottom: 2.5rem; }
-		.case-gallery h2 { font-size: clamp(2.35rem,12vw,3.8rem); overflow-wrap: anywhere; }
-		.case-gallery-description { font-size: 1rem; overflow-wrap: anywhere; }
+		.case-gallery-head { grid-template-columns: minmax(0,1fr); gap: 1.4rem; margin-bottom: 2.5rem; }
+		.case-gallery h2 { overflow-wrap: anywhere; }
+		.case-gallery-description { overflow-wrap: anywhere; }
 		.case-gallery-spread .case-gallery-grid { gap: .65rem; }
 		.case-gallery-spread .case-gallery-trigger { padding: .25rem; }
 		.case-gallery-pages .case-gallery-grid,
 		.case-gallery-numbered .case-gallery-grid { columns: 2; column-gap: .55rem; }
 		.case-gallery-pages .case-gallery-item,
 		.case-gallery-numbered .case-gallery-item { margin-bottom: .9rem; }
-		.case-gallery-item figcaption { font-size: .68rem; line-height: 1.5; }
 	}
 
 	@media (prefers-reduced-motion: reduce) {
