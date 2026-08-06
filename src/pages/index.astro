@@ -43,7 +43,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 						<dl class="proof-facts">
 							<div><dt>10+</dt><dd>лет работы</dd></div>
 							<div><dt>100+</dt><dd>выпусков и изданий</dd></div>
-							<div><dt>Своё</dt><dd>печатное производство</dd></div>
+							<div class="proof-production"><dt>Печатное производство</dt></div>
 						</dl>
 						<p>Государственные органы, международные организации, исследовательские центры и бизнес. Образование, сельское хозяйство, социальные и научные проекты.</p>
 					</section>
@@ -283,6 +283,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 	.proof-facts div:last-child { padding-right: 0; border-right: 0; }
 	.proof-facts dt { color: var(--color-accent); font-size: clamp(1.45rem, 2.1vw, 2rem); font-weight: 780; line-height: .9; letter-spacing: -.055em; }
 	.proof-facts dd { margin: .5rem 0 0; color: #696d76; font-size: .56rem; font-weight: 750; letter-spacing: .08em; line-height: 1.35; text-transform: uppercase; }
+	.proof-facts .proof-production dt { font-size: clamp(.9rem, 1.35vw, 1.25rem); line-height: 1; letter-spacing: -.04em; }
 	.proof > p { margin: .75rem 0 0; color: #696d76; font-size: .68rem; line-height: 1.5; }
 
 	.footnote {
