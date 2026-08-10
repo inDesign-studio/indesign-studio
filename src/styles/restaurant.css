@@ -490,6 +490,7 @@ p { text-wrap: pretty; }
 
 @media (max-width: 520px) {
   .portfolio-grid, .process-grid { grid-template-columns: 1fr; }
+  .process-step { min-height: 0; }
   .footer-grid { grid-template-columns: 1fr; }
   .hero-bottom { gap: 14px; }
 }
