@@ -469,6 +469,7 @@ p { text-wrap: pretty; }
   .clients-section > .shell { margin-bottom: 24px; }
   .client-wall { gap: 16px; }
   .client-set { gap: clamp(28px, 8vw, 36px); padding-right: clamp(28px, 8vw, 36px); }
+  .client-marquee--reverse .client-set { gap: clamp(56px, 16vw, 68px); padding-right: clamp(56px, 16vw, 68px); }
   .client-logo { flex-basis: clamp(104px, 30vw, 120px); min-height: 82px; }
   .client-logo img { width: calc(100% - 16px); height: 64px; }
   .service-card { grid-template-columns: 58px minmax(0, 1fr); gap: 16px; min-height: 0; padding: 26px 0; }
