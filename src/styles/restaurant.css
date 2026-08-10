@@ -256,8 +256,8 @@ p { text-wrap: pretty; }
   will-change: transform;
 }
 .client-marquee--reverse .client-track { animation-name: client-scroll-right; }
-.client-set { display: flex; flex: none; gap: clamp(24px, 2.5vw, 48px); padding-right: clamp(24px, 2.5vw, 48px); }
-.client-logo { display: grid; place-items: center; flex: 0 0 clamp(124px, 11vw, 190px); min-height: clamp(96px, 8vw, 132px); }
+.client-set { display: grid; grid-template-columns: repeat(11, clamp(124px, 11vw, 190px)); flex: none; gap: clamp(24px, 2.5vw, 48px); padding-right: clamp(24px, 2.5vw, 48px); }
+.client-logo { display: grid; place-items: center; width: 100%; min-height: clamp(96px, 8vw, 132px); }
 .client-logo img { width: 100%; height: clamp(74px, 6.5vw, 108px); object-fit: contain; }
 
 @keyframes client-scroll-left {
@@ -468,9 +468,8 @@ p { text-wrap: pretty; }
   .clients-section { padding-top: 0; }
   .clients-section > .shell { margin-bottom: 24px; }
   .client-wall { gap: 16px; }
-  .client-set { gap: clamp(28px, 8vw, 36px); padding-right: clamp(28px, 8vw, 36px); }
-  .client-marquee--reverse .client-set { gap: clamp(56px, 16vw, 68px); padding-right: clamp(56px, 16vw, 68px); }
-  .client-logo { flex-basis: clamp(104px, 30vw, 120px); min-height: 82px; }
+  .client-set { grid-template-columns: repeat(11, clamp(104px, 30vw, 120px)); gap: clamp(28px, 8vw, 36px); padding-right: clamp(28px, 8vw, 36px); }
+  .client-logo { min-height: 82px; }
   .client-logo img { width: calc(100% - 16px); height: 64px; }
   .service-card { grid-template-columns: 58px minmax(0, 1fr); gap: 16px; min-height: 0; padding: 26px 0; }
   .service-number { font-size: 1.6rem; }
