@@ -467,10 +467,10 @@ p { text-wrap: pretty; }
   .intro-grid h2 { font-size: 2rem; }
   .clients-section { padding-top: 0; }
   .clients-section > .shell { margin-bottom: 24px; }
-  .client-wall { gap: 12px; }
-  .client-set { gap: 18px; padding-right: 18px; }
-  .client-logo { flex-basis: clamp(112px, 32vw, 132px); min-height: 88px; }
-  .client-logo img { height: 72px; }
+  .client-wall { gap: 16px; }
+  .client-set { gap: clamp(28px, 8vw, 36px); padding-right: clamp(28px, 8vw, 36px); }
+  .client-logo { flex-basis: clamp(104px, 30vw, 120px); min-height: 82px; }
+  .client-logo img { width: calc(100% - 16px); height: 64px; }
   .service-card { grid-template-columns: 58px minmax(0, 1fr); gap: 16px; min-height: 0; padding: 26px 0; }
   .service-number { font-size: 1.6rem; }
   .service-card h3 { font-size: 1.65rem; }
