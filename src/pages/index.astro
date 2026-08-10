@@ -117,9 +117,9 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 			<section class="solutions-section" aria-labelledby="solutions-title">
 				<h2 class="section-kicker section-kicker-light" id="solutions-title"><span aria-hidden="true"></span>Какие проблемы мы решаем</h2>
 				<div class="solutions-list">
-					<article class="solution-row"><div><small>01</small><strong>Перегруженный материал</strong></div><p>Организуем большой объём информации, выстраиваем навигацию и расставляем акценты.</p></article>
-					<article class="solution-row"><div><small>02</small><strong>Разрозненный дизайн и ошибки</strong></div><p>Задаём общие правила для страниц, графиков и иллюстраций, проверяем сетку, стили, изображения и технические параметры.</p></article>
-					<article class="solution-row"><div><small>03</small><strong>Сжатые сроки и поток правок</strong></div><p>Планируем этапы, собираем комментарии по темам и аккуратно ведём версии макетов.</p></article>
+					<article class="solution-row"><div><small>01</small><strong>Перегруженный<span class="mobile-title-break"><br /></span> материал</strong></div><p>Организуем большой объём информации, выстраиваем навигацию и расставляем акценты.</p></article>
+					<article class="solution-row"><div><small>02</small><strong>Разрозненный дизайн<span class="mobile-title-break"><br /></span> и ошибки</strong></div><p>Задаём общие правила для страниц, графиков и иллюстраций, проверяем сетку, стили, изображения и технические параметры.</p></article>
+					<article class="solution-row"><div><small>03</small><strong>Сжатые сроки<span class="mobile-title-break"><br /></span> и поток правок</strong></div><p>Планируем этапы, собираем комментарии по темам и аккуратно ведём версии макетов.</p></article>
 				</div>
 			</section>
 
@@ -140,9 +140,9 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 				<h2 class="section-kicker section-kicker-light" id="process-title"><span aria-hidden="true"></span>От идеи до готового тиража — всего 4 шага</h2>
 				<div class="process-grid">
 					<article class="process-card"><span>1.</span><strong>Бриф<br />и погружение</strong><p>Знакомимся, изучаем задачу, материалы, аудиторию и пожелания.</p></article>
-					<article class="process-card"><span>2.</span><strong>Разработка концепции</strong><p>Предлагаем направление оформления, сетку и принципы работы с текстом и графикой.</p></article>
-					<article class="process-card"><span>3.</span><strong>Вёрстка и согласование</strong><p>Собираем макет, создаём инфографику и последовательно вносим правки.</p></article>
-					<article class="process-card"><span>4.</span><strong>Печать и реализация</strong><p>Готовим файлы и печатаем готовый тираж на собственном производстве.</p></article>
+					<article class="process-card"><span>2.</span><strong>Разработка<span class="mobile-title-break"><br /></span> концепции</strong><p>Предлагаем направление оформления, сетку и принципы работы с текстом и графикой.</p></article>
+					<article class="process-card"><span>3.</span><strong>Вёрстка<span class="mobile-title-break"><br /></span> и согласование</strong><p>Собираем макет, создаём инфографику и последовательно вносим правки.</p></article>
+					<article class="process-card"><span>4.</span><strong>Печать<span class="mobile-title-break"><br /></span> и реализация</strong><p>Готовим файлы и печатаем готовый тираж на собственном производстве.</p></article>
 				</div>
 			</section>
 
@@ -400,6 +400,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 	.process-card > span { color: var(--color-accent); font-size: clamp(2.3rem, 3.5vw, 3.6rem); font-weight: 780; line-height: .8; letter-spacing: -.07em; }
 	.process-card strong { margin-top: clamp(2rem, 4vw, 4rem); font-size: clamp(1.15rem, 1.5vw, 1.5rem); line-height: 1.05; letter-spacing: -.04em; }
 	.process-card p { margin: .85rem 0 0; color: #aaa; font-size: var(--text-body-sm); line-height: var(--leading-body-sm); }
+	.mobile-title-break { display: none; }
 
 	.portfolio-mini-section { margin-top: clamp(3rem, 5vw, 4.5rem); }
 	.portfolio-mini-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.8rem, 1.5vw, 1.25rem); }
@@ -458,7 +459,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 		.benefits-section { margin-top: 6rem; }
 		.benefits-grid { grid-template-columns: minmax(0,1fr); gap: 1rem; }
 		.benefit-card { min-height: 13rem; padding: 1.35rem; }
-		.solutions-section { margin-inline: 0; padding: 1rem; }
+		.solutions-section { margin-inline: 0; padding: 1.75rem 1rem 1rem; }
 		.solutions-list { margin-top: 2rem; }
 		.solution-row { grid-template-columns: minmax(0,1fr); gap: .9rem; }
 		.solution-row > div { grid-template-columns: 1.75rem minmax(0,1fr); gap: .65rem; }
@@ -466,12 +467,13 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 		.solutions-section, .production-section, .process-section, .portfolio-mini-section { margin-top: 3rem; }
 		.production-section { padding-block: 3rem; gap: 3rem; }
 		.production-copy > strong { font-size: clamp(2.7rem, 13vw, 4rem); }
-		.process-section { margin-inline: 0; padding: 1rem; }
+		.process-section { margin-inline: 0; padding: 1.75rem 1rem 1rem; }
 		.process-grid { grid-template-columns: minmax(0,1fr); }
 		.process-card,
 		.process-card:nth-child(2) { min-height: 12rem; padding: 1.35rem; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.22); }
 		.process-card:last-child { border-bottom: 0; }
 		.process-card strong { margin-top: 2rem; }
+		.mobile-title-break { display: inline; }
 		.portfolio-mini-grid { grid-template-columns: minmax(0,1fr); }
 		.portfolio-mini-card { min-height: 10rem; padding: 1.35rem; }
 		.portfolio-mini-card small { top: 1.35rem; left: 1.35rem; }

@@ -51,13 +51,9 @@ const whatsappUrl = `https://api.whatsapp.com/send/?phone=77084251518&text=${enc
 				Контакты <span aria-hidden="true">+</span>
 			</button>
 		</div>
+		<a class="mobile-section-switch" href={switchHref}>{switchLabel} <span aria-hidden="true">↗&#xfe0e;</span></a>
 
 		<div class="mobile-contact-panel" id="mobile-contact-panel" hidden>
-			<a class="mobile-site-switch" href={switchHref}>
-				<span>Другой раздел</span>
-				<strong>{switchLabel}</strong>
-				<i aria-hidden="true">↗&#xfe0e;</i>
-			</a>
 			<button type="button" data-copy-value="info@indstudio.kz" data-copy-message="Почта скопирована" aria-label="Скопировать почту info@indstudio.kz">
 				<span>Скопировать почту</span>
 				<strong>info@indstudio.kz</strong>
@@ -193,8 +189,8 @@ const whatsappUrl = `https://api.whatsapp.com/send/?phone=77084251518&text=${enc
 	.site-switch:hover { color: #fff; background: #111; border-color: #111; }
 	.site-status { display: flex; align-items: center; gap: .55rem; white-space: nowrap; }
 	.site-status > span { width: .45rem; height: .45rem; flex: 0 0 auto; background: var(--color-accent); border-radius: 50%; box-shadow: 0 0 0 .3rem rgba(201,36,39,.12); }
-	.mobile-nav,.mobile-contact-panel { display: none; }
-	.site-brand:focus-visible,.site-nav-links a:focus-visible,.site-nav-links button:focus-visible,.site-status:focus-visible,.site-switch:focus-visible,.mobile-nav a:focus-visible,.mobile-nav button:focus-visible,.mobile-contact-panel a:focus-visible,.mobile-contact-panel button:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
+	.mobile-nav,.mobile-section-switch,.mobile-contact-panel { display: none; }
+	.site-brand:focus-visible,.site-nav-links a:focus-visible,.site-nav-links button:focus-visible,.site-status:focus-visible,.site-switch:focus-visible,.mobile-nav a:focus-visible,.mobile-nav button:focus-visible,.mobile-section-switch:focus-visible,.mobile-contact-panel a:focus-visible,.mobile-contact-panel button:focus-visible { outline: var(--focus-ring-width) solid var(--focus-ring-color); outline-offset: var(--focus-ring-offset); }
 	.copy-toast { position:fixed; top:7rem; right:clamp(1rem,4vw,4.5rem); z-index:300; padding:.85rem 1rem; color:#fff; background:#111; border-radius:var(--radius-thumb); box-shadow:0 .8rem 2rem rgba(0,0,0,.2); font-size:.82rem; font-weight:750; }
 	.copy-toast[hidden] { display:none; }
 
@@ -223,6 +219,23 @@ const whatsappUrl = `https://api.whatsapp.com/send/?phone=77084251518&text=${enc
 			cursor: pointer;
 		}
 		.mobile-nav .mobile-whatsapp { color: #fff; background: #111; border-color: #111; }
+		.mobile-section-switch {
+			grid-column: 1 / -1;
+			min-height: 2.75rem;
+			padding: .72rem 1rem;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: .5rem;
+			color: #fff;
+			background: var(--color-accent);
+			border-radius: var(--radius-pill);
+			font-size: .78rem;
+			font-weight: 750;
+			line-height: 1;
+			text-decoration: none;
+		}
+		.mobile-section-switch span { font-variant-emoji: text; }
 		.mobile-contacts-toggle { gap: .5rem; }
 		.mobile-contacts-toggle span { color: var(--color-accent); font-size: 1.05rem; font-weight: 500; line-height: .7; }
 		.mobile-contact-panel {
