@@ -1,0 +1,36 @@
+---
+import SeoHead from '../components/SeoHead.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import RestaurantFooter from '../components/restaurant/RestaurantFooter.astro';
+import '../styles/restaurant.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Дизайн и печать меню для ресторанов — InDesign Studio',
+  description = 'Разрабатываем дизайн меню, проводим фудсъёмку и печатаем тиражи для ресторанов и кафе в Астане.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <SeoHead title={title} description={description} imageAlt="Дизайн и печать меню для ресторанов — InDesign Studio" />
+  </head>
+  <body class="restaurant-site" id="top">
+    <a class="skip-link" href="#content">К содержанию</a>
+    <SiteHeader
+      brandHref="#top"
+      switchHref="/"
+      switchLabel="Портфолио вёрстки"
+      whatsappMessage="Здравствуйте! Хочу обсудить дизайн и печать меню."
+    />
+    <main id="content">
+      <slot />
+    </main>
+    <RestaurantFooter />
+  </body>
+</html>

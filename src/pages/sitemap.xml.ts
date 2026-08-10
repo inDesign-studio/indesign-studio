@@ -8,6 +8,7 @@ const routes = [
 	'/projects/publications/iofs',
 	'/projects/publications/kipd',
 	'/projects/publications/unesco',
+	'/restaurant-menu',
 ];
 
 const escapeXml = (value: string) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');

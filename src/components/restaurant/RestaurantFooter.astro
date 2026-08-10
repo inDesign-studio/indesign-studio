@@ -1,0 +1,40 @@
+---
+import logoUrl from '../../../indesign logo.svg?url';
+
+const whatsappUrl = `https://api.whatsapp.com/send/?phone=77084251518&text=${encodeURIComponent('Здравствуйте! Хочу обсудить дизайн и печать меню.')}&type=phone_number&app_absent=0`;
+---
+
+<footer class="site-footer">
+  <div class="shell">
+    <section class="footer-cta" aria-labelledby="footer-title">
+      <h2 id="footer-title">Готовы создать меню, которое захотят забрать с собой?</h2>
+      <a class="button button--accent" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+        Связаться с нами <span aria-hidden="true">↗&#xfe0e;</span>
+      </a>
+    </section>
+    <div class="footer-grid">
+      <a class="footer-logo" href="/restaurant-menu" aria-label="InDesign Studio — меню для ресторанов">
+        <img src={logoUrl} width="126" height="28" alt="InDesign Studio" />
+      </a>
+      <div>
+        <p class="footer-label">Связаться</p>
+        <a href="tel:+77084251518">+7 (708) 425 15 18</a>
+        <a href="mailto:info@indstudio.kz">info@indstudio.kz</a>
+      </div>
+      <div>
+        <p class="footer-label">Сайт</p>
+        <a href="https://indstudio.kz">indstudio.kz</a>
+      </div>
+      <div>
+        <p class="footer-label">Соцсети</p>
+        <a href="https://www.instagram.com/indesign_studio" target="_blank" rel="noreferrer">Instagram ↗&#xfe0e;</a>
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="/">Портфолио вёрстки</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {new Date().getFullYear()} InDesign Studio</span>
+      <span>Дизайн и печать меню</span>
+    </div>
+  </div>
+</footer>

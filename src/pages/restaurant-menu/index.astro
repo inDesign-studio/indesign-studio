@@ -1,0 +1,267 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import RestaurantLayout from '../../layouts/RestaurantLayout.astro';
+import MenuIcon from '../../components/restaurant/MenuIcon.astro';
+import hero from '../../assets/restaurant/hero.webp';
+
+const portfolioUrl = 'https://drive.google.com/file/d/14-2jOqxKnwy_iGYvtddUE4xd6m-Mx_8p/view';
+
+const portfolioModules = import.meta.glob<{ default: ImageMetadata }>('../../assets/restaurant/portfolio/*.webp', { eager: true });
+const portfolioImages = Object.entries(portfolioModules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, module]) => module.default);
+
+const clientModules = import.meta.glob<{ default: ImageMetadata }>('../../assets/restaurant/clients/*.webp', { eager: true });
+const clientImages = Object.entries(clientModules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, module]) => module.default);
+const clientRows = Array.from({ length: 3 }, (_, index) => clientImages.slice(index * 11, (index + 1) * 11));
+
+const portfolioNames = [
+  'Bloom Room', 'Yummy Maki', 'Zeytuni', 'Turfan', 'MOLA', 'Bloom Room',
+  'MOLA', 'Morris', 'Morris', 'Arzu', 'Pizza la Roma', 'Turfan',
+  'Yummy Maki', 'Креветка', 'Discovery', 'Zeytuni', 'Discovery', 'Креветка',
+  'Arzu', 'Шашлык', 'Pizza la Roma', 'Jasmin', 'Шашлык', 'Jasmin',
+];
+
+const services = [
+  ['01.', 'Фудсъёмка', 'Аппетитные кадры блюд и напитков'],
+  ['02.', 'Дизайн основного меню', 'Еда и напитки в единой системе стиля'],
+  ['03.', 'Дизайн барной и винной карты', 'Подсветим маржинальные позиции красиво'],
+  ['04.', 'Сезонные и спецменю', 'Вкладыши, листовки, промо развороты'],
+  ['05.', 'QR-коды для меню', 'Статические и динамические QR-коды для столов, доставки и промо'],
+];
+
+const production = [
+  ['materials', 'Материалы', 'Мелованная, крафт, дизайнерские фактуры, картон'],
+  ['covers', 'Обложки', 'Твёрдая, мягкая, ламинация, soft touch'],
+  ['forms', 'Формы', 'Классика, гармошка, на пружине, ринг биндер'],
+  ['finishing', 'Дополнительная обработка', 'Тиснение, конгрев, выборочный лак, вырубка'],
+  ['accessories', 'Дизайн аксессуаров', 'Тейблтенты, таблички, наклейки, гравировка по дереву и пластику'],
+] as const;
+
+const benefits = [
+  ['Группа сильных дизайнеров', 'Каждый проект ведёт команда специалистов: арт-директор, дизайнер, верстальщик'],
+  ['Понимание ресторанного бизнеса', 'Мы знаем, как с помощью дизайна выделить прибыльные позиции'],
+  ['Полный цикл', 'От идеи до печати под ключ. Вы экономите время'],
+];
+
+const pains = [
+  ['cost', 'Страх стоимости', 'Быстрый расчёт, программа лояльности'],
+  ['ineffective', 'Неэффективность меню', 'Меню-инжиниринг: выделяем прибыльные позиции'],
+  ['errors', 'Технические ошибки', 'Полный цикл дизайна и печати с гарантией качества'],
+  ['quality', 'Качество работ', 'Портфолио и экспертиза в ресторанной сфере'],
+  ['time', 'Потеря времени', 'Чёткий процесс со сроками на каждом этапе'],
+  ['updates', 'Изменения цен и ассортимента', 'Быстрое обновление макетов, папки со сменными вкладками'],
+] as const;
+
+const steps = [
+  ['1.', 'Бриф и погружение', 'Знакомимся, изучаем вашу концепцию, целевую аудиторию и пожелания'],
+  ['2.', 'Разработка концепции', 'Предлагаем 2–3 варианта стилевого решения обложки и разворота'],
+  ['3.', 'Воплощение', 'Согласуем, готовим полный макет и файлы к печати'],
+  ['4.', 'Реализация', 'Печать и послепечатная обработка на собственном производстве'],
+];
+---
+
+<RestaurantLayout>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-card">
+      <Image
+        class="hero-image"
+        src={hero}
+        alt="Разворот меню ресторана с фотографиями блюд"
+        widths={[640, 960, 1400, 1800]}
+        sizes="(max-width: 760px) calc(100vw - 32px), min(1400px, calc(100vw - 48px))"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="hero-content">
+        <p class="hero-kicker">Дизайн + печать под ключ</p>
+        <h1 id="hero-title">Ваше меню&nbsp;—<br />главный бренд-шеф<br />вашего ресторана</h1>
+        <div class="hero-bottom">
+          <nav class="hero-links" aria-label="Разделы страницы">
+            <a href="#services">Услуги</a>
+            <a href="#portfolio">Портфолио</a>
+            <a href="#advantages">Преимущества</a>
+            <a href="#solutions">Решения</a>
+            <a href="#process">Процесс</a>
+          </nav>
+          <a class="button button--accent hero-download" href={portfolioUrl} target="_blank" rel="noreferrer">
+            Скачать портфолио <span aria-hidden="true">↗&#xfe0e;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="about-title">
+    <div class="shell intro-grid">
+      <p class="eyebrow">О нас</p>
+      <div>
+        <h2 id="about-title">Мы помогаем ресторанам и кафе увеличивать продажи через стильное и функциональное меню</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section clients-section" aria-labelledby="clients-title">
+    <div class="shell">
+      <h2 class="eyebrow section-label" id="clients-title">Нам доверяют</h2>
+    </div>
+    <div class="client-wall">
+      {clientRows.map((row, rowIndex) => (
+		<div class:list={['client-marquee', { 'client-marquee--reverse': rowIndex === 1 }]}>
+          <div class="client-track" style={`--client-duration: ${34 + rowIndex * 4}s`}>
+            {[false, true].map((duplicate) => (
+              <div class="client-set" aria-hidden={duplicate ? 'true' : undefined}>
+                {row.map((image, imageIndex) => (
+                  <div class="client-logo">
+                    <Image
+                      src={image}
+                      alt={duplicate ? '' : `Логотип клиента ${rowIndex * 11 + imageIndex + 1}`}
+                      widths={[160, 260, 420]}
+                      sizes="(max-width: 760px) 32vw, 12vw"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section--dark" id="services" aria-labelledby="services-title">
+    <div class="shell">
+      <h2 class="eyebrow eyebrow--light section-label" id="services-title">Услуги</h2>
+      <div class="service-grid">
+        {services.map(([number, title, description]) => (
+          <article class="service-card">
+            <p class="service-number">{number}</p>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="production-section section--dark" aria-labelledby="production-title">
+    <div class="shell">
+      <h2 class="visually-hidden" id="production-title">Печатное производство</h2>
+      <div class="production-list">
+        {production.map(([icon, title, description]) => (
+          <article class="production-item">
+            <MenuIcon name={icon} class="production-icon" />
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+    <div class="shell">
+      <div class="portfolio-head">
+        <div>
+          <h2 class="eyebrow section-label" id="portfolio-title">Портфолио</h2>
+          <p>Нажмите, чтобы увеличить</p>
+        </div>
+        <a class="button button--accent button--small" href={portfolioUrl} target="_blank" rel="noreferrer">
+          Скачать портфолио <span aria-hidden="true">↗&#xfe0e;</span>
+        </a>
+      </div>
+      <div class="portfolio-grid">
+        {portfolioImages.map((image, index) => (
+          <figure class="portfolio-card">
+            <button class="portfolio-open" type="button" data-menu-image aria-label={`Увеличить работу ${portfolioNames[index]}`}>
+              <Image
+                src={image}
+                alt={`Меню ресторана ${portfolioNames[index]}`}
+                widths={[360, 560, 760, 1000]}
+                sizes="(max-width: 520px) calc(100vw - 32px), (max-width: 1100px) 48vw, 32vw"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="portfolio-caption">
+              <span>{portfolioNames[index]}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <dialog class="portfolio-lightbox" data-menu-lightbox aria-label="Увеличенное изображение работы">
+        <button class="portfolio-lightbox-close" type="button" data-menu-lightbox-close aria-label="Закрыть">×</button>
+        <img data-menu-lightbox-image alt="" width="1100" height="900" />
+      </dialog>
+    </div>
+  </section>
+
+  <section class="section" id="advantages" aria-labelledby="advantages-title">
+    <div class="shell">
+      <h2 class="eyebrow section-label" id="advantages-title">Преимущества</h2>
+      <div class="benefit-grid">
+        {benefits.map(([title, description]) => (
+          <article class="benefit-card">
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark" id="solutions" aria-labelledby="pains-title">
+    <div class="shell">
+      <h2 class="eyebrow eyebrow--light section-label" id="pains-title">Мы снимаем ваши боли</h2>
+      <div class="pain-list">
+        {pains.map(([icon, title, description]) => (
+          <article class="pain-row">
+            <MenuIcon name={icon} class="pain-icon" />
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="process" aria-labelledby="process-title">
+    <div class="shell">
+      <h2 class="eyebrow section-label" id="process-title">От идеи до готового меню всего 4 шага</h2>
+      <div class="process-grid">
+        {steps.map(([number, title, description]) => (
+          <article class="process-step">
+            <span>{number}</span>
+            <div>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const lightbox = document.querySelector<HTMLDialogElement>('[data-menu-lightbox]');
+    const lightboxImage = lightbox?.querySelector<HTMLImageElement>('[data-menu-lightbox-image]');
+
+    document.querySelectorAll<HTMLButtonElement>('[data-menu-image]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const image = button.querySelector<HTMLImageElement>('img');
+        if (!lightbox || !lightboxImage || !image) return;
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.showModal();
+      });
+    });
+
+    lightbox?.querySelector<HTMLButtonElement>('[data-menu-lightbox-close]')?.addEventListener('click', () => lightbox.close());
+    lightbox?.addEventListener('click', (event) => {
+      if (event.target === lightbox) lightbox.close();
+    });
+  </script>
+</RestaurantLayout>
