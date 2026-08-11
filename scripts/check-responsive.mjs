@@ -8,7 +8,7 @@ import { chromium } from 'playwright-core';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const pagesDirectory = join(root, 'src', 'pages');
-const widths = [320, 360, 390, 430, 768, 1024, 1280, 1440];
+const widths = [320, 360, 390, 430, 768, 978, 1024, 1025, 1280, 1440, 1501, 1536];
 const productionOrigin = 'https://indesign-studio-layout.vercel.app';
 
 const files = await findAstroPages(pagesDirectory);
@@ -85,6 +85,16 @@ try {
 					});
 					return {
 						overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+						headerGap: (() => {
+							const brand = document.querySelector('.site-brand');
+							const nav = document.querySelector('.site-nav-links');
+							const actions = document.querySelector('.site-header-actions');
+							if (!brand || !nav || !actions || getComputedStyle(nav).display === 'none') return null;
+							const brandRect = brand.getBoundingClientRect();
+							const navRect = nav.getBoundingClientRect();
+							const actionsRect = actions.getBoundingClientRect();
+							return Math.min(navRect.left - brandRect.right, actionsRect.left - navRect.right);
+						})(),
 						brokenImages: raster.filter((image) => image.complete && image.naturalWidth === 0).length,
 						missingDimensions: images.filter((image) => !image.width || !image.height).length,
 						missingSrcset: raster.filter((image) => !image.srcset).length,
@@ -106,6 +116,7 @@ try {
 				const issues = [
 					!response?.ok() && `HTTP ${response?.status() ?? 'error'}`,
 					audit.overflow > 0 && `horizontal overflow ${audit.overflow}px`,
+					audit.headerGap !== null && audit.headerGap < 0 && `header groups overlap ${Math.ceil(-audit.headerGap)}px`,
 					audit.brokenImages > 0 && `broken images ${audit.brokenImages}`,
 					audit.missingDimensions > 0 && `images without dimensions ${audit.missingDimensions}`,
 					audit.missingSrcset > 0 && `raster images without srcset ${audit.missingSrcset}`,
