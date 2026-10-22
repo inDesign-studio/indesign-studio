@@ -38,6 +38,7 @@ button{cursor:pointer}
 .grp{display:flex;align-items:center;gap:4px}
 .btn{height:34px;min-width:34px;padding:0 10px;border:1px solid var(--line);background:var(--bg);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
 .btn:hover{border-color:var(--accent)}
+a.btn{color:var(--fg);text-decoration:none;white-space:nowrap;font-weight:600}
 .btn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -129,6 +130,7 @@ button{cursor:pointer}
 
 <div class="app">
   <header class="bar">
+    <a class="btn" href="/projects/catalogs" title="Вернуться в раздел «Каталоги»">← Каталоги</a>
     <button class="btn" id="bToc" aria-pressed="false" title="Оглавление и поиск">
       <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="hide-s">Оглавление</span>
     </button>
