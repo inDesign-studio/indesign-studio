@@ -15,11 +15,17 @@ for (const [name, html] of Object.entries(pages).filter(([name]) => ['iofs', 'ki
 
 assert.match(pages.iofs, /case-gallery-spread/);
 assert.doesNotMatch(pages.unesco, /unesco-flipbook|case-gallery|case-analysis/);
-assert.equal((pages.unesco.match(/<img\b[^>]*\bsrc=/g) ?? []).length, 2, 'UNESCO: only the site logo and report cover should remain');
+assert.equal((pages.unesco.match(/<img\b[^>]*\bsrc=/g) ?? []).length, 6, 'UNESCO: expected the site logo and all five covers');
 assert.ok(!(await readdir('dist')).includes('unesco-flipbook'), 'UNESCO: flipbook must not be published');
-assert.deepEqual(await readdir('src/assets/portfolio/unesco'), ['diagnostic-cover.webp']);
-const catalog = await readFile('dist/projects/publications/index.html', 'utf8');
+assert.deepEqual((await readdir('src/assets/portfolio/unesco')).sort(), ['appendix-1-cover.webp', 'appendix-2-cover.webp', 'appendix-3-cover.webp', 'appendix-4-cover.webp', 'diagnostic-cover.webp']);
+const publications = await readFile('dist/projects/publications/index.html', 'utf8');
+assert.match(publications, /href="\/projects\/publications\/unesco"/);
+assert.doesNotMatch(publications, /pk-effekt-flipbook/);
+const home = await readFile('dist/index.html', 'utf8');
+assert.match(home, /href="\/projects\/catalogs"/);
+const catalog = await readFile('dist/projects/catalogs/index.html', 'utf8');
 assert.match(catalog, /href="\/pk-effekt-flipbook\/index\.html"/);
+assert.match(await readFile('dist/sitemap.xml', 'utf8'), /\/projects\/catalogs<\/loc>/);
 await access('dist/pk-effekt-flipbook/index.html');
 const brochureScript = await readFile('dist/pk-effekt-flipbook/data/ru.js', 'utf8');
 const brochure = JSON.parse(brochureScript.slice(brochureScript.indexOf(']={') + 2).trim().replace(/;$/, ''));

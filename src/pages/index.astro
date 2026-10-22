@@ -6,6 +6,7 @@ import { Image } from 'astro:assets';
 import homeKipdCover from '../assets/home/kipd-cover.webp';
 import homeIofsCover from '../assets/home/iofs-cover.webp';
 import homeUnescoCover from '../assets/home/unesco-cover.webp';
+import pkEffektCover from '../assets/portfolio/pk-effekt/cover.jpg';
 import homeInfographic017 from '../assets/home/infographic-017.webp';
 import homeInfographic040 from '../assets/home/infographic-040.webp';
 import homeInfographic059 from '../assets/home/infographic-059.webp';
@@ -65,7 +66,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 							<Image class="publication-cover cover-iofs" src={homeIofsCover} alt="" widths={[160, 240, 320]} sizes="12rem" loading="lazy" />
 							<Image class="publication-cover cover-unesco" src={homeUnescoCover} alt="" widths={[160, 240, 320]} sizes="12rem" loading="lazy" />
 						</div>
-						<div class="card-footer"><span>Каталоги · Журналы · Отчёты</span><span>Открыть</span></div>
+						<div class="card-footer"><span>Книги · Журналы · Отчёты</span><span>Открыть</span></div>
 					</a>
 
 					<a class="portfolio-card presentations" href="/projects/presentations" aria-label="Открыть презентации">
@@ -89,6 +90,11 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 							<Image class="infographic-sheet infographic-right" src={homeInfographic059} alt="" widths={[128, 192, 256, 320]} sizes="10rem" loading="lazy" />
 						</div>
 						<div class="card-footer"><span>Данные · Схемы</span><span>Открыть</span></div>
+					</a>
+					<a class="portfolio-card catalogs" href="/projects/catalogs" aria-label="Открыть каталоги">
+						<div class="card-head"><div><span>Направление / 04</span><h2>Каталоги</h2></div></div>
+						<div class="catalog-preview" aria-hidden="true"><Image src={pkEffektCover} alt="" widths={[160, 240, 320]} sizes="8rem" loading="lazy" /></div>
+						<div class="card-footer"><span>Компании · Продукты · Услуги</span><span>Открыть</span></div>
 					</a>
 				</section>
 			</section>
@@ -152,6 +158,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 					<a class="portfolio-mini-card mini-publications" href="/projects/publications"><div><small>01 / Направление</small><h3>Многостраничные<br />издания</h3></div><span aria-hidden="true">↗&#xfe0e;</span></a>
 					<a class="portfolio-mini-card mini-presentations" href="/projects/presentations"><div><small>02 / Направление</small><h3>Презентации</h3></div><span aria-hidden="true">↗&#xfe0e;</span></a>
 					<a class="portfolio-mini-card mini-infographics" href="/projects/infographics"><div><small>03 / Направление</small><h3>Инфографика</h3></div><span aria-hidden="true">↗&#xfe0e;</span></a>
+					<a class="portfolio-mini-card mini-catalogs" href="/projects/catalogs"><div><small>04 / Направление</small><h3>Каталоги</h3></div><span aria-hidden="true">↗&#xfe0e;</span></a>
 				</div>
 			</section>
 
@@ -303,7 +310,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 		min-height: 39rem;
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		grid-template-rows: 1.12fr .88fr;
+		grid-template-rows: 1.12fr .88fr auto;
 		gap: .8rem;
 	}
 
@@ -323,6 +330,11 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 	.publications { grid-column: 1 / -1; color: #ffffff; background: #0b0b0b; box-shadow: 0 1.5rem 4rem rgba(0,0,0,.18); }
 	.presentations { color: #ffffff; background: var(--color-accent); }
 	.infographics { color: #111111; background: #f5f5f3; border: 1px solid rgba(17,17,17,.12); }
+	.catalogs { grid-column:1/-1; min-height:12rem; color:#111; background:#eeeae5; }
+	.catalogs .card-head,.catalogs .card-footer { max-width:60%; }
+	.catalogs .card-footer { align-self:end; }
+	.catalog-preview { position:absolute; right:1.5rem; top:1rem; bottom:1rem; width:30%; display:grid; place-items:center; }
+	.catalog-preview img { display:block; width:auto; max-width:100%; height:10rem; object-fit:contain; border-radius:var(--radius-thumb); transform:rotate(6deg); }
 
 	.card-head { z-index: 3; display: flex; justify-content: space-between; align-items: start; position: relative; }
 	.card-head span { display: block; opacity: .55; font-size: .52rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
@@ -403,7 +415,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 	.mobile-title-break { display: none; }
 
 	.portfolio-mini-section { margin-top: clamp(3rem, 5vw, 4.5rem); }
-	.portfolio-mini-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.8rem, 1.5vw, 1.25rem); }
+	.portfolio-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(.8rem, 1.5vw, 1.25rem); }
 	.portfolio-mini-card { min-width: 0; min-height: 12rem; padding: clamp(1.3rem, 2vw, 2rem); display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; position: relative; border-radius: var(--radius-card); text-decoration: none; transition: transform .25s ease, box-shadow .25s ease; }
 	.portfolio-mini-card:hover { transform: translateY(-.3rem); box-shadow: 0 1.25rem 3rem rgba(0,0,0,.14); }
 	.portfolio-mini-card small { position: absolute; top: clamp(1.3rem, 2vw, 2rem); left: clamp(1.3rem, 2vw, 2rem); opacity: .55; font-size: .55rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
@@ -414,6 +426,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 	.mini-publications { color: #fff; background: #0b0b0b; }
 	.mini-presentations { color: #fff; background: var(--color-accent); }
 	.mini-infographics { color: #111; background: #f5f5f3; border: 1px solid rgba(17,17,17,.1); }
+	.mini-catalogs { color:#111; background:#eeeae5; }
 
 	@media (max-width: 1000px) {
 		.hero-grid { grid-template-columns: minmax(0,1fr); padding-top: 4rem; }
@@ -451,6 +464,7 @@ const whatsappUrl = 'https://api.whatsapp.com/send/?phone=77084251518&text=%D0%9
 		.projects-grid .publications, .portfolio-mini-grid .mini-publications { order: 1; }
 		.projects-grid .infographics, .portfolio-mini-grid .mini-infographics { order: 2; }
 		.projects-grid .presentations, .portfolio-mini-grid .mini-presentations { order: 3; }
+		.projects-grid .catalogs, .portfolio-mini-grid .mini-catalogs { order:4; }
 		.publications { grid-column: auto; min-height: 27rem; }
 		.presentations, .infographics { min-height: 22rem; }
 		.publication-preview { min-height: 16rem; }

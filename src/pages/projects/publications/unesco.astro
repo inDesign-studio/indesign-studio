@@ -7,17 +7,23 @@ import SiteHeader from '../../../components/SiteHeader.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="UNESCO — обложка отчёта" description="Обложка отчёта ЮНЕСКО — работа InDesign Studio.">
+<BaseLayout title="UNESCO — обложки отчёта и приложений" description="Дизайн обложек отчёта ЮНЕСКО и четырёх тематических приложений — работа InDesign Studio.">
 	<SiteHeader />
 	<main>
 		<section class="project-hero">
 			<a class="back" href="/projects/publications">← Все многостраничные издания</a>
-			<p class="eyebrow">Дизайн обложки</p>
-			<h1>ЮНЕСКО <span>Обложка отчёта</span></h1>
+			<p class="eyebrow">Многостраничные издания · Дизайн обложек</p>
+			<h1>ЮНЕСКО <span>Отчёт и четыре приложения</span></h1>
 		</section>
 		<figure class="cover-stage">
 			<ResponsiveImage src="/portfolio/unesco/diagnostic-cover.webp" alt="Обложка отчёта ЮНЕСКО" sizes="(max-width: 700px) 75vw, 28rem" loading="eager" fetchpriority="high" />
 		</figure>
+		<section class="appendices" aria-labelledby="appendices-title">
+			<h2 id="appendices-title">Обложки приложений</h2>
+			<div class="covers-grid">
+				{[1, 2, 3, 4].map((number) => <ResponsiveImage src={`/portfolio/unesco/appendix-${number}-cover.webp`} alt={`Обложка приложения ${number} к отчёту ЮНЕСКО`} sizes="(max-width: 620px) 45vw, 22vw" />)}
+			</div>
+		</section>
 		<CasePagination
 			previous={{ href: '/projects/publications/kipd', label: 'КИОР / KIPD' }}
 			next={{ href: '/projects/publications/iofs', label: 'ИОПБ / IOFS' }}
@@ -37,5 +43,10 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 	h1 span { display:block; color:var(--color-accent); }
 	.cover-stage { width:min(100%,88rem); margin:0 auto; padding:clamp(2rem,5vw,5rem); display:grid; place-items:center; background:#0b0b0b; border-radius:var(--radius-shell); }
 	.cover-stage img { display:block; width:min(100%,28rem); height:auto; border-radius:var(--radius-thumb); }
+	.appendices { width:min(100%,88rem); margin:clamp(3rem,6vw,6rem) auto; }
+	.appendices h2 { margin:0 0 2rem; font-size:var(--text-display-section); line-height:1.1; letter-spacing:var(--tracking-display-section); }
+	.covers-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(.75rem,2vw,2rem); align-items:start; }
+	.covers-grid img { display:block; width:100%; height:auto; border-radius:var(--radius-thumb); }
+	@media (max-width:620px) { .covers-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 	:focus-visible { outline:var(--focus-ring-width) solid var(--focus-ring-color); outline-offset:var(--focus-ring-offset); }
 </style>

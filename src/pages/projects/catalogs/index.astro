@@ -1,0 +1,54 @@
+---
+import BackToTop from '../../../components/BackToTop.astro';
+import ProjectFooter from '../../../components/ProjectFooter.astro';
+import ResponsiveImage from '../../../components/ResponsiveImage.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Каталоги — InDesign Studio" description="Корпоративные и продуктовые каталоги InDesign Studio. Смотрите и листайте издания онлайн.">
+	<SiteHeader />
+	<main>
+		<section class="catalog-head">
+			<a class="back" href="/">← На главную</a>
+			<p class="eyebrow">Портфолио · Направление / 04</p>
+			<h1>Каталоги</h1>
+			<p class="intro">Каталоги компаний, продуктов и услуг. Дизайн, вёрстка и подготовка к печати.</p>
+		</section>
+		<section class="catalog-grid" aria-label="Каталоги компаний">
+			<a class="catalog-card" href="/pk-effekt-flipbook/index.html">
+				<div class="card-top"><span>01 / Корпоративный каталог</span><b aria-hidden="true">↗</b></div>
+				<div class="cover-preview"><ResponsiveImage src="/portfolio/pk-effekt/cover.jpg" alt="Обложка каталога ПК ЭФФЕКТ" sizes="(max-width: 620px) 60vw, 15rem" loading="eager" fetchpriority="high" /></div>
+				<div class="card-bottom"><h2>ПК ЭФФЕКТ</h2><p>Проектная компания · 26 страниц</p><span>Листать каталог <i aria-hidden="true">↗</i></span></div>
+			</a>
+		</section>
+		<ProjectFooter />
+	</main>
+	<BackToTop />
+</BaseLayout>
+
+<style>
+	main { padding:0 clamp(1rem,4vw,4.5rem) clamp(2rem,5vw,5rem); }
+	.catalog-head { padding:clamp(2rem,5vw,5rem) 0; }
+	.back { font-size:var(--text-navigation); font-weight:750; text-decoration:none; }
+	.back:hover { color:var(--color-accent); }
+	.eyebrow { margin:3rem 0 1.5rem; color:var(--color-accent); font-size:var(--text-label); font-weight:800; letter-spacing:var(--tracking-label); text-transform:uppercase; }
+	h1 { margin:0; color:var(--color-accent); font-size:var(--text-display-md); line-height:1.1; letter-spacing:var(--tracking-display-md); }
+	.intro { max-width:36rem; margin:1.5rem 0 0; color:#666; font-size:var(--text-lead); line-height:var(--leading-lead); }
+	.catalog-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(1rem,2vw,2rem); }
+	.catalog-card { min-width:0; padding:clamp(1.25rem,2vw,2rem); color:#fff; background:#0b0b0b; border-radius:var(--radius-card); text-decoration:none; transition:transform .25s ease; }
+	.catalog-card:hover { transform:translateY(-.3rem); }
+	.card-top { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+	.card-top span { color:#aaa; font-size:var(--text-card-meta); font-weight:800; letter-spacing:var(--tracking-label); text-transform:uppercase; }
+	.card-top b { display:grid; place-items:center; width:2.8rem; flex-shrink:0; aspect-ratio:1; border:1px solid #fff4; border-radius:50%; }
+	.cover-preview { display:grid; place-items:center; min-height:24rem; padding:2rem 0; }
+	.cover-preview img { display:block; width:min(75%,15rem); height:auto; border-radius:var(--radius-thumb); }
+	.card-bottom h2 { margin:0; font-size:clamp(1.7rem,3vw,3rem); line-height:1; letter-spacing:-.05em; }
+	.card-bottom p { margin:.75rem 0 1.5rem; color:#aaa; font-size:var(--text-caption); line-height:var(--leading-caption); }
+	.card-bottom span { font-size:var(--text-navigation); font-weight:750; }
+	.card-bottom i { font-style:normal; }
+	@media (max-width:980px) { .catalog-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+	@media (max-width:620px) { .catalog-grid { grid-template-columns:minmax(0,1fr); } }
+	@media (prefers-reduced-motion:reduce) { .catalog-card { transition:none; } }
+	:focus-visible { outline:var(--focus-ring-width) solid var(--focus-ring-color); outline-offset:var(--focus-ring-offset); }
+</style>

@@ -5,6 +5,7 @@ const routes = [
 	'/projects/infographics',
 	'/projects/presentations',
 	'/projects/publications',
+	'/projects/catalogs',
 	'/projects/publications/iofs',
 	'/projects/publications/kipd',
 	'/projects/publications/unesco',
