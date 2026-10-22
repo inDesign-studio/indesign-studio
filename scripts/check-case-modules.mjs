@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile, readdir } from 'node:fs/promises';
+import { access, readFile, readdir } from 'node:fs/promises';
 
 const pages = {
 	iofs: await readFile('dist/projects/publications/iofs/index.html', 'utf8'),
@@ -18,6 +18,16 @@ assert.doesNotMatch(pages.unesco, /unesco-flipbook|case-gallery|case-analysis/);
 assert.equal((pages.unesco.match(/<img\b[^>]*\bsrc=/g) ?? []).length, 2, 'UNESCO: only the site logo and report cover should remain');
 assert.ok(!(await readdir('dist')).includes('unesco-flipbook'), 'UNESCO: flipbook must not be published');
 assert.deepEqual(await readdir('src/assets/portfolio/unesco'), ['diagnostic-cover.webp']);
+const catalog = await readFile('dist/projects/publications/index.html', 'utf8');
+assert.match(catalog, /href="\/pk-effekt-flipbook\/index\.html"/);
+await access('dist/pk-effekt-flipbook/index.html');
+const brochureScript = await readFile('dist/pk-effekt-flipbook/data/ru.js', 'utf8');
+const brochure = JSON.parse(brochureScript.slice(brochureScript.indexOf(']={') + 2).trim().replace(/;$/, ''));
+assert.equal(brochure.pages.length, 26, 'PK EFFEKT: expected all 26 pages');
+assert.equal(brochure.n, brochure.pages.length);
+for (let page = 1; page <= brochure.n; page++) {
+	await access(`dist/pk-effekt-flipbook/ru/p-${String(page).padStart(2, '0')}.jpg`);
+}
 assert.match(pages.kipd, /case-gallery-pages/);
 assert.match(pages.infographics, /case-gallery-numbered/);
 assert.match(pages.iofs, /data-case-lightbox="spread"/);
